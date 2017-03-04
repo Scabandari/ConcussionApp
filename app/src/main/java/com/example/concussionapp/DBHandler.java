@@ -116,6 +116,7 @@ public class DBHandler extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put(KEY_USER_NAME, user.getUserName());
             values.put(KEY_USER_PASSWORD, user.getPassWord());
+            values.put(KEY_USER_CP_EMAIL, user.getCareProviderEmailAddress());
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
             userId = db.insertOrThrow(TABLE_USERS, null, values);
@@ -147,8 +148,10 @@ public class DBHandler extends SQLiteOpenHelper {
             if (cursor != null) {
                 boolean moveToFirst = cursor.moveToFirst();
                 if(moveToFirst) {
+                    newUser.setCareProviderEmailAddress(cursor.getString(cursor.getColumnIndex(KEY_USER_CP_EMAIL)));
                     newUser.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USER_NAME)));
                     newUser.setPassWord(cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD)));
+
                 }
             }
         } catch (Exception e) {
@@ -160,6 +163,23 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         return newUser;
     }
+
+
+    public void deleteAllUsers() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            // Order of deletions is important when foreign key relationships exist.
+            db.delete(TABLE_USERS, null, null);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to delete all users");
+        } finally {
+            db.endTransaction();
+        }
+
+}
+
 
 }
 
