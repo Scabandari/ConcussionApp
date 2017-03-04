@@ -149,6 +149,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 if(moveToFirst) {
                     newUser.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USER_NAME)));
                     newUser.setPassWord(cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD)));
+                    newUser.setCareProviderEmailAddress(cursor.getString(cursor.getColumnIndex(KEY_USER_CP_EMAIL)));
                 }
             }
         } catch (Exception e) {
