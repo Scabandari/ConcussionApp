@@ -13,8 +13,13 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
 
+
     <TextView
+        android:id="@+id/testing_db"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/testing_db"/>
+        android:layout_below="@+id/tool_bar"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="183dp"
+        android:text="TextView" />
 </RelativeLayout>

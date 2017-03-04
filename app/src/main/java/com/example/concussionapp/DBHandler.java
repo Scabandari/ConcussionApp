@@ -139,18 +139,19 @@ public class DBHandler extends SQLiteOpenHelper {
     public User fetchUser(String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_USERS + " WHERE " +
-                KEY_USER_NAME + " = " + name;
+                KEY_USER_NAME + " = '" + name +"'";
 
         User newUser = new User();
         Cursor cursor = db.rawQuery(selectQuery, null);
         try {
             if (cursor != null) {
-                cursor.moveToFirst();
-            }
+                boolean moveToFirst = cursor.moveToFirst();
+                if(moveToFirst) {
                     newUser.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USER_NAME)));
                     newUser.setPassWord(cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD)));
+                }
             }
-         catch (Exception e) {
+        } catch (Exception e) {
             Log.d(TAG, "Error while trying to fetch a com.example.concussionapp.User from database");
         } finally {
             if (cursor != null && !cursor.isClosed()) {

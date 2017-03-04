@@ -36,10 +36,5 @@ public class second_Activity extends AppCompatActivity {
 
     }
 
-    public void to_second_activity(View view) {
-        Intent intent = new Intent(this, second_Activity.class);
-        startActivity(intent);
-    }
-
 
 }
