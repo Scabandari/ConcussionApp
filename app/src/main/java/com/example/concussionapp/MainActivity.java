@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         getApplicationContext();
         db= DBHandler.getInstance(this); //singleton pattern
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void to_second_activity(View view) {
- //this commented out code was just used for testing
+    public void to_second_activity(View view)
+    {
+        //this commented out code was just used for testing
        //if the database has not been cleared
 /*        if(!databaseHasBeenCleared) {
             db.deleteAllUsers();
@@ -36,13 +38,16 @@ public class MainActivity extends AppCompatActivity {
         }
 */
         //If I haven't been added to the database then add me to the database
-        if(!ryanInDatabase) {
+        if(!ryanInDatabase)
+        {
             User ryan = new User("Ryan", "secret_passord", "ryan@email.com");
             db.addUser(ryan);
             ryanInDatabase = true;
+
         }
+
         Intent intent = new Intent(this, second_Activity.class);
     //    intent.putExtra("course_keys", db.getFloatList());
         startActivity(intent);
-    }
+        }
 }
