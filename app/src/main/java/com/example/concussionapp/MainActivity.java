@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+// just want to switch branch, but i have to commit
+public class MainActivity extends AppCompatActivity
+{
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static boolean databaseHasBeenCleared = false;
