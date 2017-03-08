@@ -21,7 +21,8 @@
             android:label="@string/title_activity_second_"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Excercise_Setup_Activity"></activity>
+        <activity android:name=".Excercise_Setup_Activity" />
+        <activity android:name=".Chronometer_Heart_Rate_Activity"></activity>
     </application>
 
 </manifest>
