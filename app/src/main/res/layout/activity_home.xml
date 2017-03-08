@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.concussionapp.HomeActivity"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <EditText
+        android:layout_width="372dp"
+        android:layout_height="138dp"
+        android:hint="Username"
+        android:id="@+id/loginusername"
+        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="6dp"
+        android:layout_above="@+id/loginpassword"
+        android:layout_alignStart="@+id/loginpassword" />
+
+    <EditText
+        android:layout_width="371dp"
+        android:layout_height="138dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:id="@+id/loginpassword"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="164dp"
+        android:layout_above="@+id/ButtonSignIn"
+        android:layout_alignEnd="@+id/ButtonSignIn" />
+
+    <Button
+        android:layout_width="373dp"
+        android:layout_height="125dp"
+        android:text="Sign In"
+        android:id="@+id/ButtonSignIn"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="302dp"
+        android:layout_above="@+id/ButtonSignUp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="375dp"
+        android:layout_height="135dp"
+        android:text="Sign Up"
+        android:id="@+id/ButtonSignUp"
+        tools:layout_editor_absoluteY="427dp"
+        tools:layout_editor_absoluteX="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/ButtonSignIn" />
+
+</RelativeLayout>
