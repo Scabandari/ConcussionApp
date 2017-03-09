@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Concussion App</string>
     <string name="title_activity_second_">second_Activity</string>
+    <string name="startChronometer">Start</string>
+    <string name="stopChronometer">Stop</string>
+    <string name="resetChronometer">Reset</string>
 </resources>

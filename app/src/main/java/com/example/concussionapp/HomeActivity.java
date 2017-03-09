@@ -1,8 +1,8 @@
 package com.example.concussionapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,12 +17,26 @@ public class HomeActivity extends AppCompatActivity {
     Button btnIn;
     Button btnUp;
 
+/* HAVING PROBLEMS TESTING LOGIN FUNCTIONALITY, SOMETHING TO DO W/
+MULTIPLE USERS HAVING SAME USER NAME. Will fix for sprint 2 but for
+now This next boolean is to clear the database
+and it should only happen once therefore it's a boolean = false before and true after
+ */
+ //   private boolean databaseIsCleared = false; //must be taken out of final version of project, clears database
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 //create an instance of SQLite database
         dbHandler = DBHandler.getInstance(this);
+
+        //if statement just clears the database but only happens once
+  /*      if(!databaseIsCleared) {
+            dbHandler.deleteAllUsers();
+            databaseIsCleared = true;
+        }
+        */
         btnIn = (Button) findViewById(R.id.ButtonSignIn);
         btnUp = (Button) findViewById(R.id.ButtonSignUp);
 
@@ -48,25 +62,27 @@ public class HomeActivity extends AppCompatActivity {
                 String password = loginpassword.getText().toString();
 
                 //fetch the password from database for respective user
-                //Create an object of users to get the password stored
+                //Create an object of Class User to store password & email
 
                 User Checkpass = dbHandler.fetchUser(username);
 
-                Log.i(TAG, "Username " + username);
-                Log.i(TAG, "Password " + password);
-                Log.i(TAG, "Stored password " + Checkpass.getPassWord());
+                Log.i(TAG, "Username entered is:  " + username);
+                Log.i(TAG, "Password entered is: " + password);
+                Log.i(TAG, "User name from database is: " + Checkpass.getUserName());
+                Log.i(TAG, "Password from database is: " + Checkpass.getPassWord());
+                Log.i(TAG, "Email from database is: " + Checkpass.getCareProviderEmailAddress());
 
                 //check if stored password matches user password
-                if (password.equals(Checkpass.getPassWord()))
-                {
-                    Toast.makeText(HomeActivity.this, "Login successfull", Toast.LENGTH_SHORT).show();
+                if (password.equals(Checkpass.getPassWord())) {
 
-                }
-                else
-                {
+                    Intent intent = new Intent(v.getContext(), Excercise_Setup_Activity.class);
+                    // intent.putExtra("course_keys", db.getFloatList());
+                    startActivity(intent);
+                } else {
                     Toast.makeText(HomeActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();
 
                 }
+
             }
         });
 
