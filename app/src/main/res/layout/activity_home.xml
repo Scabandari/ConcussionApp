@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/holo_purple"
     tools:context="com.example.concussionapp.HomeActivity"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
@@ -38,7 +39,8 @@
         tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="302dp"
         android:layout_above="@+id/ButtonSignUp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="to_grades_exercise_setup_activity"/>
 
     <Button
         android:layout_width="375dp"

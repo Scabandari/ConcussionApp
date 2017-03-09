@@ -157,7 +157,7 @@ public class DBHandler extends SQLiteOpenHelper {
         } catch (Exception e) {
             Log.d(TAG, "Error while trying to fetch a com.example.concussionapp.User from database");
         } finally {
-            if (cursor != null && !cursor.isClosed()) {
+             {//if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
             }
         }

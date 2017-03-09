@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_excercise__setup_"
     android:layout_width="match_parent"
@@ -8,6 +9,78 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.concussionapp.Excercise_Setup_Activity">
+    tools:context="com.example.concussionapp.Excercise_Setup_Activity"
+    android:background="@color/colorPrimary">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:id="@+id/MaxEditText"
+        android:layout_below="@+id/MaxMessage"
+        android:layout_alignStart="@+id/MaxMessage" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/MinMessage"
+        android:layout_alignEnd="@+id/MaxEditText"
+        android:layout_marginTop="11dp"
+        android:id="@+id/MinEditText" />
+<!--
+    <TextView
+        android:text="Please select the duration of this training:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:id="@+id/TimeMessage"
+        android:layout_below="@+id/MinEditText"
+        android:layout_alignStart="@+id/MinEditText"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/TimeSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TimeMessage"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="27dp" />
+-->
+    <TextView
+        android:text="Enter the maximum heart rate allowed for this training:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="95dp"
+        android:id="@+id/MaxMessage"
+        android:textSize="18sp"
+        android:textColor="@android:color/background_light"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/TimeSpinner" />
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="53dp"
+        android:id="@+id/DoneSetupButton"
+        android:textSize="18sp"
+        android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:text="Enter the minimum heart rate allowed for this training:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MinMessage"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/MinEditText" />
 </RelativeLayout>
