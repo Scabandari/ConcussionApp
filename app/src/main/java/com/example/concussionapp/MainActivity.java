@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    protected Button buttonquestionaire = null;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static boolean databaseHasBeenCleared = false;
     public static boolean ryanInDatabase = false;
@@ -15,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gotoquestionaire();
     }
 
     @Override
@@ -26,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    protected void gotoquestionaire()
+    {
+        Button buttonquestionaire = (Button) findViewById(R.id.questionaire);
+
+        buttonquestionaire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View Profile) {
+                startActivity(new Intent(MainActivity.this, Questionaire.class));
+            }
+        });
     }
 
     public void to_second_activity(View view)
