@@ -70,7 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
                     //Save data to database
                     dbHandler.addUser(NewUser);
                     Toast.makeText(getApplicationContext(), "Account created succesfully", Toast.LENGTH_LONG).show();
-                    Intent SignUpIntent = new Intent (SignUpActivity.this, MainActivity.class );
+                    Intent SignUpIntent = new Intent (SignUpActivity.this, HomeActivity.class );
                     startActivity(SignUpIntent);
                 }
             }
