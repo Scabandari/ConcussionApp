@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:paddingBottom="30dp"
+        android:paddingBottom="30dip"
         android:paddingTop="30dip"
         />
 
@@ -32,20 +32,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/resetChronometer"
-        android:background="@color/colorPrimaryDark"
-        android:paddingBottom="30dp">
+        android:background="@color/colorPrimaryDark">
     </Button>
-
-    <TextView
-        android:layout_marginTop="30dp"
+    <Button
+        android:id="@+id/Connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Heart Rate"/>
-
+        android:text="Connect"
+        android:background="@color/colorPrimary"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="---"
-        android:id="@+id/heart_rate_values"/>
+        android:text="Not Connected to Heart Sensor"
+        android:background="@color/colorPrimary"/>
+    <Button
+        android:id="@+id/Disconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disconnect"
+        android:background="@color/colorPrimary"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Heart Rate: "/>
+    <EditText
+        android:id="@+id/ActualHeartRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000"
+        android:background="@color/colorPrimary"/>
 
 </LinearLayout>
