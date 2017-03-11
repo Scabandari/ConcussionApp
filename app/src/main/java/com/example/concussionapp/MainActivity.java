@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity
         }
 */
         //If I haven't been added to the database then add me to the database
-        if(!ryanInDatabase)
+/*        if(!ryanInDatabase)
         {
             User ryan = new User("Ryan", "secret_passord", "ryan@email.com");
             db.addUser(ryan);
             ryanInDatabase = true;
 
         }
-
-        Intent intent = new Intent(this, second_Activity.class);
+*/
+        Intent intent = new Intent(this, HomeActivity.class);
     //    intent.putExtra("course_keys", db.getFloatList());
         startActivity(intent);
         }
