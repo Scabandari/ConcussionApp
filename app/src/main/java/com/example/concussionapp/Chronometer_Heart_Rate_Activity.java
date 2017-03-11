@@ -47,10 +47,12 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
         Intent intent = getIntent(); //get the intent from the mainActivity to link them
-        String MaxValue=intent.getStringExtra("maxEditText");
-        int Max=Integer.parseInt(MaxValue);
-        String MinValue=intent.getStringExtra("maxEditText");
-        int Min=Integer.parseInt(MinValue);
+     //   String MaxValue=intent.getStringExtra("maxEditText");
+
+      //  int Max  =Integer.parseInt(MaxValue);
+
+       // String MinValue=intent.getStringExtra("maxEditText");
+       // int Min=Integer.parseInt(MinValue);
 
         Button StartButton;
         Button StopButton;
