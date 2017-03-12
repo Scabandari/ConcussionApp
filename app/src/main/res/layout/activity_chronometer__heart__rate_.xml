@@ -40,10 +40,10 @@
         android:layout_height="wrap_content"
         android:text="Connect"
         android:background="@color/colorPrimary"/>
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not Connected to Heart Sensor"
+        android:id="@+id/connectionStatus"
         android:background="@color/colorPrimary"/>
     <Button
         android:id="@+id/Disconnect"
