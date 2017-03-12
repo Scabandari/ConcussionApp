@@ -21,10 +21,16 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".Excercise_Setup_Activity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".Chronometer_Heart_Rate_Activity"></activity>
+
+
+        <activity android:name=".Excercise_Setup_Activity" />
+        <activity android:name=".ExerciseActivity"></activity>
+
     </application>
 
 </manifest>
