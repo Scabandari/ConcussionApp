@@ -25,7 +25,6 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
         maxEditText = (EditText) findViewById(R.id.MaxEditText);
         minEditText = (EditText) findViewById(R.id.MinEditText);
         timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
-
         Button done_setup_button;
 
         //linking the button on the user interface to the one created here and making it listen
@@ -36,9 +35,15 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
 
     public void sendMessage() //function to send the user to the next activity
     {
+
+        String max= maxEditText.getText().toString();
+        String min= minEditText.getText().toString();
+
         Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
         startActivity(intent);
-        //intent.putExtra("maxEditText", intValue);
+        intent.putExtra("maxEditText", max);
+        intent.putExtra("minEditText", min);
+
     }
 
     private Button.OnClickListener OnClickSetupButton = new Button.OnClickListener()

@@ -12,7 +12,7 @@ package com.example.concussionapp;
 
 public class Chronometer_Heart_Rate_Activity extends Activity {
 
-    Chronometer mChronometer;
+    Chronometer chronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,16 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
         Intent intent = getIntent(); //get the intent from the mainActivity to link them
-        //int intValue=intent.getIntExtra("maxEditText", 0);
+        String MaxValue=intent.getStringExtra("maxEditText");
+        int Max=Integer.parseInt(MaxValue);
+        String MinValue=intent.getStringExtra("maxEditText");
+        int Min=Integer.parseInt(MinValue);
 
         Button StartButton;
         Button StopButton;
         Button ResetButton;
 
-        mChronometer = (Chronometer) findViewById(R.id.chronometer);
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
 
         StartButton= (Button) findViewById(R.id.start_Button);
         StartButton.setOnClickListener(mStartListener);
@@ -41,17 +44,17 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
     View.OnClickListener mStartListener = new View.OnClickListener() {
         public void onClick(View v) {
-            mChronometer.start();
+            chronometer.start();
         }
     };
     View.OnClickListener mStopListener = new View.OnClickListener() {
         public void onClick(View v) {
-            mChronometer.stop();
+            chronometer.stop();
         }
     };
     View.OnClickListener mResetListener = new View.OnClickListener()
     {
-        public void onClick(View v) {mChronometer.setBase(SystemClock.elapsedRealtime());}
+        public void onClick(View v) {chronometer.setBase(SystemClock.elapsedRealtime());}
     };
 
 
