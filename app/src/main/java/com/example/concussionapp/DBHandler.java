@@ -13,6 +13,7 @@ import static android.content.ContentValues.TAG;
  * Created by scabandari on 03/03/17.
  */
 
+
 /* the code for our database was mostly taken from these two sites:
     https://github.com/codepath/android_guides/wiki/Local-Databases-with-SQLiteOpenHelper
     http://www.androidhive.info/2013/09/android-sqlite-database-with-multiple-tables/
