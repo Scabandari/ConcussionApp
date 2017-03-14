@@ -8,6 +8,9 @@
     android:background="@color/colorPrimary">
     >
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
