@@ -15,7 +15,8 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
     protected Spinner timeSpinner;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
 
 
         super.onCreate(savedInstanceState);
