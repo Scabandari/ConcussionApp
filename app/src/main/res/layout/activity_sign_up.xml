@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/SignUpEmail"
         android:layout_alignStart="@+id/SignUpEmail"
-        android:background="@color/colorAccent">
+        android:background="@color/colorPrimary">
         <requestFocus/></EditText>
 
     <EditText
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/Confirmpassword"
         android:layout_alignStart="@+id/Confirmpassword"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColor="@android:color/background_dark" />
 
     <Button
@@ -44,7 +44,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="13dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColor="@android:color/background_dark" />
 
     <EditText
@@ -56,7 +56,7 @@
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/SignUppassword"
         android:layout_alignEnd="@+id/SignUppassword"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColor="@android:color/background_dark" />
 
     <EditText
@@ -69,7 +69,7 @@
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/CreateAccount"
         android:layout_alignEnd="@+id/CreateAccount"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColorHighlight="@android:color/background_dark"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
 
@@ -79,6 +79,6 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:elevation="4dp"/>
 </RelativeLayout>
