@@ -6,18 +6,21 @@
     android:background="@color/colorPrimary"
     android:weightSum="1">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar" />
+
     <Chronometer android:id="@+id/chronometer"
-        android:layout_width="118dp"
-        android:layout_height="58dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:paddingBottom="30dip"
         android:paddingTop="30dip"
-        android:autoText="false"
-        android:textColorHighlight="@android:color/transparent"
-        android:textColorHint="@android:color/background_dark"
-        android:textColorLink="@android:color/background_dark"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-        android:visibility="visible" />
-
+        />
 
     <Button android:id="@+id/start_Button"
         android:layout_width="121dp"
@@ -96,12 +99,6 @@
         android:layout_weight="0.07"
         android:textColor="@android:color/background_dark" />
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:theme="?attr/actionBarTheme"
-        android:minHeight="?attr/actionBarSize"
-        android:id="@+id/toolbar" />
+
 
 </LinearLayout>

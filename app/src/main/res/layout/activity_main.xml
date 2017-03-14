@@ -12,7 +12,7 @@
         layout="@layout/tool_bar" />
 
     <Button
-        android:text="To second activity"
+        android:text="Sign Up or Sign In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showSecondActivity"
@@ -27,5 +27,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:theme="@style/AppTheme" />
+
+
 
 </RelativeLayout>
