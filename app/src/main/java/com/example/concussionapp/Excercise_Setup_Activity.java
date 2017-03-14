@@ -29,9 +29,6 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
         timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
 
 
-
-
-
         Button done_setup_button;
 
         //linking the button on the user interface to the one created here and making it listen
@@ -53,6 +50,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
         public void onClick(View v)
         {
 
+            // convert edit text to integer
             String no = maxEditText.getText().toString();
             int no2 = Integer.parseInt(no);
             String n = minEditText.getText().toString();
