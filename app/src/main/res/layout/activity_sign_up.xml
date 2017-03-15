@@ -5,15 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.concussionapp.SignUpActivity">
+    tools:context="com.example.concussionapp.SignUpActivity"
+    android:background="@color/colorPrimary">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
 
-    <include layout="@layout/content_second_" />
-
-    <EditText
+<EditText
         android:layout_width="351dp"
         android:layout_height="100dp"
         android:hint="Username"
@@ -21,18 +17,9 @@
         tools:layout_editor_absoluteY="9dp"
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/SignUpEmail"
-        android:layout_alignStart="@+id/SignUpEmail">
-        </EditText>
-
-    <EditText
-        android:layout_width="352dp"
-        android:layout_height="100dp"
-        android:hint="Email"
-        android:id="@+id/SignUpEmail"
-        tools:layout_editor_absoluteY="117dp"
-        tools:layout_editor_absoluteX="21dp"
-        android:layout_above="@+id/SignUppassword"
-        android:layout_alignEnd="@+id/Confirmpassword" />
+        android:layout_alignStart="@+id/SignUpEmail"
+        android:background="@color/colorPrimary">
+        <requestFocus/></EditText>
 
     <EditText
         android:layout_width="353dp"
@@ -43,18 +30,9 @@
         tools:layout_editor_absoluteY="217dp"
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/Confirmpassword"
-        android:layout_alignStart="@+id/Confirmpassword" />
-
-    <EditText
-        android:layout_width="353dp"
-        android:layout_height="100dp"
-        android:hint="Re-type Password"
-        android:inputType="textPassword"
-        android:id="@+id/Confirmpassword"
-        tools:layout_editor_absoluteY="327dp"
-        tools:layout_editor_absoluteX="21dp"
-        android:layout_above="@+id/CreateAccount"
-        android:layout_alignEnd="@+id/CreateAccount" />
+        android:layout_alignStart="@+id/Confirmpassword"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/background_dark" />
 
     <Button
         android:layout_width="357dp"
@@ -65,6 +43,42 @@
         tools:layout_editor_absoluteX="21dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp" />
+        android:layout_marginBottom="13dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/background_dark" />
 
+    <EditText
+        android:layout_width="352dp"
+        android:layout_height="100dp"
+        android:hint="Email"
+        android:id="@+id/SignUpEmail"
+        tools:layout_editor_absoluteY="117dp"
+        tools:layout_editor_absoluteX="21dp"
+        android:layout_above="@+id/SignUppassword"
+        android:layout_alignEnd="@+id/SignUppassword"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/background_dark" />
+
+    <EditText
+        android:layout_width="353dp"
+        android:layout_height="100dp"
+        android:hint="Re-type Password"
+        android:inputType="textPassword"
+        android:id="@+id/Confirmpassword"
+        tools:layout_editor_absoluteY="327dp"
+        tools:layout_editor_absoluteX="21dp"
+        android:layout_above="@+id/CreateAccount"
+        android:layout_alignEnd="@+id/CreateAccount"
+        android:background="@color/colorPrimary"
+        android:textColorHighlight="@android:color/background_dark"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
+
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"/>
 </RelativeLayout>

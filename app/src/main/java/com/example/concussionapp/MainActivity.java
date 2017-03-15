@@ -52,4 +52,14 @@ public class MainActivity extends AppCompatActivity
     //    intent.putExtra("course_keys", db.getFloatList());
         startActivity(intent);
         }
+
+    public void to_quickstart(View view)
+    {
+
+
+        Intent intent = new Intent(this, Chronometer_Heart_Rate_Activity.class);
+        //    intent.putExtra("course_keys", db.getFloatList());
+        startActivity(intent);
+    }
+
 }
