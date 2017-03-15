@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.example.concussionapp.HomeActivity"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
@@ -15,17 +15,22 @@
         android:layout_width="330dp"
         android:layout_height="118dp"
         android:hint="Username"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
         android:id="@+id/loginusername"
         android:layout_above="@+id/loginpassword"
         android:layout_alignStart="@+id/loginpassword"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="130dp"
         android:layout_marginRight="15dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="15dp" />
 
     <EditText
         android:layout_width="331dp"
         android:layout_height="106dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
         android:hint="Password"
         android:inputType="textPassword"
         android:id="@+id/loginpassword"
@@ -34,19 +39,23 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="257dp"
         android:layout_marginRight="14dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="14dp" />
 
     <Button
         android:layout_width="342dp"
         android:layout_height="85dp"
         android:text="Sign In"
         android:id="@+id/ButtonSignIn"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
         android:layout_above="@+id/ButtonSignUp"
         android:layout_centerHorizontal="true"
         app:layout_constraintTop_toTopOf="@+id/loginusername"
         android:layout_marginTop="245dp"
         android:layout_marginRight="9dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="9dp" />
 
 
     <Button
@@ -54,11 +63,18 @@
         android:layout_height="94dp"
         android:text="Sign Up"
         android:id="@+id/ButtonSignUp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/ButtonSignIn"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="457dp"
         android:layout_marginRight="9dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="9dp" />
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
 
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.concussionapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,14 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         //get Instance of database adapter
         dbHandler = DBHandler.getInstance(this);
 
@@ -60,6 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Empty field", Toast.LENGTH_LONG).show();
                     return;
                 }
+                //check both password inputted are the same
                 if (!password.equals(confirmPassword))
                 {
                     Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_LONG).show();
