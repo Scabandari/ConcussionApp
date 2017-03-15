@@ -20,7 +20,7 @@
         android:background="#26663e"
         android:onClick="to_second_activity"
 
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="52dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
