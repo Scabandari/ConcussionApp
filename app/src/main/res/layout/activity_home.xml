@@ -10,11 +10,6 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
-
-    <include layout="@layout/content_second_" />
 
     <EditText
         android:layout_width="330dp"
