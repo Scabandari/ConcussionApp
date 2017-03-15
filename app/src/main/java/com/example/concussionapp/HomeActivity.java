@@ -75,7 +75,7 @@ and it should only happen once therefore it's a boolean = false before and true 
                 //check if stored password matches user password
                 if (password.equals(Checkpass.getPassWord())) {
 
-                    Intent intent = new Intent(v.getContext(), Excercise_Setup_Activity.class);
+                    Intent intent = new Intent(v.getContext(), Questionaire.class);
                     // intent.putExtra("course_keys", db.getFloatList());
                     startActivity(intent);
                 } else {

@@ -6,17 +6,21 @@
     android:background="@color/colorPrimary"
     android:weightSum="1">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="?attr/actionBarTheme"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar" />
+
     <Chronometer android:id="@+id/chronometer"
-        android:layout_width="118dp"
-        android:layout_height="58dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:paddingBottom="30dip"
         android:paddingTop="30dip"
-        android:autoText="false"
-        android:textColorHighlight="@android:color/transparent"
-        android:textColorHint="@android:color/background_dark"
-        android:textColorLink="@android:color/background_dark"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
-        android:visibility="visible" />
+        />
 
     <Button android:id="@+id/start_Button"
         android:layout_width="121dp"
@@ -24,7 +28,8 @@
         android:text="@string/startChronometer"
         android:background="@color/colorAccent"
         android:layout_weight="0.05"
-        android:textColor="@android:color/background_dark">
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp">
         <requestFocus />
     </Button>
 
@@ -35,7 +40,8 @@
         android:background="@color/colorAccent"
         android:elevation="5dp"
         android:layout_weight="0.06"
-        android:textColor="@android:color/background_dark">
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp">
     </Button>
 
     <Button android:id="@+id/reset_Button"
@@ -44,7 +50,8 @@
         android:text="@string/resetChronometer"
         android:background="@color/colorAccent"
         android:layout_weight="0.04"
-        android:textColor="@android:color/background_dark">
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp">
     </Button>
     <Button
         android:id="@+id/Connect"
@@ -53,14 +60,16 @@
         android:text="Connect"
         android:background="@color/colorAccent"
         android:layout_weight="0.05"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
     <TextView
         android:layout_width="119dp"
         android:layout_height="wrap_content"
         android:id="@+id/connectionStatus"
         android:background="@color/colorPrimary"
         android:layout_weight="0.07"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/Disconnect"
@@ -69,7 +78,8 @@
         android:text="Disconnect"
         android:background="@color/colorAccent"
         android:layout_weight="0.06"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
 
     <EditText
         android:id="@+id/ActualHeartRate"
@@ -78,7 +88,8 @@
         android:text="@string/resetChronometer"
         android:background="@color/colorPrimary"
         android:layout_weight="0.13"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="122dp"
@@ -88,12 +99,6 @@
         android:layout_weight="0.07"
         android:textColor="@android:color/background_dark" />
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:theme="?attr/actionBarTheme"
-        android:minHeight="?attr/actionBarSize"
-        android:id="@+id/toolbar" />
+
 
 </LinearLayout>

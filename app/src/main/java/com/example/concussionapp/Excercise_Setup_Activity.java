@@ -56,17 +56,13 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             String n = minEditText.getText().toString();
             int n2 = Integer.parseInt(n);
 
-            if (n2 > no2 )
+            if (n2 >= no2 )
             {
 
-                Toast.makeText(getApplicationContext(), " Minimum is to high. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), " Min must be lower than Max. ", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (no2 < n2)
-            {
-                Toast.makeText(getApplicationContext(), " Maximum is to low. ", Toast.LENGTH_LONG).show();
-                return;
-            }
+
             sendMessage();
 
 
