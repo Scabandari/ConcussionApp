@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context="com.example.concussionapp.SignUpActivity">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+    <include layout="@layout/content_second_" />
+
     <EditText
         android:layout_width="351dp"
         android:layout_height="100dp"
@@ -16,7 +22,7 @@
         tools:layout_editor_absoluteX="21dp"
         android:layout_above="@+id/SignUpEmail"
         android:layout_alignStart="@+id/SignUpEmail">
-        <requestFocus/></EditText>
+        </EditText>
 
     <EditText
         android:layout_width="352dp"

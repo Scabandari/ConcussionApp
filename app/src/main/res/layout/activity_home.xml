@@ -10,6 +10,12 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+    <include layout="@layout/content_second_" />
+
     <EditText
         android:layout_width="330dp"
         android:layout_height="118dp"
@@ -45,8 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/loginusername"
         android:layout_marginTop="245dp"
         android:layout_marginRight="9dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:onClick="to_grades_exercise_setup_activity"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <Button

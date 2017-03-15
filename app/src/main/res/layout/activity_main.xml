@@ -13,7 +13,7 @@
         layout="@layout/tool_bar" />
 
     <Button
-        android:text="To second activity"
+        android:text="Continue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showSecondActivity"

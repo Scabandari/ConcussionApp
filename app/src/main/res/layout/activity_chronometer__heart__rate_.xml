@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:padding="4dip"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="4dip"
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorRed">
 
     <Chronometer android:id="@+id/chronometer"
         android:layout_width="wrap_content"
@@ -17,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/startChronometer"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorRed">
         <requestFocus />
     </Button>
 
@@ -25,43 +27,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/stopChronometer"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorRed">
     </Button>
 
     <Button android:id="@+id/reset_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/resetChronometer"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorRed">
     </Button>
+
     <Button
         android:id="@+id/Connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connect"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorRed"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Not Connected to Heart Sensor"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorRed"/>
+
     <Button
         android:id="@+id/Disconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disconnect"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorRed"
         />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorRed"
         android:text="Heart Rate: "/>
+
     <EditText
         android:id="@+id/ActualHeartRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="000"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorRed"/>
 
 </LinearLayout>
