@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context="com.example.concussionapp.MainActivity">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
-
-
-    <Button
-        android:text="Sign Up or Sign In"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/showSecondActivity"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:onClick="to_second_activity"
-        android:layout_marginBottom="41dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        tools:context="com.example.concussionapp.MainActivity">
 
-    <Button
-        android:id="@+id/toQuickstart"
-        android:onClick="to_quickstart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:layout_above="@+id/showSecondActivity"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="39dp"
-        android:text="To Quickstart" />
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar" />
 
+
+        <Button
+            android:text="Sign Up or Sign In"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/showSecondActivity"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
+            android:onClick="to_second_activity"
+            android:layout_marginBottom="41dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/toQuickstart"
+            android:onClick="to_quickstart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorAccent"
+            android:layout_above="@+id/showSecondActivity"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="39dp"
+            android:text="To Quickstart" />
 
 </RelativeLayout>
+
