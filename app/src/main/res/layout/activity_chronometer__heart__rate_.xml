@@ -17,6 +17,7 @@
     <Chronometer android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:layout_weight="0"
         android:paddingBottom="30dip"
         android:paddingTop="30dip"
@@ -66,7 +67,7 @@
         android:layout_width="119dp"
         android:layout_height="wrap_content"
         android:id="@+id/connectionStatus"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:layout_weight="0.07"
         android:textColor="@android:color/background_dark"
         android:layout_marginBottom="20dp"/>
@@ -85,8 +86,7 @@
         android:id="@+id/ActualHeartRate"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="@string/resetChronometer"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:layout_weight="0.13"
         android:textColor="@android:color/background_dark"
         android:layout_marginBottom="20dp"/>
@@ -95,7 +95,7 @@
         android:layout_width="122dp"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:text="Heart Rate: "
+        android:text="Heart Rate "
         android:layout_weight="0.07"
         android:textColor="@android:color/background_dark" />
 
