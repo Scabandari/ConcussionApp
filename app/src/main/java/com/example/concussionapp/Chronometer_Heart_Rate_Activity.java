@@ -32,6 +32,8 @@ import static com.example.concussionapp.R.id.Connect;
 public class Chronometer_Heart_Rate_Activity extends Activity {
 
     Chronometer chronometer;
+    Button resume;
+
 
     //for sensor:
     BluetoothAdapter adapter = null;
@@ -43,7 +45,8 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     //end
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
@@ -69,6 +72,21 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
         ResetButton = (Button) findViewById(R.id.reset_Button);
         ResetButton.setOnClickListener(mResetListener);
+
+        // Resume Button
+        resume = (Button) findViewById(R.id.Resume_Button);
+
+
+
+
+
+
+
+
+
+
+
+
 
         /*BIPINS CODE FOR onCreate STARTS HERE AND ENDS AT END OF onCreate()*/
          /*Sending a message to android that we are going to initiate a pairing request*/

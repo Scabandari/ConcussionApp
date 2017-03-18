@@ -62,14 +62,16 @@ public class DBHandler extends SQLiteOpenHelper {
          * Constructor should be private to prevent direct instantiation.
          * Make a call to the static method "getInstance()" instead.
          */
-        private DBHandler(Context context) {
+        private DBHandler(Context context)
+        {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
         // Called when the database connection is being configured.
         // Configure database settings for things like foreign key support, write-ahead logging, etc.
         @Override
-        public void onConfigure(SQLiteDatabase db) {
+        public void onConfigure(SQLiteDatabase db)
+        {
             super.onConfigure(db);
             db.setForeignKeyConstraintsEnabled(true);
         }
@@ -77,7 +79,8 @@ public class DBHandler extends SQLiteOpenHelper {
         // Called when the database is created for the FIRST time.
         // If a database already exists on disk with the same DATABASE_NAME, this method will NOT be called.
         @Override
-        public void onCreate(SQLiteDatabase db) {
+        public void onCreate(SQLiteDatabase db)
+        {
 
             String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS +
                     "(" +
@@ -94,8 +97,10 @@ public class DBHandler extends SQLiteOpenHelper {
         // This method will only be called if a database already exists on disk with the same DATABASE_NAME,
         // but the DATABASE_VERSION is different than the version of the database that exists on disk.
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            if (oldVersion != newVersion) {
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
+        {
+            if (oldVersion != newVersion)
+            {
                 // Simplest implementation is to drop all old tables and recreate them
                 db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
                 onCreate(db);
@@ -103,7 +108,8 @@ public class DBHandler extends SQLiteOpenHelper {
         }
 
     // Insert a com.example.concussionapp.User into the database, returns a long we can store if we need it
-    public Long addUser(User user) {
+    public Long addUser(User user)
+    {
         // Create and/or open the database for writing
         SQLiteDatabase db = getWritableDatabase();
         long userId = -1;
@@ -137,7 +143,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     //we could run into a problem later if the username isn't found in the database
     // and a com.example.concussionapp.User object is returned which was created via Empty constructor
-    public User fetchUser(String name) {
+    public User fetchUser(String name)
+    {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_USERS + " WHERE " +
                 KEY_USER_NAME + " = '" + name +"'";
@@ -145,16 +152,19 @@ public class DBHandler extends SQLiteOpenHelper {
         User newUser = new User();
         Cursor cursor = db.rawQuery(selectQuery, null);
         try {
-            if (cursor != null) {
+            if (cursor != null)
+            {
                 boolean moveToFirst = cursor.moveToFirst();
-                if(moveToFirst) {
+                if(moveToFirst)
+                {
                     newUser.setCareProviderEmailAddress(cursor.getString(cursor.getColumnIndex(KEY_USER_CP_EMAIL)));
                     newUser.setUserName(cursor.getString(cursor.getColumnIndex(KEY_USER_NAME)));
                     newUser.setPassWord(cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD)));
 
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             Log.d(TAG, "Error while trying to fetch a com.example.concussionapp.User from database");
         } finally {
              {//if (cursor != null && !cursor.isClosed()) {
@@ -165,7 +175,8 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public void deleteAllUsers() {
+    public void deleteAllUsers()
+    {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
