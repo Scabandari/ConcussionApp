@@ -4,28 +4,36 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/heart"
+    android:background="@color/colorPrimary"
     tools:context="com.example.concussionapp.MainActivity">
 
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
 
+
     <Button
-        android:text="To second activity"
+        android:text="Sign Up or Sign In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showSecondActivity"
-        android:background="@android:color/holo_purple"
+        android:background="@android:color/darker_gray"
         android:onClick="to_second_activity"
 
         android:layout_marginBottom="41dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-        android:layout_below="@+id/tool_bar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:theme="@style/AppTheme" />
+    <Button
+        android:id="@+id/toQuickstart"
+        android:onClick="to_quickstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:layout_above="@+id/showSecondActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
+        android:text="To Quickstart" />
+
 
 </RelativeLayout>

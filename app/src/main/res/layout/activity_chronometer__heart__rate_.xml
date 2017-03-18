@@ -3,65 +3,102 @@
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="?attr/actionBarTheme"
+        android:background="@color/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:id="@+id/toolbar" />
 
     <Chronometer android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:layout_weight="0"
         android:paddingBottom="30dip"
         android:paddingTop="30dip"
         />
 
     <Button android:id="@+id/start_Button"
-        android:layout_width="wrap_content"
+        android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:text="@string/startChronometer"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorAccent"
+        android:layout_weight="0.05"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp">
         <requestFocus />
     </Button>
 
     <Button android:id="@+id/stop_Button"
-        android:layout_width="wrap_content"
+        android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:text="@string/stopChronometer"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorAccent"
+        android:elevation="5dp"
+        android:layout_weight="0.06"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp">
     </Button>
 
     <Button android:id="@+id/reset_Button"
-        android:layout_width="wrap_content"
+        android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:text="@string/resetChronometer"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorAccent"
+        android:layout_weight="0.04"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp">
     </Button>
     <Button
         android:id="@+id/Connect"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Connect"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorAccent"
+        android:layout_weight="0.05"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="119dp"
         android:layout_height="wrap_content"
         android:id="@+id/connectionStatus"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorAccent"
+        android:layout_weight="0.07"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
+
     <Button
         android:id="@+id/Disconnect"
-        android:layout_width="wrap_content"
+        android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:text="Disconnect"
-        android:background="@color/colorPrimary"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="Heart Rate: "/>
+        android:background="@color/colorAccent"
+        android:layout_weight="0.06"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
+
     <EditText
         android:id="@+id/ActualHeartRate"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="000"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorAccent"
+        android:layout_weight="0.13"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Heart Rate "
+        android:layout_weight="0.07"
+        android:textColor="@android:color/background_dark" />
+
+
 
 </LinearLayout>
