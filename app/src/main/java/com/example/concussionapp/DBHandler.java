@@ -31,7 +31,8 @@ be done on a background thread as there is a possibility
   database.
  */
 
-public class DBHandler extends SQLiteOpenHelper {
+public class DBHandler extends SQLiteOpenHelper
+{
 
     private static DBHandler sInstance;
         // Database Info
@@ -178,6 +179,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void deleteAllUsers()
     {
         SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_USERS, null, null);
         db.beginTransaction();
         try {
             // Order of deletions is important when foreign key relationships exist.
@@ -189,7 +191,16 @@ public class DBHandler extends SQLiteOpenHelper {
             db.endTransaction();
         }
 
-}
+    }
+
+    public void CloseDataBase()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if ( db != null && db.isOpen())
+            db.close();
+    }
+
+
 
 
 }

@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -33,6 +34,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
     Chronometer chronometer;
     Button resume;
+    DBHandler db;
 
 
     //for sensor:
@@ -75,6 +77,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
         // Resume Button
         resume = (Button) findViewById(R.id.Resume_Button);
+
+
+
+
 
 
 
@@ -193,7 +199,30 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             });
         }
 
+
+        resume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //db.CloseDataBase();
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context, "  Thank you for your session.  You are now logout.  ", Toast.LENGTH_SHORT);
+                toast.show();
+                Intent Homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(Homeintent);
+
+            }
+        });
+
     } // onCreate() ENDS HERE
+
+
+
+
+
+
+
+
 
     View.OnClickListener mStartListener = new View.OnClickListener() {
         public void onClick(View v) {
