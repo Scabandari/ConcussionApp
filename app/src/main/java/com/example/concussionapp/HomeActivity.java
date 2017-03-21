@@ -1,8 +1,10 @@
 package com.example.concussionapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +30,16 @@ and it should only happen once therefore it's a boolean = false before and true 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//create an instance of SQLite database
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        //create an instance of SQLite database
         dbHandler = DBHandler.getInstance(this);
 
         //if statement just clears the database but only happens once
@@ -72,6 +83,11 @@ and it should only happen once therefore it's a boolean = false before and true 
                 Log.i(TAG, "Password from database is: " + Checkpass.getPassWord());
                 Log.i(TAG, "Email from database is: " + Checkpass.getCareProviderEmailAddress());
 
+                if(username.equals("") || password.equals(""))
+                {
+                    Toast.makeText(getApplicationContext(), "Empty field", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 //check if stored password matches user password
                 if (password.equals(Checkpass.getPassWord())) {
 
