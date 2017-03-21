@@ -2,7 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
 
+    <item
+        android:id="@+id/Switch1"
+        android:title="About us"/>
+
+    <item
+        android:id="@+id/Switch2"
+        android:title="Help" />
 
 
 </menu>
