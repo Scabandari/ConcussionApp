@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-public class MainActivity extends AppCompatActivity {
+// just want to switch branch, but i have to commit
+public class MainActivity extends AppCompatActivity
+{
 
 
     protected Button buttonquestionaire = null;
@@ -57,16 +59,26 @@ public class MainActivity extends AppCompatActivity {
         }
 */
         //If I haven't been added to the database then add me to the database
-        if(!ryanInDatabase)
+/*        if(!ryanInDatabase)
         {
             User ryan = new User("Ryan", "secret_passord", "ryan@email.com");
             db.addUser(ryan);
             ryanInDatabase = true;
 
         }
-
-        Intent intent = new Intent(this, second_Activity.class);
+*/
+        Intent intent = new Intent(this, HomeActivity.class);
     //    intent.putExtra("course_keys", db.getFloatList());
         startActivity(intent);
         }
+
+    public void to_quickstart(View view)
+    {
+
+
+        Intent intent = new Intent(this, Chronometer_Heart_Rate_Activity.class);
+        //    intent.putExtra("course_keys", db.getFloatList());
+        startActivity(intent);
+    }
+
 }
