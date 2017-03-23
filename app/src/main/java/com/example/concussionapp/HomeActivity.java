@@ -49,16 +49,6 @@ and it should only happen once therefore it's a boolean = false before and true 
         }
         */
         btnIn = (Button) findViewById(R.id.ButtonSignIn);
-        btnUp = (Button) findViewById(R.id.ButtonSignUp);
-
-        btnUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Start sign up activity
-                Intent SignUpintent = new Intent(getApplicationContext(),SignUpActivity.class);
-                startActivity(SignUpintent);
-            }
-        });
 
         btnIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +82,6 @@ and it should only happen once therefore it's a boolean = false before and true 
                 if (password.equals(Checkpass.getPassWord())) {
 
                     Intent intent = new Intent(v.getContext(), Questionaire.class);
-                    // intent.putExtra("course_keys", db.getFloatList());
                     startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();
