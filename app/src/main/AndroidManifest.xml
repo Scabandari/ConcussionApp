@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_app"
+        android:icon="@mipmap/icon_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Excercise_Setup_Activity" />
+
         <activity
             android:name=".HomeActivity"
             android:parentActivityName=".MainActivity" />
@@ -34,6 +35,7 @@
             android:name=".Questionaire"
             android:parentActivityName=".HomeActivity" />
         <activity android:name=".QuickStart"></activity>
+
     </application>
 
 </manifest>

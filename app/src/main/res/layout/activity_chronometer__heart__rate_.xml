@@ -92,13 +92,13 @@
         android:text="@string/resetChronometer"
         android:textColor="@color/colorAccent" />
 
- <!--   <TextView
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="122dp"
         android:layout_height="wrap_content"
+        android:layout_weight="0.07"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
         android:text="Heart Rate: "
-        android:layout_weight="0.07" />
-        -->
+        android:textColor="@color/colorAccent" />
 
 </LinearLayout>
