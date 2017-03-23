@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +38,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     ZephyrProtocol _protocol;
     NewConnectedListener _NConnListener;
     private final int HEART_RATE = 0x100;
-    private final int INSTANT_SPEED = 0x101;
+ //   private final int INSTANT_SPEED = 0x101;
+    private String maxHR;       //max and min heart rates taken from get extra
+    private String minHR;
+    int maxHeartRate;
+    int minHeartRate;
     //end
 
     @Override
@@ -48,12 +51,14 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
         Intent intent = getIntent(); //get the intent from the mainActivity to link them
-     //   String MaxValue=intent.getStringExtra("maxEditText");
 
-      //  int Max  =Integer.parseInt(MaxValue);
+        Bundle bundle = intent.getExtras();
+        maxHR = bundle.getString("maxHeartRate"); //grab max and min HR from previous activity
+        minHR = bundle.getString("minHeartRate");
+        maxHeartRate = Integer.parseInt(maxHR);
+        minHeartRate = Integer.parseInt(minHR);
 
-       // String MinValue=intent.getStringExtra("maxEditText");
-       // int Min=Integer.parseInt(MinValue);
+
 
         Button StartButton;
         Button StopButton;

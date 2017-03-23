@@ -21,14 +21,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".Excercise_Setup_Activity" />
-        <activity android:name=".HomeActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SignUpActivity"
-            android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".Chronometer_Heart_Rate_Activity"
-            android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".Questionaire"
-            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".HomeActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".Chronometer_Heart_Rate_Activity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".Questionaire"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".QuickStart"></activity>
     </application>
 
 </manifest>

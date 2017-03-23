@@ -153,7 +153,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     newUser.setPassWord(cursor.getString(cursor.getColumnIndex(KEY_USER_PASSWORD)));
 
                 }
-            }
+            } // else return null;  //added this line to try to fend off multiple users w/ same username
         } catch (Exception e) {
             Log.d(TAG, "Error while trying to fetch a com.example.concussionapp.User from database");
         } finally {
@@ -162,6 +162,22 @@ public class DBHandler extends SQLiteOpenHelper {
             }
         }
         return newUser;
+    }
+
+    //this function can be used to check if a username is already in our database
+    //so we don't get multiples, RETURNS TRUE IF USER ALREADY IN DATABASE!
+    public boolean checkForUserName(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM " + TABLE_USERS + " WHERE " +
+                KEY_USER_NAME + " = '" + name +"'";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        } else {
+            cursor.close();
+            return true;
+        }
     }
 
 

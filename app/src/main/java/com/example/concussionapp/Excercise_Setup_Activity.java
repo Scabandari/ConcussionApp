@@ -15,6 +15,8 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
     protected EditText maxEditText;
     protected EditText minEditText;
     protected Spinner timeSpinner;
+    protected String  maxHeartRate;
+    protected String  minHeartRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,7 +33,10 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
 
         //linking the editText on the user interface to the one created here
         maxEditText = (EditText) findViewById(R.id.MaxEditText);
+        maxHeartRate = maxEditText.toString();
         minEditText = (EditText) findViewById(R.id.MinEditText);
+        minHeartRate = minEditText.toString();
+
        // timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
 
 
@@ -46,8 +51,10 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
     public void sendMessage() //function to send the user to the next activity
     {
         Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
+        intent.putExtra("maxHeartRate", maxHeartRate);
+        intent.putExtra("minHeartRate", minHeartRate);
         startActivity(intent);
-        //intent.putExtra("maxEditText", intValue);
+
     }
 
     private Button.OnClickListener OnClickSetupButton = new Button.OnClickListener()
@@ -70,8 +77,6 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             }
 
             sendMessage();
-
-
 
         }
     };
