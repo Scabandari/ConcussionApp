@@ -30,6 +30,7 @@ import static com.example.concussionapp.R.id.Connect;
 
 public class Chronometer_Heart_Rate_Activity extends Activity {
 
+    private static final  String TAG = "ChronometerActivity";
     Chronometer chronometer;
 
     //for sensor:
@@ -41,8 +42,9 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
  //   private final int INSTANT_SPEED = 0x101;
     private String maxHR;       //max and min heart rates taken from get extra
     private String minHR;
-    int maxHeartRate;
-    int minHeartRate;
+    int maxHeart;
+    int minHeart;
+    int exerciseTime;         //time in minutes, will start count down clock w/ this value
     //end
 
     @Override
@@ -52,13 +54,25 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
         Intent intent = getIntent(); //get the intent from the mainActivity to link them
 
-        Bundle bundle = intent.getExtras();
-        maxHR = bundle.getString("maxHeartRate"); //grab max and min HR from previous activity
-        minHR = bundle.getString("minHeartRate");
-        maxHeartRate = Integer.parseInt(maxHR);
-        minHeartRate = Integer.parseInt(minHR);
+ //       Bundle bundle = intent.getExtras();
+        maxHeart = intent.getIntExtra("maxHeartRate",120); //grab max and min HR from previous activity
+        minHeart = intent.getIntExtra("minHeartRate",60);
+        exerciseTime = intent.getIntExtra("exerciseTime", 9);
 
-
+        Log.i(TAG, "Max heart rate entered:  " + maxHeart);
+        Log.i(TAG, "Min heart rate entered:  " + minHeart);
+        Log.i(TAG, "Exercise time entered by user:  " + exerciseTime);
+ /*       if(maxHR != null) {
+            maxHeartRate = Integer.parseInt(maxHR);
+        } else {
+            maxHeartRate = 120;
+        }
+        if(minHR != null) {
+            minHeartRate = Integer.parseInt(minHR);
+        } else {
+            minHeartRate = 90;
+        }
+*/
 
         Button StartButton;
         Button StopButton;

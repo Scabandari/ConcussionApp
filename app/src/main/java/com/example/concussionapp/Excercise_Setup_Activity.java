@@ -1,22 +1,28 @@
 package com.example.concussionapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class Excercise_Setup_Activity extends AppCompatActivity {
 
+    private final String TAG = "Exercise_Setup_Activity";
     protected EditText maxEditText;
     protected EditText minEditText;
-    protected Spinner timeSpinner;
-    protected String  maxHeartRate;
-    protected String  minHeartRate;
+    protected EditText durationEditText;
+ //   protected Spinner timeSpinner;
+    private int  maxHeartRate;
+    private int  minHeartRate;
+
+    //get value from edit text exercise_duration in exercise setup xml
+    private int timeEntered;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,11 +37,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        //linking the editText on the user interface to the one created here
-        maxEditText = (EditText) findViewById(R.id.MaxEditText);
-        maxHeartRate = maxEditText.toString();
-        minEditText = (EditText) findViewById(R.id.MinEditText);
-        minHeartRate = minEditText.toString();
+
 
        // timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
 
@@ -47,7 +49,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
         done_setup_button.setOnClickListener(OnClickSetupButton);
 
     }
-
+/*
     public void sendMessage() //function to send the user to the next activity
     {
         Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
@@ -56,27 +58,50 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
+*/
     private Button.OnClickListener OnClickSetupButton = new Button.OnClickListener()
     {
         @Override
         public void onClick(View v)
         {
 
+            //linking the editText on the user interface to the one created here
+            maxEditText = (EditText) findViewById(R.id.MaxEditText);
+            String maxHR = maxEditText.getText().toString();
+            maxHeartRate = Integer.parseInt(maxHR);
+
+
+            minEditText = (EditText) findViewById(R.id.MinEditText);
+            String minHR = minEditText.getText().toString();
+            minHeartRate = Integer.parseInt(minHR);
+
+            durationEditText = (EditText) findViewById(R.id.exercise_duration);
+            String duration = durationEditText.getText().toString();
+            timeEntered = Integer.parseInt(duration);
+
+            Log.i(TAG, "Max heart rate as int : " + maxHeartRate);
+            Log.i(TAG, "Min heart rate as int : " + minHeartRate);
+            Log.i(TAG, "Time user entered is : " + timeEntered);
             // convert edit text to integer
-            String no = maxEditText.getText().toString();
+ /*           String no = maxEditText.getText().toString();
             int no2 = Integer.parseInt(no);
             String n = minEditText.getText().toString();
             int n2 = Integer.parseInt(n);
-
-            if (n2 >= no2 )
+*/
+            if (minHeartRate >= maxHeartRate )
             {
 
                 Toast.makeText(getApplicationContext(), " Min must be lower than Max. ", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            sendMessage();
+        //    Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
+            Intent intent = new Intent (getApplicationContext(),Chronometer_Heart_Rate_Activity.class);
+            intent.putExtra("maxHeartRate", maxHeartRate);
+            intent.putExtra("minHeartRate", minHeartRate);
+            intent.putExtra("exerciseTime", timeEntered);
+            startActivity(intent);
+          //  sendMessage();
 
         }
     };
