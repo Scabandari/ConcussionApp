@@ -8,15 +8,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -26,12 +26,13 @@ import zephyr.android.HxMBT.BTClient;
 import zephyr.android.HxMBT.ZephyrProtocol;
 
 import static com.example.concussionapp.R.id.Connect;
+import static java.lang.Integer.parseInt;
 //import android.view.View.OnClickListener;
 
 public class Chronometer_Heart_Rate_Activity extends Activity {
 
     private static final  String TAG = "ChronometerActivity";
-    Chronometer chronometer;
+ //   Chronometer chronometer;
 
     //for sensor:
     BluetoothAdapter adapter = null;
@@ -47,17 +48,20 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     int exerciseTime;         //time in minutes, will start count down clock w/ this value
     //end
 
+    TextView countDownTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
+        countDownTime = (TextView) findViewById(R.id.countDownTimer);
         Intent intent = getIntent(); //get the intent from the mainActivity to link them
 
  //       Bundle bundle = intent.getExtras();
         maxHeart = intent.getIntExtra("maxHeartRate",120); //grab max and min HR from previous activity
         minHeart = intent.getIntExtra("minHeartRate",60);
         exerciseTime = intent.getIntExtra("exerciseTime", 9);
+        exerciseTime *= 60000; // 1 min * 60 sec * 1000 milli/sed
 
         Log.i(TAG, "Max heart rate entered:  " + maxHeart);
         Log.i(TAG, "Min heart rate entered:  " + minHeart);
@@ -78,17 +82,17 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         Button StopButton;
         Button ResetButton;
 
-        chronometer = (Chronometer) findViewById(R.id.chronometer);
+     //   chronometer = (Chronometer) findViewById(R.id.chronometer);
 
         StartButton= (Button) findViewById(R.id.start_Button);
         StartButton.setOnClickListener(mStartListener);
 
-        StopButton= (Button) findViewById(R.id.stop_Button);
+    /*    StopButton= (Button) findViewById(R.id.stop_Button);
         StopButton.setOnClickListener(mStopListener);
 
         ResetButton = (Button) findViewById(R.id.reset_Button);
         ResetButton.setOnClickListener(mResetListener);
-
+*/
         /*BIPINS CODE FOR onCreate STARTS HERE AND ENDS AT END OF onCreate()*/
          /*Sending a message to android that we are going to initiate a pairing request*/
         IntentFilter filter = new IntentFilter("android.bluetooth.device.action.PAIRING_REQUEST");
@@ -160,7 +164,6 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         tv.setText(ErrorText);
 
                         //Reset all the values to 0s
-
                     }
                     else
                     {
@@ -198,20 +201,33 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
     View.OnClickListener mStartListener = new View.OnClickListener() {
         public void onClick(View v) {
-            chronometer.start();
+           new CountDownTimer(exerciseTime, 1000){
+//ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+               @Override
+               public void onTick(long millisUntilFinished) {
+                   //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                    countDownTime.setText("" + String.format("%2d:%02d",(millisUntilFinished/60000)%60, (millisUntilFinished/1000)%60));
+               }
+
+               @Override
+               public void onFinish() {
+                    countDownTime.setText("Done");
+               }
+           }.start();
         }
     };
-    View.OnClickListener mStopListener = new View.OnClickListener() {
+   /* View.OnClickListener mStopListener = new View.OnClickListener() {
         public void onClick(View v) {
             chronometer.stop();
         }
     };
+
     View.OnClickListener mResetListener = new View.OnClickListener()
     {
         public void onClick(View v) {chronometer.setBase(SystemClock.elapsedRealtime());}
     };
 
-
+*/
     /*BIPINS CODE STARTS HERE AGAIN AND ENDS @END OF ACTIVITY
      */
     private class BTBondReceiver extends BroadcastReceiver {
@@ -260,9 +276,31 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         public void handleMessage(Message msg)
         {
             TextView tv;
+            int heartRateData;
             if(msg.what == HEART_RATE)
             {
                     String HeartRatetext = msg.getData().getString("HeartRate");
+                    heartRateData = parseInt(HeartRatetext);
+                    if(heartRateData > maxHeart) {
+                        Log.i(TAG," Heart rate data is above max");
+                        Toast.makeText(getApplicationContext(), "Heart rate too high.", Toast.LENGTH_LONG).show();
+                 /*       try {
+                          //  Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        */
+                    }
+                     else if(heartRateData < minHeart) {
+                        Log.i(TAG," Heart rate data is below max");
+                        Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
+                  /*      try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        */
+                    }
                     tv = (EditText)findViewById(R.id.ActualHeartRate);
                     System.out.println("Heart Rate Info is "+ HeartRatetext);
                     if (tv != null)tv.setText(HeartRatetext);
