@@ -8,331 +8,11 @@
     android:background="@color/colorPrimaryDark"
     tools:context="com.example.concussionapp.Questionaire">
 
-    <TextView
-        android:id="@+id/feelingsloweddown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Feeling slowed down"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/troubleconcentrating"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/troubleconcentrating" />
-
-    <EditText
-        android:id="@+id/score10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText9"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/editText9" />
-
-    <EditText
-        android:id="@+id/score9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="33dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toRightOf="@+id/nausea"
-        tools:layout_editor_absoluteY="210dp" />
-
-    <TextView
-        android:id="@+id/sensivitytolight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Sensivity to Light"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@+id/feelingsloweddown"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/feelingsloweddown" />
-
-    <TextView
-        android:id="@+id/confused"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Confused"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="45dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/nausea" />
-
-    <TextView
-        android:id="@+id/ringingintheears"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Ringing in the ears"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintRight_toLeftOf="@+id/editText8"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/submitquiz"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="30dp" />
-
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="22dp"
-        app:layout_constraintTop_toBottomOf="@+id/score3"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score3" />
-
-    <EditText
-        android:id="@+id/score6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="21dp"
-        app:layout_constraintTop_toBottomOf="@+id/score5"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score5" />
-
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/score2"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score2" />
-
-    <TextView
-        android:id="@+id/blurredvission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Blurred Vission"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/ringingintheears"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintLeft_toLeftOf="@+id/ringingintheears" />
-
-    <TextView
-        android:id="@+id/nausea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Nausea or Vomiting"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/textView"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toRightOf="@+id/textView"
-        tools:layout_editor_absoluteY="207dp" />
-
-    <EditText
-        android:id="@+id/score5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="25dp"
-        app:layout_constraintTop_toBottomOf="@+id/score9"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score9" />
-
-    <TextView
-        android:id="@+id/dizziness"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Dizziness"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="21dp"
-        app:layout_constraintTop_toBottomOf="@+id/sensivitytolight"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/sensivitytolight" />
-
-    <EditText
-        android:id="@+id/score3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/score6"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score6" />
-
-    <EditText
-        android:id="@+id/score4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/score10"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score10" />
-
-    <TextView
-        android:id="@+id/troubleconcentrating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Trouble concentrating"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/score6"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/score2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="120dp"
-        android:height="13dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:ems="10"
-        android:hint="Enter score between 0 and 6"
-        android:inputType="number"
-        android:textSize="9sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="23dp"
-        app:layout_constraintTop_toBottomOf="@+id/score4"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/score4" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Headache"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/troubleconcentrating"
-        android:layout_marginStart="54dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="16dp"
-        tools:layout_editor_absoluteX="70dp" />
-
-    <TextView
-        android:id="@+id/preworkoutquestionaire"
-        android:layout_width="0dp"
-        android:layout_height="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Pre Workout Questionaire"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/textView4"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/textView2"
-        tools:layout_editor_absoluteY="16dp"
-        app:layout_constraintHorizontal_bias="0.0" />
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -341,12 +21,8 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
         android:text="How do you fell ?"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        tools:layout_editor_absoluteY="205dp"
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -357,44 +33,9 @@
         android:textColor="@color/colorAccent"
         android:text="Symptom Evaluation"
         android:textSize="14sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="81dp"
+        tools:layout_editor_absoluteX="16dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text='"Based on how you feel now score yourself from 0 to 6 on the following symtomb" 0 being none and 6 severe.'
-        android:textSize="10sp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-
-    <TextView
-        android:id="@+id/pressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Pressure in head"
-        android:textSize="12sp"
-        android:textStyle="normal|bold"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/dizziness"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/dizziness" />
 
     <Button
         android:id="@+id/submitquiz"
@@ -403,15 +44,112 @@
         android:text="Submit"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="93dp"
-        app:layout_constraintRight_toRightOf="@+id/textView4"
-        android:layout_marginTop="34dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText8"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/dizziness" />
+        tools:layout_editor_absoluteY="503dp"
+        tools:layout_editor_absoluteX="136dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="122dp"
+        tools:layout_editor_absoluteY="69dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="113dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="178dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar3"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="222dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar4"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="283dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar5"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="338dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar6"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="396dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.65"
+        android:scaleY="0.65" />
+
+    <RatingBar
+        android:id="@+id/ratingBar7"
+        android:layout_width="238dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="449dp"
+        android:rating="5"
+        android:stepSize="0.1"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:scaleX="0.55"
+        android:scaleY="0.55" />
 
 
 </android.support.constraint.ConstraintLayout>
