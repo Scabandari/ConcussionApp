@@ -1,9 +1,10 @@
 package com.example.concussionapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -75,13 +76,24 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if (!isValidEmail(NewUser.getCareProviderEmailAddress()))
+                {
+                    Toast.makeText(getApplicationContext(), "Not a valid email address", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 else
                 {
-                    //Save data to database
-                    dbHandler.addUser(NewUser);
-                    Toast.makeText(getApplicationContext(), "Account created succesfully", Toast.LENGTH_LONG).show();
-                    Intent SignUpIntent = new Intent (SignUpActivity.this, HomeActivity.class );
-                    startActivity(SignUpIntent);
+                    //checks if user name is NOT already in data base
+                    if(!dbHandler.checkForUserName(NewUser.getUserName())) {
+                        //Save data to database
+                        dbHandler.addUser(NewUser);
+                        Toast.makeText(getApplicationContext(), "Account created succesfully", Toast.LENGTH_LONG).show();
+                        Intent SignUpIntent = new Intent(SignUpActivity.this, HomeActivity.class);
+                        startActivity(SignUpIntent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Username already exists.", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -96,5 +108,17 @@ public class SignUpActivity extends AppCompatActivity {
         dbHandler.close();
     }
 
+    //this function was taken from stackoverflow here:
+    // http://stackoverflow.com/questions/1819142/how-should-i-validate-an-e-mail-address
+    public final static boolean isValidEmail(CharSequence target) {
+        if (TextUtils.isEmpty(target)) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+
 
 }
+
+
