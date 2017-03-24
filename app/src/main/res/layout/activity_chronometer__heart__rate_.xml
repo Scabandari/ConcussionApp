@@ -9,7 +9,17 @@
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#faebd7"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/countDownTimer"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="25sp"
+        android:paddingBottom="30dip"
+        android:paddingTop= "30dip"/>
+<!--
     <Chronometer android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +28,7 @@
         android:paddingBottom="30dip"
         android:paddingTop="30dip"
         />
-
+-->
     <Button
         android:id="@+id/start_Button"
         android:layout_width="121dp"
@@ -100,6 +110,5 @@
         android:background="@color/colorPrimaryDark"
         android:text="Heart Rate: "
         android:textColor="@color/colorAccent" />
-
 
 </LinearLayout>
