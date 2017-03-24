@@ -32,9 +32,20 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
         android:layout_above="@+id/showSecondActivity"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="39dp"
-        android:text="To Quickstart" />
+        android:text="To Quickstart"
+        android:layout_alignStart="@+id/showSecondActivity" />
+
+    <Button
+        android:id="@+id/aboutButton"
+        android:text="About"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
 
 
 </RelativeLayout>

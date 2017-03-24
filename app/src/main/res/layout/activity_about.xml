@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_about"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.concussionapp.AboutActivity">
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_about"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+tools:context="com.example.concussionapp.AboutActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/aboutApp"
-        android:text="This app is designed for athletes who have suffered concussions and want to get back in the action. For a first time user, you must create an account and log in to have access to the heart monitor and surveys. Before and after each training sessions you will be directed to a survey page, which is highly important to your recovery.  You will then be asked to enter the duration of your training and maximum and minimum heart rate allowed for this training session. Once that is entered, your exercise will start. After completing the final survey, your surveys and heart rate information will be sent to the email provided for the care provider. This application should not replace a doctor’s consultation but should be used hands-in-hand with your trainer/health professional. " />
 </RelativeLayout>
