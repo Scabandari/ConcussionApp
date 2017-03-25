@@ -26,7 +26,7 @@
         android:textColor="@color/colorAccent"
         android:text="Symptom Evaluation"
         android:textSize="14sp"
-        tools:layout_editor_absoluteY="9dp"
+        tools:layout_editor_absoluteY="5dp"
         tools:layout_editor_absoluteX="30dp" />
 
 
@@ -37,129 +37,130 @@
         android:text="Submit"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        tools:layout_editor_absoluteY="508dp"
-        tools:layout_editor_absoluteX="78dp" />
+        tools:layout_editor_absoluteX="80dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintVertical_bias="0.96" />
 
     <RatingBar
         android:id="@+id/ratingBar1"
-        android:layout_width="238dp"
+        android:layout_width="232dp"
         android:layout_height="57dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="117dp"
         android:rating="5"
         android:stepSize="0.1"
         android:numStars="5"
         android:isIndicator="true"
         android:scaleX="0.65"
         android:scaleY="0.65"
-        style="@style/AppTheme" />
+        style="@style/AppTheme"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintBottom_toTopOf="@+id/Neckpain_tv" />
 
     <RatingBar
         android:id="@+id/ratingBar1"
-        android:layout_width="226dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="53dp"
+        android:layout_width="232dp"
+        android:layout_height="57dp"
         android:rating="5"
         android:stepSize="0.1"
         android:numStars="5"
         android:isIndicator="true"
         android:scaleX="0.65"
-        android:scaleY="0.65" />
+        android:scaleY="0.65"
+        tools:layout_editor_absoluteY="54dp"
+        tools:layout_editor_absoluteX="66dp" />
 
     <RatingBar
         android:id="@+id/ratingBar2"
-        android:layout_width="238dp"
+        android:layout_width="232dp"
         android:layout_height="57dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="239dp"
         android:rating="5"
         android:stepSize="0.1"
         android:numStars="5"
         android:isIndicator="true"
         android:scaleX="0.65"
-        android:scaleY="0.65" />
+        android:scaleY="0.65"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintHorizontal_bias="0.44" />
 
     <RatingBar
         android:id="@+id/ratingBar3"
-        android:layout_width="238dp"
+        android:layout_width="232dp"
         android:layout_height="57dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="174dp"
         android:rating="5"
         android:stepSize="0.1"
         android:numStars="5"
         android:isIndicator="true"
         android:scaleX="0.65"
-        android:scaleY="0.65" />
+        android:scaleY="0.65"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Neckpain_tv"
+        app:layout_constraintHorizontal_bias="0.45" />
 
     <RatingBar
         android:id="@+id/ratingBar4"
-        android:layout_width="238dp"
+        android:layout_width="232dp"
         android:layout_height="57dp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="302dp"
         android:rating="5"
         android:stepSize="0.1"
         android:numStars="5"
         android:isIndicator="true"
         android:scaleX="0.65"
-        android:scaleY="0.65" />
+        android:scaleY="0.65"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        android:layout_marginBottom="8dp" />
 
     <RatingBar
         android:id="@+id/ratingBar5"
-        android:layout_width="238dp"
+        android:layout_width="232dp"
         android:layout_height="57dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="364dp"
+        tools:layout_editor_absoluteY="435dp"
         android:rating="5"
         android:stepSize="0.1"
         android:numStars="5"
         android:isIndicator="true"
         android:scaleX="0.65"
-        android:scaleY="0.65" />
-
-    <RatingBar
-        android:id="@+id/ratingBar6"
-        android:layout_width="238dp"
-        android:layout_height="57dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="431dp"
-        android:rating="5"
-        android:stepSize="0.1"
-        android:numStars="5"
-        android:isIndicator="true"
-        android:scaleX="0.65"
-        android:scaleY="0.65" />
-
-    <RatingBar
-        android:id="@+id/ratingBar7"
-        android:layout_width="238dp"
-        android:layout_height="57dp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="494dp"
-        android:rating="5"
-        android:stepSize="0.1"
-        android:numStars="5"
-        android:isIndicator="true"
-        android:scaleX="0.55"
-        android:scaleY="0.55" />
+        android:scaleY="0.65"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.41" />
 
     <TextView
         android:text="Headache "
         android:layout_width="110dp"
         android:layout_height="17dp"
-        tools:layout_editor_absoluteY="53dp"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="66dp"
         android:id="@+id/Headache_tv"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar1"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:text="Pressure in Head "
         android:layout_width="106dp"
         android:layout_height="16dp"
-        tools:layout_editor_absoluteY="114dp"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="109dp"
+        tools:layout_editor_absoluteX="66dp"
         android:id="@+id/Pressure_tv"
         android:textColor="@color/colorAccent" />
 
@@ -168,7 +169,7 @@
         android:layout_width="107dp"
         android:layout_height="21dp"
         tools:layout_editor_absoluteY="174dp"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="64dp"
         android:id="@+id/Neckpain_tv"
         android:textColor="@color/colorAccent" />
 
@@ -176,46 +177,29 @@
         android:text="Diziness"
         android:layout_width="56dp"
         android:layout_height="19dp"
-        tools:layout_editor_absoluteY="239dp"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="69dp"
         android:id="@+id/textView5"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar2" />
 
     <TextView
         android:text="Don't feel right "
         android:layout_width="105dp"
         android:layout_height="18dp"
-        tools:layout_editor_absoluteY="302dp"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="67dp"
         android:id="@+id/textView6"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar4"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:text="Nervous Anxious"
         android:layout_width="103dp"
         android:layout_height="19dp"
-        tools:layout_editor_absoluteY="364dp"
-        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteX="66dp"
         android:id="@+id/textView7"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:text="Sensitive to noise"
-        android:layout_width="133dp"
-        android:layout_height="21dp"
-        tools:layout_editor_absoluteY="431dp"
-        tools:layout_editor_absoluteX="30dp"
-        android:id="@+id/textView"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:text="Sensitive to light "
-        android:layout_width="129dp"
-        android:layout_height="21dp"
-        tools:layout_editor_absoluteY="496dp"
-        tools:layout_editor_absoluteX="30dp"
-        android:id="@+id/textView3"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar5" />
 
 
 </android.support.constraint.ConstraintLayout>
