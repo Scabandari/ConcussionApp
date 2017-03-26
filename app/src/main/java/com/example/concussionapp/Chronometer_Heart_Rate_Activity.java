@@ -43,9 +43,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
  //   private final int INSTANT_SPEED = 0x101;
     private String maxHR;       //max and min heart rates taken from get extra
     private String minHR;
-    int maxHeart;
-    int minHeart;
-    int exerciseTime;         //time in minutes, will start count down clock w/ this value
+    private int maxHeart;
+    private int minHeart;
+    private int exerciseTime;         //time in minutes, will start count down clock w/ this value
+
     //end
 
     TextView countDownTime;
