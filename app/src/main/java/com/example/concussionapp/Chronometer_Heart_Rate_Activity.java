@@ -191,7 +191,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 					/*This disconnects listener from acting on received messages*/
                     _bt.removeConnectedEventListener(_NConnListener);
 					/*Close the communication with the device & throw an exception if failure*/
-                    _bt.Close();
+
+					//I surrounded in if myself
+				//	if(_bt != null) {
+                        _bt.Close();
+               //     }
 
                 }
             });
