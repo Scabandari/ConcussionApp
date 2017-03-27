@@ -102,6 +102,9 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             intent.putExtra("exerciseTime", timeEntered);
             startActivity(intent);
             //  sendMessage();
+            maxEditText.setText("");
+            minEditText.setText("");
+            durationEditText.setText("");
 
         }
     };
