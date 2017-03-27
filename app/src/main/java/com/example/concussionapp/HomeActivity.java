@@ -1,7 +1,6 @@
 package com.example.concussionapp;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,18 +12,14 @@ import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private EditText loginusername;
+    private EditText loginpassword;
     private static final  String TAG = "HomeActivity";
 
     DBHandler dbHandler;
     Button btnIn;
-    Button btnUp;
+ //   Button btnUp;
 
-/* HAVING PROBLEMS TESTING LOGIN FUNCTIONALITY, SOMETHING TO DO W/
-MULTIPLE USERS HAVING SAME USER NAME. Will fix for sprint 2 but for
-now This next boolean is to clear the database
-and it should only happen once therefore it's a boolean = false before and true after
- */
- //   private boolean databaseIsCleared = false; //must be taken out of final version of project, clears database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +37,15 @@ and it should only happen once therefore it's a boolean = false before and true 
         //create an instance of SQLite database
         dbHandler = DBHandler.getInstance(this);
 
-        //if statement just clears the database but only happens once
-  /*      if(!databaseIsCleared) {
-            dbHandler.deleteAllUsers();
-            databaseIsCleared = true;
-        }
-        */
+
         btnIn = (Button) findViewById(R.id.ButtonSignIn);
 
         btnIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final EditText loginusername = (EditText) findViewById(R.id.loginusername);
-                final EditText loginpassword = (EditText) findViewById(R.id.loginpassword);
+                 loginusername = (EditText) findViewById(R.id.loginusername);
+                 loginpassword = (EditText) findViewById(R.id.loginpassword);
 
 
                 //get username and password
@@ -88,18 +78,12 @@ and it should only happen once therefore it's a boolean = false before and true 
 
                 }
 
+                loginusername.setText("");
+                loginpassword.setText("");
             }
+
         });
 
     }
 
-
-/*    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        //close database
-        dbHandler.close();
-    }
-*/
 }
