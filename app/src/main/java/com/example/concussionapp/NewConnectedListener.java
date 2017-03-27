@@ -89,7 +89,7 @@ public class NewConnectedListener extends ConnectListenerImpl
 
                     System.out.println("Battery is " + Battery + "%");
 
-                    //***************Displaying the Heart beat Timestamps********************************
+/*                    //***************Displaying the Heart beat Timestamps********************************
 
                     int[] heartBeatTS = HRSpeedDistPacket.GetHeartBeatTS(DataArray);
                     int heartbeatNumber = HRSpeedDistPacket.GetHeartBeatNum(DataArray);
