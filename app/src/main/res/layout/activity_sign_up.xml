@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +13,7 @@
 
 
     <EditText
-        android:layout_width="351dp"
+        android:layout_width="353dp"
         android:layout_height="100dp"
         android:textColorHint="@color/colorAccent"
         android:hint="Username"
@@ -31,13 +34,13 @@
         android:id="@+id/SignUppassword"
         tools:layout_editor_absoluteY="217dp"
         tools:layout_editor_absoluteX="21dp"
+        android:textColor="@color/colorAccent"
         android:layout_above="@+id/Confirmpassword"
-        android:layout_alignStart="@+id/Confirmpassword"
-        android:textColor="@color/colorAccent"/>
+        android:layout_alignStart="@+id/Confirmpassword" />
 
     <Button
-        android:layout_width="357dp"
-        android:layout_height="114dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:text="Create Account"
         android:id="@+id/CreateAccount"
         tools:layout_editor_absoluteY="439dp"
@@ -49,7 +52,7 @@
         android:textColor="@color/colorAccent" />
 
     <EditText
-        android:layout_width="352dp"
+        android:layout_width="353dp"
         android:layout_height="100dp"
         android:textColorHint="@color/colorAccent"
         android:hint="Email"
@@ -80,3 +83,4 @@
         layout="@layout/tool_bar" />
 
 </RelativeLayout>
+    </ScrollView>

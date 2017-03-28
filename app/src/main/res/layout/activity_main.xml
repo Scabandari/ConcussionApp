@@ -10,7 +10,9 @@
 
     <include
         android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
+        layout="@layout/tool_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <Button
@@ -20,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="42dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/my_shape3"
         android:onClick="to_home_activity"
         android:text="Sign In"
         android:textColor="@color/colorAccent"
@@ -36,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginRight="44dp"
         android:layout_marginTop="75dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/my_shape3"
         android:onClick="to_quickstart"
         android:text="QUICKSTART"
         android:textColor="@color/colorAccent"
@@ -49,7 +51,7 @@
         android:text="Sign Up"
         android:id="@+id/ButtonSignUp"
         android:onClick="to_signup_activity"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/my_shape3"
         android:textColor="@color/colorAccent"
         android:layout_marginTop="203dp"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
