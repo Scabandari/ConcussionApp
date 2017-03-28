@@ -16,7 +16,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
     protected EditText maxEditText;
     protected EditText minEditText;
     protected EditText durationEditText;
- //   protected Spinner timeSpinner;
+    //   protected Spinner timeSpinner;
     private int  maxHeartRate;
     private int  minHeartRate;
 
@@ -39,7 +39,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
 
 
 
-       // timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
+        // timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
 
 
         Button done_setup_button;
@@ -49,16 +49,16 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
         done_setup_button.setOnClickListener(OnClickSetupButton);
 
     }
-/*
-    public void sendMessage() //function to send the user to the next activity
-    {
-        Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
-        intent.putExtra("maxHeartRate", maxHeartRate);
-        intent.putExtra("minHeartRate", minHeartRate);
-        startActivity(intent);
+    /*
+        public void sendMessage() //function to send the user to the next activity
+        {
+            Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
+            intent.putExtra("maxHeartRate", maxHeartRate);
+            intent.putExtra("minHeartRate", minHeartRate);
+            startActivity(intent);
 
-    }
-*/
+        }
+    */
     private Button.OnClickListener OnClickSetupButton = new Button.OnClickListener()
     {
         @Override
@@ -95,13 +95,16 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                 return;
             }
 
-        //    Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
+            //    Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
             Intent intent = new Intent (getApplicationContext(),Chronometer_Heart_Rate_Activity.class);
             intent.putExtra("maxHeartRate", maxHeartRate);
             intent.putExtra("minHeartRate", minHeartRate);
             intent.putExtra("exerciseTime", timeEntered);
             startActivity(intent);
-          //  sendMessage();
+            //  sendMessage();
+            maxEditText.setText("");
+            minEditText.setText("");
+            durationEditText.setText("");
 
         }
     };

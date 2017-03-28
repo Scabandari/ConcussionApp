@@ -21,7 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Excercise_Setup_Activity" />
-
         <activity
             android:name=".HomeActivity"
             android:parentActivityName=".MainActivity" />
@@ -34,8 +33,8 @@
         <activity
             android:name=".Questionaire"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".QuickStart"></activity>
-
+        <activity android:name=".QuickStart" />
+        <activity android:name=".SecondQuestionaire"></activity>
     </application>
 
 </manifest>

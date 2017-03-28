@@ -88,6 +88,10 @@ public class SignUpActivity extends AppCompatActivity {
                     if(!dbHandler.checkForUserName(NewUser.getUserName())) {
                         //Save data to database
                         dbHandler.addUser(NewUser);
+                        SignUpusername.setText("");
+                        SignUppassword.setText("");
+                        Confirmpassword.setText("");
+                        SignUpEmail.setText("");
                         Toast.makeText(getApplicationContext(), "Account created succesfully", Toast.LENGTH_LONG).show();
                         Intent SignUpIntent = new Intent(SignUpActivity.this, HomeActivity.class);
                         startActivity(SignUpIntent);

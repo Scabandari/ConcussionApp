@@ -12,8 +12,8 @@
 
 
     <EditText
-        android:layout_width="330dp"
-        android:layout_height="118dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:hint="Username"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
@@ -21,14 +21,13 @@
         android:layout_above="@+id/loginpassword"
         android:layout_alignStart="@+id/loginpassword"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="75dp"
-        android:layout_marginRight="21dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="15dp" />
+        android:layout_marginTop="76dp"
+        android:layout_marginRight="3dp" />
 
     <EditText
-        android:layout_width="331dp"
-        android:layout_height="106dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         android:hint="Password"
@@ -37,24 +36,22 @@
         android:layout_above="@+id/ButtonSignIn"
         android:layout_alignEnd="@+id/ButtonSignIn"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="230dp"
-        android:layout_marginRight="14dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="14dp" />
+        android:layout_marginTop="185dp"
+        android:layout_marginRight="3dp" />
 
     <Button
-        android:layout_width="342dp"
-        android:layout_height="85dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:text="Sign In"
         android:id="@+id/ButtonSignIn"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/my_shape2"
         android:textColor="@color/colorAccent"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="9dp"
-        android:layout_marginTop="400dp"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
-        android:layout_marginRight="9dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="395dp"
+        android:layout_marginRight="-9dp" />
 
     <include
         android:id="@+id/tool_bar"
