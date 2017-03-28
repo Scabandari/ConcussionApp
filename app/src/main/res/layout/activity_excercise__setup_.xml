@@ -20,7 +20,7 @@
         android:textColor="@color/colorAccent"
         android:ems="10"
         android:id="@+id/MaxEditText"
-        android:background="@drawable/my_shape"
+        android:background="@drawable/my_shape3"
         android:layout_marginTop="102dp"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
         android:layout_marginRight="71dp"
@@ -36,8 +36,8 @@
         android:ems="10"
         android:layout_alignEnd="@+id/MaxEditText"
         android:id="@+id/MinEditText"
-        android:background="@drawable/my_shape"
-        android:layout_marginTop="208dp"
+        android:background="@drawable/my_shape3"
+        android:layout_marginTop="191dp"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
         android:layout_marginRight="72dp"
         app:layout_constraintRight_toRightOf="parent" />
@@ -52,27 +52,9 @@
         android:ems="10"
         android:layout_alignEnd="@+id/MaxEditText"
         android:id="@+id/exercise_duration"
-        android:background="@drawable/my_shape"
-        android:layout_marginTop="318dp"/>
-
-<!--
-    <Spinner
-        android:id="@+id/TimeSpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TimeMessage"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="27dp" />
--->
-    <TextView
-        android:text="Max Heart Rate:"
-        android:layout_width="wrap_content"
-        android:layout_height= "wrap_content"
-        android:id="@+id/MaxMessage"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="35dp"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="345dp"
         android:layout_marginRight="72dp"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -82,7 +64,7 @@
         android:layout_height="100dp"
         android:id="@+id/DoneSetupButton"
         android:textColor="@color/colorAccent"
-        android:background="@drawable/my_shape"
+        android:background="@drawable/my_shape3"
         android:textSize="18sp"
         android:layout_marginTop="395dp"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"

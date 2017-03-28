@@ -261,7 +261,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     for (int i = 0; i < 15; i++) { //just for testing
                         Log.i(TAG, "Finished. Averages are" + minuteAvg);
                     }
-                    Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
+                    Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
                     newIntent.putExtra("heartData", minuteAvg);
                     startActivity(newIntent);
                 }

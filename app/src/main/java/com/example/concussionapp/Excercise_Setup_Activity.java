@@ -19,9 +19,10 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
     //   protected Spinner timeSpinner;
     private int  maxHeartRate;
     private int  minHeartRate;
-
     //get value from edit text exercise_duration in exercise setup xml
     private int timeEntered;
+
+    Button Donebutton;
 
 
     @Override
@@ -37,77 +38,60 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        Donebutton = (Button) findViewById(R.id.DoneSetupButton);
+
+       Donebutton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               //linking the editText on the user interface to the one created here
+               maxEditText = (EditText) findViewById(R.id.MaxEditText);
+               String maxHR = maxEditText.getText().toString();
+               maxHeartRate = Integer.parseInt(maxHR);
 
 
-        // timeSpinner = (Spinner) findViewById(R.id.TimeSpinner);
+               minEditText = (EditText) findViewById(R.id.MinEditText);
+               String minHR = minEditText.getText().toString();
+               minHeartRate = Integer.parseInt(minHR);
 
+               durationEditText = (EditText) findViewById(R.id.exercise_duration);
+               String duration = durationEditText.getText().toString();
+               timeEntered = Integer.parseInt(duration);
 
-        Button done_setup_button;
-
-        //linking the button on the user interface to the one created here and making it listen
-        done_setup_button = (Button) findViewById(R.id.DoneSetupButton);
-        done_setup_button.setOnClickListener(OnClickSetupButton);
-
-    }
-    /*
-        public void sendMessage() //function to send the user to the next activity
-        {
-            Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
-            intent.putExtra("maxHeartRate", maxHeartRate);
-            intent.putExtra("minHeartRate", minHeartRate);
-            startActivity(intent);
-
-        }
-    */
-    private Button.OnClickListener OnClickSetupButton = new Button.OnClickListener()
-    {
-        @Override
-        public void onClick(View v)
-        {
-
-            //linking the editText on the user interface to the one created here
-            maxEditText = (EditText) findViewById(R.id.MaxEditText);
-            String maxHR = maxEditText.getText().toString();
-            maxHeartRate = Integer.parseInt(maxHR);
-
-
-            minEditText = (EditText) findViewById(R.id.MinEditText);
-            String minHR = minEditText.getText().toString();
-            minHeartRate = Integer.parseInt(minHR);
-
-            durationEditText = (EditText) findViewById(R.id.exercise_duration);
-            String duration = durationEditText.getText().toString();
-            timeEntered = Integer.parseInt(duration);
-
-            Log.i(TAG, "Max heart rate as int : " + maxHeartRate);
-            Log.i(TAG, "Min heart rate as int : " + minHeartRate);
-            Log.i(TAG, "Time user entered is : " + timeEntered);
-            // convert edit text to integer
+               Log.i(TAG, "Max heart rate as int : " + maxHeartRate);
+               Log.i(TAG, "Min heart rate as int : " + minHeartRate);
+               Log.i(TAG, "Time user entered is : " + timeEntered);
+               // convert edit text to integer
  /*           String no = maxEditText.getText().toString();
             int no2 = Integer.parseInt(no);
             String n = minEditText.getText().toString();
             int n2 = Integer.parseInt(n);
 */
-            if (minHeartRate >= maxHeartRate )
-            {
+               if (minHeartRate >= maxHeartRate)
+               {
 
-                Toast.makeText(getApplicationContext(), " Min must be lower than Max. ", Toast.LENGTH_LONG).show();
-                return;
-            }
+                   Toast.makeText(getApplicationContext(), " Min must be lower than Max. ", Toast.LENGTH_LONG).show();
+                   return;
+               }
+           /*    else if (maxHR == null || minHR == null || duration == null)
+               {
+//fct for empty field       Toast.makeText(getApplicationContext(), "Empty field" , Toast.LENGTH_LONG).show();
+                            return;
+               }
+            */
+                   //    Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
+                   Intent intent = new Intent(getApplicationContext(), Chronometer_Heart_Rate_Activity.class);
+                   intent.putExtra("maxHeartRate", maxHeartRate);
+                   intent.putExtra("minHeartRate", minHeartRate);
+                   intent.putExtra("exerciseTime", timeEntered);
+                   startActivity(intent);
+                   //  sendMessage();
+                   maxEditText.setText("");
+                   minEditText.setText("");
+                   durationEditText.setText("");
 
-            //    Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
-            Intent intent = new Intent (getApplicationContext(),Chronometer_Heart_Rate_Activity.class);
-            intent.putExtra("maxHeartRate", maxHeartRate);
-            intent.putExtra("minHeartRate", minHeartRate);
-            intent.putExtra("exerciseTime", timeEntered);
-            startActivity(intent);
-            //  sendMessage();
-            maxEditText.setText("");
-            minEditText.setText("");
-            durationEditText.setText("");
-
-        }
-    };
-    //making the button listen for it to be clicked
+           }
+       });
+    }
 
 }
