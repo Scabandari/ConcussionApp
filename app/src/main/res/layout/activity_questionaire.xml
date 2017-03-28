@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        android:text="light sensitivity"
+        android:text="Light sensitivity"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="304dp"
         android:layout_marginRight="238dp"
@@ -120,8 +120,10 @@
         android:textColor="@color/colorAccent"
         android:text="Symptom Evaluation"
         android:textSize="14sp"
-        tools:layout_editor_absoluteY="65dp"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="66dp"
+        android:layout_marginRight="213dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <Button
