@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/holo_purple"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.example.concussionapp.HomeActivity"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <EditText
-        android:layout_width="372dp"
-        android:layout_height="138dp"
-        android:hint="Username"
-        android:id="@+id/loginusername"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="6dp"
-        android:layout_above="@+id/loginpassword"
-        android:layout_alignStart="@+id/loginpassword" />
 
     <EditText
-        android:layout_width="371dp"
-        android:layout_height="138dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
+        android:hint="Username"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:backgroundTint="@color/colorPrimary"
+        android:id="@+id/loginusername"
+        android:layout_above="@+id/loginpassword"
+        android:layout_alignStart="@+id/loginpassword"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="76dp"
+        android:layout_marginRight="3dp" />
+
+    <EditText
+        android:layout_width="353dp"
+        android:layout_height="100dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        android:backgroundTint="@color/colorPrimary"
         android:hint="Password"
         android:inputType="textPassword"
         android:id="@+id/loginpassword"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="164dp"
         android:layout_above="@+id/ButtonSignIn"
-        android:layout_alignEnd="@+id/ButtonSignIn" />
+        android:layout_alignEnd="@+id/ButtonSignIn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="185dp"
+        android:layout_marginRight="3dp" />
 
     <Button
-        android:layout_width="373dp"
-        android:layout_height="125dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:text="Sign In"
         android:id="@+id/ButtonSignIn"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="302dp"
-        android:layout_above="@+id/ButtonSignUp"
+        android:background="@drawable/my_shape3"
+        android:textColor="@color/colorAccent"
         android:layout_centerHorizontal="true"
-        android:onClick="to_grades_exercise_setup_activity"/>
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="395dp"
+        android:layout_marginRight="3dp" />
 
-    <Button
-        android:layout_width="375dp"
-        android:layout_height="135dp"
-        android:text="Sign Up"
-        android:id="@+id/ButtonSignUp"
-        tools:layout_editor_absoluteY="427dp"
-        tools:layout_editor_absoluteX="5dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/ButtonSignIn" />
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -8,6 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Rating_bar" parent="Theme.AppCompat">
+        <item name="android:progressDrawable">@mipmap/ic_rating</item>
+        <item name="android:indeterminateDrawable">@mipmap/ic_rating</item>
+        <item name="android:colorControlNormal">@color/colorRating</item>
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+
+    </style>
+
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

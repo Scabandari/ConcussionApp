@@ -3,9 +3,13 @@ package com.example.concussionapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+// just want to switch branch, but i have to commit
+public class MainActivity extends AppCompatActivity
+{
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static boolean databaseHasBeenCleared = false;
@@ -28,26 +32,46 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void to_second_activity(View view)
+    public boolean onCreateOptionsMenu(Menu menu)
     {
-        //this commented out code was just used for testing
-       //if the database has not been cleared
-/*        if(!databaseHasBeenCleared) {
-            db.deleteAllUsers();
-            databaseHasBeenCleared = true;
-        }
-*/
-        //If I haven't been added to the database then add me to the database
-/*        if(!ryanInDatabase)
-        {
-            User ryan = new User("Ryan", "secret_passord", "ryan@email.com");
-            db.addUser(ryan);
-            ryanInDatabase = true;
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch (item.getItemId()){
+            case R.id.Switch1:
+
+                    //what happems when menu item is pressed
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-*/
+    }
+
+    public void to_home_activity(View view)
+    {
         Intent intent = new Intent(this, HomeActivity.class);
-    //    intent.putExtra("course_keys", db.getFloatList());
         startActivity(intent);
-        }
+
+    }
+
+    public void to_quickstart(View view)
+    {
+
+
+        Intent intent = new Intent(this, Chronometer_Heart_Rate_Activity.class);
+        //    intent.putExtra("course_keys", db.getFloatList());
+        startActivity(intent);
+    }
+
+    public void to_signup_activity(View view)
+    {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
+
+    }
+
 }
