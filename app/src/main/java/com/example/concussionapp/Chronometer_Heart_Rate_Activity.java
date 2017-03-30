@@ -351,4 +351,5 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         }
 
     };
+
 }
