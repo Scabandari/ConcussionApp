@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:text="As you know, to recover well and faster, you should not experience any acute symptoms during your recovery process, you need to have NO symptoms during a training at all time, if you do STOP IMMEDIATELY and rest. If symptoms persist consult a doctor or a physician. You also need to spend 24 hours without having any symptoms before the next training session. Since some symptoms have occurred, you must restart you recovery process, starting from step 1. \nFull Rest for 24 hours."
+        android:layout_width="295dp"
+        android:layout_height="267dp"
+        android:id="@+id/textView4"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="33dp"
+        android:layout_marginRight="-25dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
