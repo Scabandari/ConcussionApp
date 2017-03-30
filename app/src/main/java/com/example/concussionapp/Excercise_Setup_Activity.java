@@ -47,16 +47,31 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                //linking the editText on the user interface to the one created here
                maxEditText = (EditText) findViewById(R.id.MaxEditText);
                String maxHR = maxEditText.getText().toString();
-               maxHeartRate = Integer.parseInt(maxHR);
-
+               if(!maxHR.matches("")) {
+                   maxHeartRate = Integer.parseInt(maxHR);
+               }
 
                minEditText = (EditText) findViewById(R.id.MinEditText);
                String minHR = minEditText.getText().toString();
-               minHeartRate = Integer.parseInt(minHR);
+               if(!minHR.matches("")) {
+                   minHeartRate = Integer.parseInt(minHR);
+               }
+
 
                durationEditText = (EditText) findViewById(R.id.exercise_duration);
                String duration = durationEditText.getText().toString();
-               timeEntered = Integer.parseInt(duration);
+               if(!duration.matches("")) {
+                   timeEntered = Integer.parseInt(duration);
+               }
+
+
+
+
+               if(maxHR.matches("") || minHR.matches("")|| duration.matches("") )
+               {
+                   Toast.makeText(getApplicationContext(), "Cannot have Empty fields", Toast.LENGTH_LONG).show();
+                   return;
+               }
 
                Log.i(TAG, "Max heart rate as int : " + maxHeartRate);
                Log.i(TAG, "Min heart rate as int : " + minHeartRate);
@@ -67,6 +82,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             String n = minEditText.getText().toString();
             int n2 = Integer.parseInt(n);
 */
+
                if (minHeartRate >= maxHeartRate)
                {
 

@@ -231,9 +231,17 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     tv.setText(ErrorText);
 
 					/*This disconnects listener from acting on received messages*/
-                    _bt.removeConnectedEventListener(_NConnListener);
+                    try {
+                        _bt.removeConnectedEventListener(_NConnListener);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 					/*Close the communication with the device & throw an exception if failure*/
-                    _bt.Close();
+                    try {
+                        _bt.Close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 }
             });
