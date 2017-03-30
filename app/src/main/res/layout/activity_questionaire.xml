@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        android:text="Anxietious/Nervous"
+        android:text="Anxious/Nervous"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="408dp"
         android:layout_marginRight="238dp"
