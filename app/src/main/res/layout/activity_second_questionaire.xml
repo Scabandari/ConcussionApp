@@ -19,6 +19,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:textColor="@color/colorAccent" />
 
+    <EditText
+        android:layout_width="344dp"
+        android:layout_height="90dp"
+        android:id="@+id/Confirm_Username"
+        android:hint="Confirm Username"
+        android:textColor="@color/colorAccent"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="21dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="238dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <Button
         android:text="Done "
         android:layout_width="384dp"
@@ -33,6 +48,18 @@
         android:background="@drawable/my_shape3"
         android:layout_marginLeft="-12dp"
         app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:layout_width="372dp"
+        android:layout_height="70dp"
+        android:text="Send Email"
+        android:background="@drawable/my_shape3"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/send_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="365dp"
+        android:layout_marginRight="-28dp" />
 
 
 </android.support.constraint.ConstraintLayout>
