@@ -54,31 +54,40 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     private boolean grabSample;      //Sample HR every 3 seconds, every 3 sec this should be reset
 
     //this Handler object will be used in obtaining HR samples, it needs an int delay in Millis
+    private Handler handleForToasts;
     private Handler handleForMinutes;
     private Handler handle;
+    private int delayForToastMsg;
     private int delayForMinutes;
     private int delay;
     private String HRStringdata;  //this is just to put the data to log to see what we're getting
     private int heartRateData;  // was declared below but i want my my handle to have access to
     // this value
+    private boolean showToast;
+    private boolean canStartTimer;
+    private boolean fromPause; // if the CountDownTimer is being started again after a pause
 
     TextView countDownTime;
+    private CountDownTimer countDownT;
+    private long millisLeft; //the number of millis left for CountDownTimer
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
-
+        //not sure if i need to initialize millisLeft
         countDownTime = (TextView) findViewById(R.id.countDownTimer);
         Intent intent = getIntent(); //get the intent from the mainActivity to link them
 
+        fromPause = false;
+        canStartTimer = true;
         //       Bundle bundle = intent.getExtras();
         maxHeart = intent.getIntExtra("maxHeartRate", 120); //grab max and min HR from previous activity
         minHeart = intent.getIntExtra("minHeartRate", 60);
         exerciseTime = intent.getIntExtra("exerciseTime", 9);
         exerciseTime *= 60000; // 1 min * 60 sec * 1000 milli/sed
-
+        showToast = false;
 
         Log.i(TAG, "Max heart rate entered:  " + maxHeart);
         Log.i(TAG, "Min heart rate entered:  " + minHeart);
@@ -127,22 +136,28 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             }
         }, delay);
 
+        delayForToastMsg = 5000;
+        handleForToasts = new Handler();
+        handleForToasts.postDelayed(new Runnable() {
+            public void run() {
+                showToast = true;
+                handle.postDelayed(this, delay);
+            }
+        }, delayForToastMsg);
 
         Button StartButton;
         Button StopButton;
         Button ResetButton;
 
-        //   chronometer = (Chronometer) findViewById(R.id.chronometer);
-
         StartButton = (Button) findViewById(R.id.start_Button);
         StartButton.setOnClickListener(mStartListener);
 
-    /*    StopButton= (Button) findViewById(R.id.stop_Button);
+           StopButton= (Button) findViewById(R.id.stop_Button);
         StopButton.setOnClickListener(mStopListener);
 
         ResetButton = (Button) findViewById(R.id.reset_Button);
         ResetButton.setOnClickListener(mResetListener);
-*/
+
         /*BIPINS CODE FOR onCreate STARTS HERE AND ENDS AT END OF onCreate()*/
          /*Sending a message to android that we are going to initiate a pairing request*/
         IntentFilter filter = new IntentFilter("android.bluetooth.device.action.PAIRING_REQUEST");
@@ -162,7 +177,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             btnConnect.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     String BhMacID = "00:07:80:0E:B1:0C";
-
+                    //if the timer is already running
+                    if(!canStartTimer){
+                        showToast = true; //allow show toast msg
+                    }
                     adapter = BluetoothAdapter.getDefaultAdapter();
 
                     Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
@@ -226,6 +244,9 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
 					/*Reset the global variables*/
+                    TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
+                    tv1.setText("000");
+					showToast = false;
                     TextView tv = (TextView) findViewById(R.id.connectionStatus);
                     String ErrorText = "Disconnected from HxM!";
                     tv.setText(ErrorText);
@@ -249,12 +270,101 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
     } // onCreate() ENDS HERE
 
-    View.OnClickListener mStartListener = new View.OnClickListener() {
+    protected void onStart() {
+        super.onStart();
+    //    showToast = true;
+
+    }
+
+    protected void onStop() {
+        super.onStop();
+        showToast = false;
+        try {
+            _bt.removeConnectedEventListener(_NConnListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            _bt.Close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        _bt.Close();
+
+    }
+
+    protected void onPause() {
+        super.onPause();
+        showToast = false;
+        if(countDownT != null) {
+            try {
+                countDownT.cancel();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+        canStartTimer = true;
+        fromPause = true;
+    }
+
+  /*  protected void onResume() {
+        super.onResume();
+        countDownT= new CountDownTimer(millisLeft, 1000) {
+            //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+            @Override
+            public void onTick(long millisUntilFinished) {
+                millisLeft = millisUntilFinished;
+                //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
+            }
+
+            @Override
+            public void onFinish() {
+                String minuteAvg = "";
+                for (Integer i : SamplesPerMinute) {
+                    minuteAvg += " " + String.valueOf(i);
+                }
+                countDownTime.setText("Done");
+                for (int i = 0; i < 15; i++) { //just for testing
+                    Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                }
+                Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                newIntent.putExtra("heartData", minuteAvg);
+                startActivity(newIntent);
+            }
+        };
+        countDownT.start();
+
+        canStartTimer = false;
+
+    }
+*/
+    View.OnClickListener mStopListener= new View.OnClickListener() {
         public void onClick(View v) {
-            new CountDownTimer(exerciseTime, 1000) {
+
+            //!canStartTimer means the timer is running, when paused this should be false
+            if(!canStartTimer) {
+                countDownT.cancel();
+                canStartTimer = true;
+                fromPause = true;
+                showToast = false;
+            }
+        }
+    };
+
+    View.OnClickListener mResetListener  = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            showToast = true;
+            //this if executed if start button pressed from a condition of being paused
+            //starts with amount of time = millisLeft
+            if (canStartTimer && fromPause) {
+
+             countDownT = new CountDownTimer(exerciseTime, 1000) {
                 //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
                 @Override
                 public void onTick(long millisUntilFinished) {
+                    millisLeft = millisUntilFinished;
                     //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
                     countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
                 }
@@ -273,7 +383,112 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     newIntent.putExtra("heartData", minuteAvg);
                     startActivity(newIntent);
                 }
-            }.start();
+            };
+            countDownT.start();
+
+            canStartTimer = false;
+            }
+            //if the timer is already running
+            else if (!canStartTimer) {
+                countDownT.cancel();
+
+                countDownT = new CountDownTimer(exerciseTime, 1000) {
+                    //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        millisLeft = millisUntilFinished;
+                        //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                        countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        String minuteAvg = "";
+                        for (Integer i : SamplesPerMinute) {
+                            minuteAvg += " " + String.valueOf(i);
+                        }
+                        countDownTime.setText("Done");
+                        for (int i = 0; i < 15; i++) { //just for testing
+                            Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                        }
+                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        newIntent.putExtra("heartData", minuteAvg);
+                        startActivity(newIntent);
+                    }
+                };
+                countDownT.start();
+
+                canStartTimer = false;
+            }
+        }
+    };
+
+    View.OnClickListener mStartListener = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            showToast = true;
+            //this if executed if start button pressed from a condition of being paused
+            //starts with amount of time = millisLeft
+            if(canStartTimer && fromPause) {
+                countDownT= new CountDownTimer(millisLeft, 1000) {
+                    //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        millisLeft = millisUntilFinished;
+                        //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                        countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        String minuteAvg = "";
+                        for (Integer i : SamplesPerMinute) {
+                            minuteAvg += " " + String.valueOf(i);
+                        }
+                        countDownTime.setText("Done");
+                        for (int i = 0; i < 15; i++) { //just for testing
+                            Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                        }
+                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        newIntent.putExtra("heartData", minuteAvg);
+                        startActivity(newIntent);
+                    }
+                };
+                countDownT.start();
+
+                canStartTimer = false;
+            }
+            //this else if executes when the timer is first started, ie not from a paused condition
+            else if (canStartTimer) {
+                showToast = true;
+                countDownT= new CountDownTimer(exerciseTime, 1000) {
+                    //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        millisLeft = millisUntilFinished;
+                        //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                        countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        String minuteAvg = "";
+                        for (Integer i : SamplesPerMinute) {
+                            minuteAvg += " " + String.valueOf(i);
+                        }
+                        countDownTime.setText("Done");
+                        for (int i = 0; i < 15; i++) { //just for testing
+                            Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                        }
+                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        newIntent.putExtra("heartData", minuteAvg);
+                        startActivity(newIntent);
+                    }
+                };
+                countDownT.start();
+
+                canStartTimer = false;
+            }
         }
     };
 
@@ -325,7 +540,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     final Handler Newhandler = new Handler() {
         public void handleMessage(Message msg) {
             TextView tv;
-            //           int heartRateData;                             CHANGE HERE
+
             if (msg.what == HEART_RATE) {
                 String HeartRatetext = msg.getData().getString("HeartRate");
                 heartRateData = parseInt(HeartRatetext);
@@ -338,11 +553,17 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                 }
                 if (heartRateData > maxHeart) {
                     Log.i(TAG, " Heart rate data is above max");
-                    Toast.makeText(getApplicationContext(), "Heart rate too high.", Toast.LENGTH_LONG).show();
+                    if(showToast) {
+                        Toast.makeText(getApplicationContext(), "Heart rate too high.", Toast.LENGTH_LONG).show();
+                        showToast = false;
+                    }
 
                 } else if (heartRateData < minHeart) {
                     Log.i(TAG, " Heart rate data is below max");
-                    Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
+                    if(showToast) {
+                        Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
+                        showToast = false;
+                    }
 
                 }
                 tv = (EditText) findViewById(R.id.ActualHeartRate);
@@ -355,4 +576,6 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         }
 
     };
+
+
 }
