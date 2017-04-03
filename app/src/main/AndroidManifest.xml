@@ -37,8 +37,6 @@
             android:name=".Questionaire"
             android:parentActivityName=".HomeActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".NonPop" />
-        <activity android:name=".YesPop" />
         <activity android:name=".PostSurveyy" />
         <activity android:name=".SecondQuestionaire"></activity>
     </application>
