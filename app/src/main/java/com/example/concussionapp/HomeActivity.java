@@ -72,6 +72,8 @@ public class HomeActivity extends AppCompatActivity {
                 if (password.equals(Checkpass.getPassWord())) {
 
                     Intent intent = new Intent(v.getContext(), Questionaire.class);
+                    intent.putExtra("username", Checkpass.getUserName());
+                    intent.putExtra("email", Checkpass.getCareProviderEmailAddress());
                     startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();

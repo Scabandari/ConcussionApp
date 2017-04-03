@@ -20,9 +20,6 @@ public class Questionaire extends AppCompatActivity {
     private RatingBar headache;
     private RatingBar dizzinessRB;
 
-
-
-
     private String headPressureRating;
     private String sensitivityToNoiseRating;
     private String sensitivityToLightRating;
@@ -32,6 +29,8 @@ public class Questionaire extends AppCompatActivity {
 
     private String passToExercise;
 
+    private String getUserName;
+    private String getEmail;
 
 
     @Override
@@ -45,6 +44,15 @@ public class Questionaire extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        getUserName = "";
+        getEmail = "";
+        Intent intent = new Intent();
+        getUserName = intent.getStringExtra("username");
+        getEmail = intent.getStringExtra("email");
+        Log.i(TAG, getUserName);
+        Log.i(TAG, getEmail);
+        passToExercise = "User: " + getUserName + "\nSurvey data :\n ";
         listenerHeadPressure();
         listenerDizziness();
         listenerHeadache();
