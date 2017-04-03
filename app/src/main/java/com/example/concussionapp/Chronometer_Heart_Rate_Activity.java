@@ -60,12 +60,14 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     private int delayForToastMsg;
     private int delayForMinutes;
     private int delay;
+    private String dataFromSurvey; //sent from activity setup via intent
     private String HRStringdata;  //this is just to put the data to log to see what we're getting
     private int heartRateData;  // was declared below but i want my my handle to have access to
     // this value
     private boolean showToast;
     private boolean canStartTimer;
     private boolean fromPause; // if the CountDownTimer is being started again after a pause
+    private String allDataReadyForEmail;  // = dataFromSurvey + minuteAverage from heart rate
 
     TextView countDownTime;
     private CountDownTimer countDownT;
@@ -76,10 +78,12 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
+        allDataReadyForEmail = "";
         //not sure if i need to initialize millisLeft
         countDownTime = (TextView) findViewById(R.id.countDownTimer);
-        Intent intent = getIntent(); //get the intent from the mainActivity to link them
-
+        //TO RECEIVE SURVEY DATA FROM QUESTIONAIRE ACTIVITY
+        Intent intent = getIntent();
+        dataFromSurvey = intent.getStringExtra("surveyData");
         fromPause = false;
         canStartTimer = true;
         //       Bundle bundle = intent.getExtras();
@@ -380,7 +384,8 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         Log.i(TAG, "Finished. Averages are" + minuteAvg);
                     }
                     Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
-                    newIntent.putExtra("heartData", minuteAvg);
+                    allDataReadyForEmail = dataFromSurvey + minuteAvg;
+                    newIntent.putExtra("allData", allDataReadyForEmail);
                     startActivity(newIntent);
                 }
             };
@@ -411,8 +416,13 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                        newIntent.putExtra("heartData", minuteAvg);
+                        allDataReadyForEmail = dataFromSurvey + "\n" + "Average heart rate for each minute of exercise time: \n" +
+                                minuteAvg;
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                      //  Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
+                        newIntent.putExtra("allData", allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
@@ -449,8 +459,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
+                        allDataReadyForEmail = dataFromSurvey + minuteAvg;
                         Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                        newIntent.putExtra("heartData", minuteAvg);
+                        newIntent.putExtra("allData", allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
@@ -480,8 +492,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                        newIntent.putExtra("heartData", minuteAvg);
+                   //     Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
+                        allDataReadyForEmail = dataFromSurvey + minuteAvg;
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                        newIntent.putExtra("allData", allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };

@@ -139,7 +139,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar1"
+        android:id="@+id/headache"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -155,7 +155,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar2"
+        android:id="@+id/dizziness"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -171,7 +171,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar3"
+        android:id="@+id/headPressure"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
