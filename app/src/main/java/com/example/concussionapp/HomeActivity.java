@@ -14,6 +14,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private EditText loginusername;
     private EditText loginpassword;
+    private String passUsername;
+    private String passEmail;
     private static final  String TAG = "HomeActivity";
 
     DBHandler dbHandler;
@@ -71,9 +73,13 @@ public class HomeActivity extends AppCompatActivity {
                 //check if stored password matches user password
                 if (password.equals(Checkpass.getPassWord())) {
 
+                    passEmail = Checkpass.getCareProviderEmailAddress();
+                    passUsername = Checkpass.getUserName();
+                    Log.i(TAG, passEmail);
+                    Log.i(TAG, passUsername);
                     Intent intent = new Intent(v.getContext(), Questionaire.class);
-                    intent.putExtra("username", Checkpass.getUserName());
-                    intent.putExtra("email", Checkpass.getCareProviderEmailAddress());
+                    intent.putExtra("username", passUsername);
+                    intent.putExtra("email", passEmail);
                     startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();
