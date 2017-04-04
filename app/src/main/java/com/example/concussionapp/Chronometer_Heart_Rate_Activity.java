@@ -7,6 +7,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -33,6 +35,7 @@ import static java.lang.Integer.parseInt;
 
 public class Chronometer_Heart_Rate_Activity extends Activity {
 
+    private final ToneGenerator tone = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,200);
     private static final String TAG = "ChronometerActivity";
     //   Chronometer chronometer;
 
@@ -72,6 +75,8 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     TextView countDownTime;
     private CountDownTimer countDownT;
     private long millisLeft; //the number of millis left for CountDownTimer
+    private long timeForToast;
+    private long timeForSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -271,6 +276,9 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                 }
             });
         }
+
+        timeForToast = System.currentTimeMillis() + 7000;
+        timeForSound = System.currentTimeMillis() + 7000;
 
     } // onCreate() ENDS HERE
 
@@ -566,19 +574,29 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     HRStringdata += " " + String.valueOf(heartRateData);
                     Log.i(TAG, HRStringdata);
                 }
-                if (heartRateData > maxHeart) {
+                if (heartRateData > maxHeart && System.currentTimeMillis() > timeForToast) {
                     Log.i(TAG, " Heart rate data is above max");
-                    if(showToast) {
+               //     if(showToast) {
                         Toast.makeText(getApplicationContext(), "Heart rate too high.", Toast.LENGTH_LONG).show();
-                        showToast = false;
-                    }
+                        if(System.currentTimeMillis() > timeForSound) {
+                            //play sound
+                            tone.startTone(ToneGenerator.TONE_PROP_BEEP);
+                            timeForSound = System.currentTimeMillis() + 21000;
+                        }
+                        timeForToast = System.currentTimeMillis() + 7000;
+             //       }
 
-                } else if (heartRateData < minHeart) {
+                } else if (heartRateData < minHeart && System.currentTimeMillis() > timeForToast) {
                     Log.i(TAG, " Heart rate data is below max");
-                    if(showToast) {
-                        Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
-                        showToast = false;
+                //    if(showToast) {
+                    if(System.currentTimeMillis() > timeForSound) {
+                        //play sound
+                        tone.startTone(ToneGenerator.TONE_PROP_BEEP);
+                        timeForSound = System.currentTimeMillis() + 21000;
                     }
+                        Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
+                        timeForToast = System.currentTimeMillis() + 7000;
+             //       }
 
                 }
                 tv = (EditText) findViewById(R.id.ActualHeartRate);

@@ -45,13 +45,13 @@ public class Questionaire extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        getUserName = "";
-        getEmail = "";
+        getUserName = "initialized";
+        getEmail = "initialized";
         Intent intent = new Intent();
         getUserName = intent.getStringExtra("username");
         getEmail = intent.getStringExtra("email");
-        Log.i(TAG, getUserName);
-        Log.i(TAG, getEmail);
+        Log.i(TAG, "msg: " +  getUserName);
+        Log.i(TAG, "msg: " +  getEmail);
         passToExercise = "User: " + getUserName + "\nSurvey data :\n ";
         listenerHeadPressure();
         listenerDizziness();
@@ -132,10 +132,10 @@ public class Questionaire extends AppCompatActivity {
 
 
 
-                Intent intent = new Intent(getApplicationContext(),Excercise_Setup_Activity.class);
-                intent.putExtra("surveyData", passToExercise);
+                Intent intent2 = new Intent(getApplicationContext(),Excercise_Setup_Activity.class);
+                intent2.putExtra("surveyData", passToExercise);
                 Log.i(TAG, "All survey data: " +passToExercise);
-                startActivity(intent);
+                startActivity(intent2);
             }
         });
     }
