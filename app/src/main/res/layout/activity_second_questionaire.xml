@@ -7,17 +7,24 @@
     android:background="@color/colorPrimaryDark"
     tools:context="com.example.concussionapp.SecondQuestionaire">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+
     <TextView
         android:layout_width="388dp"
         android:layout_height="99dp"
         android:id="@+id/data"
-        android:hint="@string/app_name"
-        android:background="@color/colorAccent"
+        android:hint="Results of your training session:"
+        android:background="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="107dp"
-        android:textSize="25sp"
+        android:layout_marginTop="73dp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_marginLeft="8dp" />
 
     <EditText
         android:layout_width="344dp"
@@ -36,30 +43,30 @@
 
     <Button
         android:text="Done "
-        android:layout_width="384dp"
-        android:layout_height="72dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:id="@+id/done_button"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/data"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
-        app:layout_constraintVertical_bias="0.871"
+        app:layout_constraintVertical_bias="1.0"
         android:textColor="@color/colorAccent"
         android:background="@drawable/my_shape3"
-        android:layout_marginLeft="-12dp"
+        android:layout_marginLeft="4dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:layout_width="372dp"
-        android:layout_height="70dp"
+        android:layout_width="353dp"
+        android:layout_height="100dp"
         android:text="Send Email"
         android:background="@drawable/my_shape3"
         android:textColor="@color/colorAccent"
         android:id="@+id/send_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="365dp"
-        android:layout_marginRight="-28dp" />
+        android:layout_marginTop="343dp"
+        android:layout_marginRight="3dp" />
 
 
 </android.support.constraint.ConstraintLayout>

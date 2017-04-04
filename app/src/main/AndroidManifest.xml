@@ -3,7 +3,7 @@
     package="com.example.concussionapp">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -22,23 +22,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Excercise_Setup_Activity"
-            android:parentActivityName=".Questionaire" />
+        android:name=".HomeActivity"
+        android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".WelcomeActivity"></activity>
+
         <activity
-            android:name=".HomeActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".Excercise_Setup_Activity"
+            android:parentActivityName=".WelcomeActivity" />
+
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".HomeActivity" />
+
         <activity
             android:name=".Chronometer_Heart_Rate_Activity"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".WelcomeActivity" />
+
         <activity
-            android:name=".Questionaire"
-            android:parentActivityName=".HomeActivity" />
+            android:name=".Questionaire"/>
+
         <activity android:name=".AboutActivity" />
+
         <activity android:name=".PostSurveyy" />
-        <activity android:name=".SecondQuestionaire"></activity>
+
+        <activity android:name=".SecondQuestionaire"
+            android:parentActivityName=".Questionaire"/>
+
+
     </application>
 
 </manifest>

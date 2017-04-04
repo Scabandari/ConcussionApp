@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="com.example.concussionapp.WelcomeActivity">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
+
+    <Button
+        android:id="@+id/quickstart"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:onClick="quickstart"
+        android:text="Quickstart"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="117dp"
+        android:layout_marginRight="42dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/sign_symptoms"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:onClick="sign_symptoms"
+        android:text="Signs &amp; symptoms"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="203dp"
+        android:layout_marginRight="42dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/recovery"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:onClick="recovery_steps"
+        android:text="Recovery Steps"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="288dp"
+        android:layout_marginRight="42dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/tips"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:onClick="recovery_tips"
+        android:text="Recovery Tips"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="371dp"
+        android:layout_marginRight="42dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/start_recovery"
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:onClick="start_recovery"
+        android:text="Start Recovery"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="458dp"
+        android:layout_marginRight="42dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

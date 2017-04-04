@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                     passUsername = Checkpass.getUserName();
                     Log.i(TAG, passEmail);
                     Log.i(TAG, passUsername);
-                    Intent intent = new Intent(getApplicationContext(), Questionaire.class);
+                    Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
                     intent.putExtra("username", passUsername);
                     intent.putExtra("email", passEmail);
                     startActivity(intent);

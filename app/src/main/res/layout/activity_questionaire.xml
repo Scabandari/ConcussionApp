@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/Noise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -27,7 +27,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -39,7 +39,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/Neck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -51,7 +51,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Pressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -63,7 +63,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/Dizzy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -75,19 +75,19 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Nervous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        android:text="Anxious/Nervous"
+        android:text="Nervous/Anxious"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="408dp"
-        android:layout_marginRight="238dp"
+        android:layout_marginRight="235dp"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -99,7 +99,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/Headache"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -113,16 +113,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="259dp"
+        android:layout_height="25dp"
         android:height="16dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        android:text="Symptom Evaluation"
-        android:textSize="14sp"
+        android:text="How do you feel? Rate your symptoms"
+        android:textSize="15sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="66dp"
-        android:layout_marginRight="213dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="85dp"
         app:layout_constraintRight_toRightOf="parent" />
 
 
@@ -135,11 +135,11 @@
         android:textColor="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="512dp"
-        android:layout_marginRight="164dp"
+        android:layout_marginRight="166dp"
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/headache"
+        android:id="@+id/HeadacheRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -155,7 +155,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/dizziness"
+        android:id="@+id/DizzyRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -171,7 +171,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/headPressure"
+        android:id="@+id/PressureRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -187,7 +187,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar4"
+        android:id="@+id/NeckRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -203,7 +203,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar5"
+        android:id="@+id/LightRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -219,7 +219,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar6"
+        android:id="@+id/NoiseRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -235,7 +235,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar7"
+        android:id="@+id/NervousRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
@@ -247,11 +247,11 @@
         android:scaleY="0.55"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="408dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginRight="-39dp"
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar8"
+        android:id="@+id/RightRate"
         android:layout_width="233dp"
         android:layout_height="41dp"
         android:progressTint="@color/colorPrimary"
