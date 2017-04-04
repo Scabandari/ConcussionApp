@@ -7,6 +7,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -33,6 +35,7 @@ import static java.lang.Integer.parseInt;
 
 public class Chronometer_Heart_Rate_Activity extends Activity {
 
+    private final ToneGenerator tone = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,200);
     private static final String TAG = "ChronometerActivity";
     //   Chronometer chronometer;
 
@@ -60,26 +63,32 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     private int delayForToastMsg;
     private int delayForMinutes;
     private int delay;
+    private String dataFromSurvey; //sent from activity setup via intent
     private String HRStringdata;  //this is just to put the data to log to see what we're getting
     private int heartRateData;  // was declared below but i want my my handle to have access to
     // this value
     private boolean showToast;
     private boolean canStartTimer;
     private boolean fromPause; // if the CountDownTimer is being started again after a pause
+    private String allDataReadyForEmail;  // = dataFromSurvey + minuteAverage from heart rate
 
     TextView countDownTime;
     private CountDownTimer countDownT;
     private long millisLeft; //the number of millis left for CountDownTimer
+    private long timeForToast;
+    private long timeForSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
+        allDataReadyForEmail = "";
         //not sure if i need to initialize millisLeft
         countDownTime = (TextView) findViewById(R.id.countDownTimer);
-        Intent intent = getIntent(); //get the intent from the mainActivity to link them
-
+        //TO RECEIVE SURVEY DATA FROM QUESTIONAIRE ACTIVITY
+        Intent intent = getIntent();
+        dataFromSurvey = intent.getStringExtra("surveyData");
         fromPause = false;
         canStartTimer = true;
         //       Bundle bundle = intent.getExtras();
@@ -268,6 +277,9 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             });
         }
 
+        timeForToast = System.currentTimeMillis() + 7000;
+        timeForSound = System.currentTimeMillis() + 7000;
+
     } // onCreate() ENDS HERE
 
     protected void onStart() {
@@ -380,7 +392,8 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         Log.i(TAG, "Finished. Averages are" + minuteAvg);
                     }
                     Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
-                    newIntent.putExtra("heartData", minuteAvg);
+                    allDataReadyForEmail = dataFromSurvey + minuteAvg;
+                    newIntent.putExtra("allData", allDataReadyForEmail);
                     startActivity(newIntent);
                 }
             };
@@ -411,8 +424,13 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                        newIntent.putExtra("heartData", minuteAvg);
+                        allDataReadyForEmail = dataFromSurvey + "\n" + "Average heart rate for each minute of exercise time: \n" +
+                                minuteAvg;
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                      //  Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
+                        newIntent.putExtra("allData", allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
@@ -449,8 +467,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
+                        allDataReadyForEmail = dataFromSurvey + minuteAvg;
                         Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                        newIntent.putExtra("heartData", minuteAvg);
+                        newIntent.putExtra("allData", allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
@@ -480,8 +500,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                        Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                        newIntent.putExtra("heartData", minuteAvg);
+                   //     Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+                        Intent newIntent = new Intent(getApplicationContext(), SecondQuestionaire.class);
+                        allDataReadyForEmail = dataFromSurvey + minuteAvg;
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                        newIntent.putExtra("allData", allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
@@ -551,19 +574,29 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     HRStringdata += " " + String.valueOf(heartRateData);
                     Log.i(TAG, HRStringdata);
                 }
-                if (heartRateData > maxHeart) {
+                if (heartRateData > maxHeart && System.currentTimeMillis() > timeForToast) {
                     Log.i(TAG, " Heart rate data is above max");
-                    if(showToast) {
+               //     if(showToast) {
                         Toast.makeText(getApplicationContext(), "Heart rate too high.", Toast.LENGTH_LONG).show();
-                        showToast = false;
-                    }
+                        if(System.currentTimeMillis() > timeForSound) {
+                            //play sound
+                            tone.startTone(ToneGenerator.TONE_PROP_BEEP);
+                            timeForSound = System.currentTimeMillis() + 21000;
+                        }
+                        timeForToast = System.currentTimeMillis() + 7000;
+             //       }
 
-                } else if (heartRateData < minHeart) {
+                } else if (heartRateData < minHeart && System.currentTimeMillis() > timeForToast) {
                     Log.i(TAG, " Heart rate data is below max");
-                    if(showToast) {
-                        Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
-                        showToast = false;
+                //    if(showToast) {
+                    if(System.currentTimeMillis() > timeForSound) {
+                        //play sound
+                        tone.startTone(ToneGenerator.TONE_PROP_BEEP);
+                        timeForSound = System.currentTimeMillis() + 21000;
                     }
+                        Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
+                        timeForToast = System.currentTimeMillis() + 7000;
+             //       }
 
                 }
                 tv = (EditText) findViewById(R.id.ActualHeartRate);

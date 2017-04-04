@@ -14,6 +14,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private EditText loginusername;
     private EditText loginpassword;
+    private String passUsername;
+    private String passEmail;
     private static final  String TAG = "HomeActivity";
 
     DBHandler dbHandler;
@@ -71,19 +73,38 @@ public class HomeActivity extends AppCompatActivity {
                 //check if stored password matches user password
                 if (password.equals(Checkpass.getPassWord())) {
 
-                    Intent intent = new Intent(v.getContext(), Questionaire.class);
+                    passEmail = Checkpass.getCareProviderEmailAddress();
+                    passUsername = Checkpass.getUserName();
+                    Log.i(TAG, passEmail);
+                    Log.i(TAG, passUsername);
+                    Intent intent = new Intent(getApplicationContext(), Questionaire.class);
+                    intent.putExtra("username", passUsername);
+                    intent.putExtra("email", passEmail);
                     startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();
 
                 }
 
-                loginusername.setText("");
-                loginpassword.setText("");
+
             }
 
         });
 
+    }
+
+    protected void onResume() {
+        super.onResume();
+        try {
+            loginusername.setText("");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        try {
+            loginpassword.setText("");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
 }

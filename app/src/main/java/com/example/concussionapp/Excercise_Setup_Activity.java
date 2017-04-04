@@ -21,7 +21,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
     private int  minHeartRate;
     //get value from edit text exercise_duration in exercise setup xml
     private int timeEntered;
-
+    private String dataFromSurvey;
     Button Donebutton;
 
 
@@ -37,6 +37,10 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+
+        Intent intent = getIntent(); //get the intent from the mainActivity to link them
+        dataFromSurvey = intent.getStringExtra("surveyData");
 
         Donebutton = (Button) findViewById(R.id.DoneSetupButton);
 
@@ -100,11 +104,17 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                    intent.putExtra("maxHeartRate", maxHeartRate);
                    intent.putExtra("minHeartRate", minHeartRate);
                    intent.putExtra("exerciseTime", timeEntered);
-                   startActivity(intent);
+
+                    dataFromSurvey += "\nThe patient's Max heart rate setting: " + maxHR;
+                    dataFromSurvey += "\nThe patient's duration of exercise time: " + minHR;
+                    dataFromSurvey += "\nThe patient's Max heart rate setting: " + maxHR;
+                    intent.putExtra("surveyData", dataFromSurvey);
                    //  sendMessage();
                    maxEditText.setText("");
                    minEditText.setText("");
                    durationEditText.setText("");
+
+                    startActivity(intent);
 
            }
        });

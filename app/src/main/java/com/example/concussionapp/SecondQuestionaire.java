@@ -46,6 +46,7 @@ public class SecondQuestionaire extends AppCompatActivity {
         showData = (TextView) findViewById(R.id.data);
 
         showData.setText(hrData);
+        Log.i(TAG, "Data to be sent is:  " + hrData);
 
         //new-Subhi
         ConfirmUser = (EditText) findViewById(R.id.Confirm_Username);
@@ -65,6 +66,7 @@ public class SecondQuestionaire extends AppCompatActivity {
                 Log.i(TAG, "User name from database is: " + user.getUserName());
                 Log.i(TAG, "Password from database is: " + user.getPassWord());
                 Log.i(TAG, "Email from database is: " + user.getCareProviderEmailAddress());
+                Log.i(TAG, "Data to be sent is:  " + hrData);
 
 
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -72,9 +74,9 @@ public class SecondQuestionaire extends AppCompatActivity {
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
 
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, user.getCareProviderEmailAddress());
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "--Data acquired during exercise should be here--");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String [] {user.getCareProviderEmailAddress()});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data for user: " + user.getUserName());
+                emailIntent.putExtra(Intent.EXTRA_TEXT,hrData);
 
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
