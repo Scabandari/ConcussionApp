@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.example.concussionapp.SharedData.user;
+
 public class SecondQuestionaire extends AppCompatActivity {
 
     String hrData;
@@ -41,7 +43,7 @@ public class SecondQuestionaire extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        hrData = intent.getStringExtra("allData");
+        hrData = intent.getStringExtra("surveyData");
 
         showData = (TextView) findViewById(R.id.data);
 
@@ -57,8 +59,8 @@ public class SecondQuestionaire extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String username = ConfirmUser.getText().toString();
-                User user = dbHandler.fetchUser(username);
+    //            String username = ConfirmUser.getText().toString();
+  //              User user = dbHandler.fetchUser(username);
 
                 //  String ToEmail = user.getCareProviderEmailAddress();
 
@@ -74,8 +76,8 @@ public class SecondQuestionaire extends AppCompatActivity {
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
 
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String [] {user.getCareProviderEmailAddress()});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data for user: " + user.getUserName());
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String [] {SharedData.user.getCareProviderEmailAddress()});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data for user: " + SharedData.user.getUserName());
                 emailIntent.putExtra(Intent.EXTRA_TEXT,hrData);
 
                 try {

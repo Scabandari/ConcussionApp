@@ -88,7 +88,12 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         countDownTime = (TextView) findViewById(R.id.countDownTimer);
         //TO RECEIVE SURVEY DATA FROM QUESTIONAIRE ACTIVITY
         Intent intent = getIntent();
-        dataFromSurvey = intent.getStringExtra("surveyData");
+        dataFromSurvey = intent.getStringExtra("data");
+        dataFromSurvey += "\nHeart rate avg for every minute of exercise: \n[";
+        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
+        Log.i(TAG, "Received data from setup activity: " +  dataFromSurvey);
+        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
+        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
         fromPause = false;
         canStartTimer = true;
         //       Bundle bundle = intent.getExtras();
@@ -388,11 +393,17 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         minuteAvg += " " + String.valueOf(i);
                     }
                     countDownTime.setText("Done");
+                    minuteAvg += "]";
                     for (int i = 0; i < 15; i++) { //just for testing
                         Log.i(TAG, "Finished. Averages are" + minuteAvg);
                     }
                     Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
                     allDataReadyForEmail = dataFromSurvey + minuteAvg;
+                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
+                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
+                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
+                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
+                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
                     newIntent.putExtra("allData", allDataReadyForEmail);
                     startActivity(newIntent);
                 }
@@ -504,6 +515,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
                         allDataReadyForEmail = dataFromSurvey + minuteAvg;
                         Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
                         newIntent.putExtra("allData", allDataReadyForEmail);
                         startActivity(newIntent);
                     }
@@ -581,9 +596,9 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         if(System.currentTimeMillis() > timeForSound) {
                             //play sound
                             tone.startTone(ToneGenerator.TONE_PROP_BEEP);
-                            timeForSound = System.currentTimeMillis() + 21000;
+                            timeForSound = System.currentTimeMillis() + 10000;
                         }
-                        timeForToast = System.currentTimeMillis() + 7000;
+                        timeForToast = System.currentTimeMillis() + 5000;
              //       }
 
                 } else if (heartRateData < minHeart && System.currentTimeMillis() > timeForToast) {
@@ -592,10 +607,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     if(System.currentTimeMillis() > timeForSound) {
                         //play sound
                         tone.startTone(ToneGenerator.TONE_PROP_BEEP);
-                        timeForSound = System.currentTimeMillis() + 21000;
+                        timeForSound = System.currentTimeMillis() + 10000;
                     }
                         Toast.makeText(getApplicationContext(), "Heart rate too low.", Toast.LENGTH_LONG).show();
-                        timeForToast = System.currentTimeMillis() + 7000;
+                        timeForToast = System.currentTimeMillis() + 5000;
              //       }
 
                 }

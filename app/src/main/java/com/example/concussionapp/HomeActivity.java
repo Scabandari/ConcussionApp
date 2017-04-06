@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
     Button btnIn;
  //   Button btnUp;
 
+    SharedData user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +74,15 @@ public class HomeActivity extends AppCompatActivity {
                 //check if stored password matches user password
                 if (password.equals(Checkpass.getPassWord())) {
 
+                    user = new SharedData(Checkpass);
+
                     passEmail = Checkpass.getCareProviderEmailAddress();
                     passUsername = Checkpass.getUserName();
                     Log.i(TAG, passEmail);
                     Log.i(TAG, passUsername);
+
                     Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
-                    intent.putExtra("username", passUsername);
-                    intent.putExtra("email", passEmail);
+
                     startActivity(intent);
                 } else {
                     Toast.makeText(HomeActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();

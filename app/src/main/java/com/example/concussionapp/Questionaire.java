@@ -48,10 +48,8 @@ public class Questionaire extends AppCompatActivity {
     private String headacheRating;
     private String dizzinessRating;
 
-    private String passToExercise;
+    private String passToEmail;
 
-    private String getUserName;
-    private String getEmail;
 
 
     @Override
@@ -66,14 +64,17 @@ public class Questionaire extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        getUserName = "initialized";
-        getEmail = "initialized";
+       
         Intent intent = new Intent();
-        getUserName = intent.getStringExtra("username");
-        getEmail = intent.getStringExtra("email");
-        Log.i(TAG, "msg: " +  getUserName);
-        Log.i(TAG, "msg: " +  getEmail);
-        passToExercise = "User: " + getUserName + "\nSurvey data :\n ";
+        passToEmail = intent.getStringExtra("allData");
+
+        Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
+        Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
+        Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
+        Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
+        Log.i(TAG, "Username is: " + SharedData.user.getUserName() );
+        Log.i(TAG, "Email is: " +  SharedData.user.getUserName());
+     
 
        // listenerHeadPressure();
        //  listenerDizziness();
@@ -104,8 +105,8 @@ public class Questionaire extends AppCompatActivity {
 
                 HeadacheRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + HeadacheRating);
-                passToExercise += "Headache rating: " + HeadacheRating + "\n";
-                Toast.makeText(Questionaire.this, HeadacheRating, 100).show();
+                passToEmail+= "Headache rating: " + HeadacheRating + "\n";
+                Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -122,7 +123,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 DizzyRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + DizzyRating);
-                passToExercise += "Dizzy rating: " + DizzyRating + "\n";
+                passToEmail += "Dizzy rating: " + DizzyRating + "\n";
                 Toast.makeText(Questionaire.this, DizzyRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -140,7 +141,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 PressureRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + PressureRating);
-                passToExercise += "Head Pressure rating: " + PressureRating + "\n";
+                passToEmail += "Head Pressure rating: " + PressureRating + "\n";
                 Toast.makeText(Questionaire.this, PressureRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -158,7 +159,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 NeckRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + NeckRating);
-                passToExercise += "Neck pain rating: " + NeckRating + "\n";
+                passToEmail += "Neck pain rating: " + NeckRating + "\n";
                 Toast.makeText(Questionaire.this, NeckRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -176,7 +177,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 LightRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + LightRating);
-                passToExercise += "Light sensitivity rating: " + LightRating + "\n";
+                passToEmail += "Light sensitivity rating: " + LightRating + "\n";
                 Toast.makeText(Questionaire.this, LightRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -194,7 +195,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 NoiseRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + NoiseRating);
-                passToExercise += "Noise sensitivity rating: " + NoiseRating + "\n";
+                passToEmail += "Noise sensitivity rating: " + NoiseRating + "\n";
                 Toast.makeText(Questionaire.this, NoiseRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -212,7 +213,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 NervousRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + NervousRating);
-                passToExercise += "Anxiety/Nervousness rating: " + NervousRating + "\n";
+                passToEmail += "Anxiety/Nervousness rating: " + NervousRating + "\n";
                 Toast.makeText(Questionaire.this, NervousRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -230,7 +231,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 RightRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + RightRating);
-                passToExercise += "Feeling right rating: " + RightRating + "\n";
+                passToEmail += "Feeling right rating: " + RightRating + "\n";
                 Toast.makeText(Questionaire.this, RightRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -253,8 +254,12 @@ public class Questionaire extends AppCompatActivity {
 
 
                 Intent intent2 = new Intent(getApplicationContext(), SecondQuestionaire.class);
-                intent2.putExtra("surveyData", passToExercise);
-                Log.i(TAG, "All survey data: " + passToExercise);
+                intent2.putExtra("surveyData", passToEmail);
+                Log.i(TAG, "All data: " + passToEmail);
+                Log.i(TAG, "All  data: " + passToEmail);
+                Log.i(TAG, "All  data: " + passToEmail);
+                Log.i(TAG, "All  data: " + passToEmail);
+                Log.i(TAG, "All  data: " + passToEmail);
                 startActivity(intent2);
             }
         });
