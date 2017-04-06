@@ -105,14 +105,17 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                    intent.putExtra("minHeartRate", minHeartRate);
                    intent.putExtra("exerciseTime", timeEntered);
 
-                    data = "User: " + SharedData.user.getUserName() + "\n";
-                    data += "\nThe patient's Max heart rate setting: " + maxHR;
-                    data += "\nThe patient's duration of exercise time: " + duration;
+                    data = "User: " + SharedData.user.getUserName() + "\n\n";
+                    data += "\nThe patient's Max heart rate setting:\n" + maxHR;
+                    data += "\nThe patient's duration of exercise time:\n " + duration;
+                    data += "\nThe patient's Min heart rate setting:\n " + minHR + "\n\n";
+         //           SharedData.data = data;
+                    SharedData.dataArray[0] = data;
                     Log.i(TAG, data);
                     Log.i(TAG, data);
                     Log.i(TAG, data);
                     Log.i(TAG, data);
-                    data += "\nThe patient's Min heart rate setting: " + minHR;
+
                     intent.putExtra("data", data);
                    //  sendMessage();
                    maxEditText.setText("");

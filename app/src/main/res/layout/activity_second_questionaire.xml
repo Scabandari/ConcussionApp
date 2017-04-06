@@ -13,8 +13,8 @@
 
 
     <TextView
-        android:layout_width="388dp"
-        android:layout_height="99dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/data"
         android:hint="Results of your training session:"
         android:background="@color/colorPrimaryDark"

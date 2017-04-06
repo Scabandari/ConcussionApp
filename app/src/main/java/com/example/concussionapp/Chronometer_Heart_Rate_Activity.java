@@ -37,7 +37,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
     private final ToneGenerator tone = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,200);
     private static final String TAG = "ChronometerActivity";
-    //   Chronometer chronometer;
+
 
     //for sensor:
     BluetoothAdapter adapter = null;
@@ -45,9 +45,8 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     ZephyrProtocol _protocol;
     NewConnectedListener _NConnListener;
     private final int HEART_RATE = 0x100;
-    //   private final int INSTANT_SPEED = 0x101;
-    private String maxHR;       //max and min heart rates taken from get extra
-    private String minHR;
+  //  private String maxHR;       //max and min heart rates taken from get extra
+ //   private String minHR;
     private int maxHeart;
     private int minHeart;
     private int exerciseTime;         //time in minutes, will start count down clock w/ this value
@@ -57,10 +56,10 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     private boolean grabSample;      //Sample HR every 3 seconds, every 3 sec this should be reset
 
     //this Handler object will be used in obtaining HR samples, it needs an int delay in Millis
-    private Handler handleForToasts;
+ //   private Handler handleForToasts;
     private Handler handleForMinutes;
     private Handler handle;
-    private int delayForToastMsg;
+//    private int delayForToastMsg;
     private int delayForMinutes;
     private int delay;
     private String dataFromSurvey; //sent from activity setup via intent
@@ -70,7 +69,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     private boolean showToast;
     private boolean canStartTimer;
     private boolean fromPause; // if the CountDownTimer is being started again after a pause
-    private String allDataReadyForEmail;  // = dataFromSurvey + minuteAverage from heart rate
+   // private String allDataReadyForEmail;  // = dataFromSurvey + minuteAverage from heart rate
 
     TextView countDownTime;
     private CountDownTimer countDownT;
@@ -83,20 +82,21 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
 
-        allDataReadyForEmail = "";
+  //      allDataReadyForEmail = "";
         //not sure if i need to initialize millisLeft
         countDownTime = (TextView) findViewById(R.id.countDownTimer);
         //TO RECEIVE SURVEY DATA FROM QUESTIONAIRE ACTIVITY
-        Intent intent = getIntent();
-        dataFromSurvey = intent.getStringExtra("data");
-        dataFromSurvey += "\nHeart rate avg for every minute of exercise: \n[";
+
+ //       dataFromSurvey = intent.getStringExtra("data");
+ //       dataFromSurvey += "\nHeart rate avg for every minute of exercise: \n[";
         Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
-        Log.i(TAG, "Received data from setup activity: " +  dataFromSurvey);
-        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
-        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
+   //     Log.i(TAG, "Received data from setup activity: " +  dataFromSurvey);
+  //      Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
+//        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
         fromPause = false;
         canStartTimer = true;
         //       Bundle bundle = intent.getExtras();
+        Intent intent = getIntent();
         maxHeart = intent.getIntExtra("maxHeartRate", 120); //grab max and min HR from previous activity
         minHeart = intent.getIntExtra("minHeartRate", 60);
         exerciseTime = intent.getIntExtra("exerciseTime", 9);
@@ -150,14 +150,6 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             }
         }, delay);
 
-        delayForToastMsg = 5000;
-        handleForToasts = new Handler();
-        handleForToasts.postDelayed(new Runnable() {
-            public void run() {
-                showToast = true;
-                handle.postDelayed(this, delay);
-            }
-        }, delayForToastMsg);
 
         Button StartButton;
         Button StopButton;
@@ -221,19 +213,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                     TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
                     tv1.setText("000" + "BPM");
 
-                    //     tv1 = (EditText)findViewById(R.id.labelInstantSpeed);
-                    //   tv1.setText("0.0");
 
-                    //     ((TextView) findViewById(R.id.MACaddr)).setText(BhMacID);
-
-                    //tv1 = 	(EditText)findViewById(R.id.labelSkinTemp);
-                    //tv1.setText("0.0");
-
-                    //tv1 = 	(EditText)findViewById(R.id.labelPosture);
-                    //tv1.setText("000");
-
-                    //tv1 = 	(EditText)findViewById(R.id.labelPeakAcc);
-                    //tv1.setText("0.0");
                     if (_bt.IsConnected()) {
                         _bt.start();
                         TextView tv = (TextView) findViewById(R.id.connectionStatus);
@@ -372,6 +352,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     View.OnClickListener mResetListener  = new View.OnClickListener() {
         public void onClick(View v) {
 
+            SamplesPerMinute.clear();
             showToast = true;
             //this if executed if start button pressed from a condition of being paused
             //starts with amount of time = millisLeft
@@ -393,18 +374,15 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         minuteAvg += " " + String.valueOf(i);
                     }
                     countDownTime.setText("Done");
-                    minuteAvg += "]";
-                    for (int i = 0; i < 15; i++) { //just for testing
+             //       minuteAvg += "]";
+           //         SharedData.data += "Average heart rate for each minute of exercise time: \n" +
+                //            minuteAvg;
+                    SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                            minuteAvg +  "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+                    for (int i = 0; i < 5; i++) { //just for testing
                         Log.i(TAG, "Finished. Averages are" + minuteAvg);
                     }
                     Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                    allDataReadyForEmail = dataFromSurvey + minuteAvg;
-                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
-                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
-                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
-                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
-                    Log.i(TAG, "Exercise setup data and heart rate data: " + allDataReadyForEmail);
-                    newIntent.putExtra("allData", allDataReadyForEmail);
                     startActivity(newIntent);
                 }
             };
@@ -435,13 +413,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                        allDataReadyForEmail = dataFromSurvey + "\n" + "Average heart rate for each minute of exercise time: \n" +
-                                minuteAvg;
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
-                      //  Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+
+                        SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                minuteAvg +  "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+
                         Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                        newIntent.putExtra("allData", allDataReadyForEmail);
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
@@ -478,10 +454,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                         for (int i = 0; i < 15; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                        allDataReadyForEmail = dataFromSurvey + minuteAvg;
+
+                        SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                minuteAvg +  "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
                         Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                        newIntent.putExtra("allData", allDataReadyForEmail);
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
+
                         startActivity(newIntent);
                     }
                 };
@@ -508,18 +485,13 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                             minuteAvg += " " + String.valueOf(i);
                         }
                         countDownTime.setText("Done");
-                        for (int i = 0; i < 15; i++) { //just for testing
+                        for (int i = 0; i < 5; i++) { //just for testing
                             Log.i(TAG, "Finished. Averages are" + minuteAvg);
                         }
-                   //     Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
+
+                        SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                minuteAvg + "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
                         Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                        allDataReadyForEmail = dataFromSurvey + minuteAvg;
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
-                        Log.i(TAG, "Data to be sent is:  " + allDataReadyForEmail);
-                        newIntent.putExtra("allData", allDataReadyForEmail);
                         startActivity(newIntent);
                     }
                 };
