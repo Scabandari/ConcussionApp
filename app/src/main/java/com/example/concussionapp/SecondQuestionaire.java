@@ -38,14 +38,9 @@ public class SecondQuestionaire extends AppCompatActivity {
 
         //new-Subhi
         dbHandler = DBHandler.getInstance(this);
-
-
         Intent intent = getIntent();
-        hrData = intent.getStringExtra("allData");
-
         showData = (TextView) findViewById(R.id.data);
-
-        showData.setText(hrData);
+        showData.setText("You can now select an email client and you're results will be sent to your trainer.");
         Log.i(TAG, "Data to be sent is:  " + hrData);
 
         //new-Subhi
@@ -56,28 +51,20 @@ public class SecondQuestionaire extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                String username = ConfirmUser.getText().toString();
-                User user = dbHandler.fetchUser(username);
-
-                //  String ToEmail = user.getCareProviderEmailAddress();
-
-                Log.i("Send Email ", "");
-                Log.i(TAG, "User name from database is: " + user.getUserName());
-                Log.i(TAG, "Password from database is: " + user.getPassWord());
-                Log.i(TAG, "Email from database is: " + user.getCareProviderEmailAddress());
-                Log.i(TAG, "Data to be sent is:  " + hrData);
-
+                String emailContent = "";
+                for(int i=0; i<SharedData.size; i++) {
+                    emailContent += SharedData.dataArray[i];
+                }
 
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
                 emailIntent.setData(Uri.parse("mailto:"));
                 emailIntent.setType("text/plain");
 
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String [] {user.getCareProviderEmailAddress()});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data for user: " + user.getUserName());
-                emailIntent.putExtra(Intent.EXTRA_TEXT,hrData);
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String [] {SharedData.user.getCareProviderEmailAddress()});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data for user: " + SharedData.user.getUserName());
 
+                emailIntent.putExtra(Intent.EXTRA_TEXT, emailContent);
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
                     finish();
@@ -88,7 +75,6 @@ public class SecondQuestionaire extends AppCompatActivity {
                 }
 
 
-              //  sendEmail();
             }
         });
 
@@ -105,39 +91,5 @@ public class SecondQuestionaire extends AppCompatActivity {
 
     }
 
-//new-Subhi
-/*    protected void sendEmail()
-    {
-
-        String username = ConfirmUser.getText().toString();
-        User user = dbHandler.fetchUser(username);
-
-      //  String ToEmail = user.getCareProviderEmailAddress();
-
-        Log.i("Send Email ", "");
-        Log.i(TAG, "User name from database is: " + user.getUserName());
-        Log.i(TAG, "Password from database is: " + user.getPassWord());
-        Log.i(TAG, "Email from database is: " + user.getCareProviderEmailAddress());
-
-
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-       // emailIntent.putExtra(Intent.EXTRA_EMAIL, ToEmail);
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, user.careProviderEmailAddress);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here - Data acquired during exercise");
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            finish();
-            Log.i("Finished sending email!", "");
-        }
-        catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(SecondQuestionaire.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
-        }
-
-    }*/
 
 }
