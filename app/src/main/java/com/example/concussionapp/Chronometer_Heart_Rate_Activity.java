@@ -85,11 +85,8 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
   //      allDataReadyForEmail = "";
         //not sure if i need to initialize millisLeft
         countDownTime = (TextView) findViewById(R.id.countDownTimer);
-        //TO RECEIVE SURVEY DATA FROM QUESTIONAIRE ACTIVITY
 
- //       dataFromSurvey = intent.getStringExtra("data");
- //       dataFromSurvey += "\nHeart rate avg for every minute of exercise: \n[";
-        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
+
    //     Log.i(TAG, "Received data from setup activity: " +  dataFromSurvey);
   //      Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
 //        Log.i(TAG, "Received data from setup activity: " + dataFromSurvey);
@@ -101,6 +98,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         minHeart = intent.getIntExtra("minHeartRate", 60);
         exerciseTime = intent.getIntExtra("exerciseTime", 9);
         exerciseTime *= 60000; // 1 min * 60 sec * 1000 milli/sed
+     //   millisLeft = exerciseTime;
         showToast = false;
 
         Log.i(TAG, "Max heart rate entered:  " + maxHeart);
@@ -435,7 +433,11 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             //this if executed if start button pressed from a condition of being paused
             //starts with amount of time = millisLeft
             if(canStartTimer && fromPause) {
+                Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
+                Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
+                Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
                 countDownT= new CountDownTimer(millisLeft, 1000) {
+
                     //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -555,11 +557,12 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
                 String HeartRatetext = msg.getData().getString("HeartRate");
                 heartRateData = parseInt(HeartRatetext);
                 //grabSample is set to True every 3 sec in handle's  run() definition
-                if (grabSample && heartRateData != 0) {
+               //!canStartTimer means clock is running
+                if (grabSample && heartRateData != 0 && !canStartTimer) {
                     grabSample = false;
                     HRSamples.add(heartRateData);
                     HRStringdata += " " + String.valueOf(heartRateData);
-                    Log.i(TAG, HRStringdata);
+                    Log.i(TAG, "Logging HR data: " + HRStringdata);
                 }
                 if (heartRateData > maxHeart && System.currentTimeMillis() > timeForToast) {
                     Log.i(TAG, " Heart rate data is above max");
