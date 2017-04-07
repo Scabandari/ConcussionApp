@@ -44,12 +44,17 @@ public class SecondQuestionaire extends AppCompatActivity {
         Log.i(TAG, "Data to be sent is:  " + hrData);
 
         //new-Subhi
-        ConfirmUser = (EditText) findViewById(R.id.Confirm_Username);
+        //ConfirmUser = (EditText) findViewById(R.id.Confirm_Username);
 
         sendemail = (Button) findViewById(R.id.send_button);
         sendemail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+
+
+                Intent intent = new Intent(v.getContext(), HomeActivity.class);
+                startActivity(intent);
 
                 String emailContent = "";
                 for(int i=0; i<SharedData.size; i++) {
@@ -78,16 +83,16 @@ public class SecondQuestionaire extends AppCompatActivity {
             }
         });
 
-        done = (Button) findViewById(R.id.done_button);
-        done.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(v.getContext(), PostSurveyy.class);
-                startActivity(intent);
-            }
-        });
+        //done = (Button) findViewById(R.id.done_button);
+       // done.setOnClickListener(new View.OnClickListener()
+       // {
+           // @Override
+            //public void onClick(View v)
+            //{
+              //  Intent intent = new Intent(v.getContext(), PostSurveyy.class);
+                //startActivity(intent);
+           // }
+        //});
 
     }
 
