@@ -34,11 +34,18 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public boolean onCreateOptionsMenu(Menu menu)
+   public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
+/*    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    } */
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -56,10 +63,11 @@ public class MainActivity extends AppCompatActivity
                                 }
                             }).setTitle("Alert!").create();
                     aboutAlert.show();
+                return true;
             case R.id.Switch2:
 
                 AlertDialog.Builder helpAlert = new AlertDialog.Builder(this);
-                helpAlert.setMessage("NoCussion is designed to guide concussed athletes throughout their recovery.  It mostly help athletes during the second step of the recovery, which is a Light Aerobic Exercise where the heart rate should not go above nor beyond a threshold value.  The threshold value should be measured with your care provider. Moreover, this application will evaluate the concussion symptoms, with respect to the SCAT3 test. All results, heartbeat and symptoms evaluation will be sent to the user's care provider at the end of the session.  The application will monitor the heartbeat with a heart sensor and will limit the user within her/his heart boundaries.  This application should not replace a doctor’s consultation but should be used hands-in-hand with your trainer/health professional.")
+                helpAlert.setMessage("Help menu")
                         .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -67,6 +75,7 @@ public class MainActivity extends AppCompatActivity
                             }
                         }).setTitle("Alert!").create();
                 helpAlert.show();
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -80,14 +89,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void to_quickstart(View view)
-    {
-
-
-        Intent intent = new Intent(this, Chronometer_Heart_Rate_Activity.class);
-        //    intent.putExtra("course_keys", db.getFloatList());
-        startActivity(intent);
-    }
 
     public void to_signup_activity(View view)
     {
