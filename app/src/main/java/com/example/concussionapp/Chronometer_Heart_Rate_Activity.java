@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
@@ -13,7 +14,12 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +39,7 @@ import static com.example.concussionapp.R.id.Connect;
 import static java.lang.Integer.parseInt;
 //import android.view.View.OnClickListener;
 
-public class Chronometer_Heart_Rate_Activity extends Activity {
+public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
 
     private final ToneGenerator tone = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,200);
     private static final String TAG = "ChronometerActivity";
@@ -81,6 +87,13 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
   //      allDataReadyForEmail = "";
         //not sure if i need to initialize millisLeft
@@ -264,7 +277,52 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         timeForToast = System.currentTimeMillis() + 7000;
         timeForSound = System.currentTimeMillis() + 7000;
 
+
     } // onCreate() ENDS HERE
+
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu1, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch (item.getItemId()){
+            case R.id.Switch1:
+                //what happens when menu item is pressed
+
+                AlertDialog.Builder aboutAlert = new AlertDialog.Builder(this);
+                aboutAlert.setMessage("NoCussion is designed to guide concussed athletes throughout their recovery.  It mostly help athletes during the second step of the recovery, which is a Light Aerobic Exercise where the heart rate should not go above nor beyond a threshold value.  The threshold value should be measured with your care provider. Moreover, this application will evaluate the concussion symptoms, with respect to the SCAT3 test. All results, heartbeat and symptoms evaluation will be sent to the user's care provider at the end of the session.  The application will monitor the heartbeat with a heart sensor and will limit the user within her/his heart boundaries.  This application should not replace a doctor’s consultation but should be used hands-in-hand with your trainer/health professional.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).setTitle("About Us").create();
+                aboutAlert.show();
+                return true;
+            case R.id.Switch2:
+
+                AlertDialog.Builder helpAlert = new AlertDialog.Builder(this);
+                helpAlert.setMessage("This is your Exercise page: In here, you can connect your sensor or disconnect it. Once you are ready to train just press on the start button and you are on the go. If you need to stop for any reason you can use the stop button to do so or you can even reset your timer at anytime.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).setTitle("Help").create();
+                helpAlert.show();
+                return true;
+            case R.id.Switch3:
+                Intent logout = new Intent(Chronometer_Heart_Rate_Activity.this, MainActivity.class);
+                startActivity(logout);
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     protected void onStart() {
         super.onStart();
