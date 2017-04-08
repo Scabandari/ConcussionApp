@@ -116,7 +116,7 @@ public class RecoveryTrackingActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    /* Vals
+    /* Vals code
 
     public void addListenerCheck()
     {
