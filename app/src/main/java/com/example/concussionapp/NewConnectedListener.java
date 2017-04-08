@@ -10,14 +10,14 @@ public class NewConnectedListener extends ConnectListenerImpl
 {
     private Handler _OldHandler;
     private Handler _aNewHandler;
-    private int GP_MSG_ID = 0x20;
-    private int GP_HANDLER_ID = 0x20;
+  //  private int GP_MSG_ID = 0x20;
+  //  private int GP_HANDLER_ID = 0x20;
     private int HR_SPD_DIST_PACKET =0x26;
 
     private final int HEART_RATE = 0x100;
     private final int BATTERY_PERCENT = 0x102;
-    private final int HEART_BEAT_TIMESTAMPS = 0x103;
-    private final int HEART_BEAT_NUMBER = 0x104;
+  //  private final int HEART_BEAT_TIMESTAMPS = 0x103;
+  //  private final int HEART_BEAT_NUMBER = 0x104;
     private HRSpeedDistPacketInfo HRSpeedDistPacket = new HRSpeedDistPacketInfo();
     public NewConnectedListener(Handler handler,Handler _NewHandler) {
         super(handler, null);
