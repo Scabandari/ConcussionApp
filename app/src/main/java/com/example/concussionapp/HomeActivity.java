@@ -126,7 +126,7 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.Switch2:
 
                 AlertDialog.Builder helpAlert = new AlertDialog.Builder(this);
-                helpAlert.setMessage("Help menu")
+                helpAlert.setMessage("Please input your username and password to log in succesfully")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
