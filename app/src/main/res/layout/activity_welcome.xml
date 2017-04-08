@@ -7,9 +7,7 @@
     android:background="@color/colorPrimaryDark"
     tools:context="com.example.concussionapp.WelcomeActivity">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar" />
+
 
     <Button
         android:id="@+id/quickstart"
@@ -76,5 +74,8 @@
         android:layout_marginRight="42dp"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar" />
 
 </android.support.constraint.ConstraintLayout>
