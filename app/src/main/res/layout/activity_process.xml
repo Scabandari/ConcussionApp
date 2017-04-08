@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.concussionapp.ProcessActivity">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+         />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:text="Check the box corresponding to the step at \nwhich you are currently"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="66dp"
+        android:layout_marginRight="6dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="6dp" />
+
+    <CheckBox
+        android:id="@+id/step1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btn_step1"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:buttonTint="@color/colorPrimary"
+        android:text="Step 1: 24 hour of rest"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="132dp"
+        android:layout_marginRight="120dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="120dp" />
+
+    <CheckBox
+        android:id="@+id/step2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:buttonTint="@color/colorPrimary"
+        android:text="Step 2: Light aerobic exercises"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="192dp"
+        android:layout_marginRight="53dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="53dp" />
+
+    <CheckBox
+        android:id="@+id/step3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:buttonTint="@color/colorPrimary"
+        android:text="Step 3: Sport specified exercises"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="252dp"
+        android:layout_marginRight="34dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="34dp" />
+
+    <CheckBox
+        android:id="@+id/step4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:buttonTint="@color/colorPrimary"
+        android:text="Step 4: Non-contact training drills"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="312dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="30dp" />
+
+    <CheckBox
+        android:id="@+id/step5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:buttonTint="@color/colorPrimary"
+        android:text="Step 5: Full contact practice"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="372dp"
+        android:layout_marginRight="74dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="74dp" />
+
+    <CheckBox
+        android:id="@+id/step6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorAccent"
+        android:buttonTint="@color/colorPrimary"
+        android:text="Step 6: Return to play"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="432dp"
+        android:layout_marginRight="127dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="127dp" />
+
+    <Button
+        android:layout_width="275dp"
+        android:layout_height="44dp"
+        android:id="@+id/Done_process"
+        android:onClick="final_selection"
+        android:text="Done"
+        android:textColor="@color/colorAccent"
+        android:background="@drawable/my_shape3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="492dp"
+        android:layout_marginRight="54dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

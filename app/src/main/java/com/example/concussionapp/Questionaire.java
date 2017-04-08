@@ -13,12 +13,7 @@ import android.widget.Toast;
 public class Questionaire extends AppCompatActivity {
 
     private static final String TAG = Questionaire.class.getSimpleName();
-    private RatingBar headPressureRatingBar;
-    private RatingBar sensitivityToLight;
-    private RatingBar sensitivityToNoise;
-    private RatingBar nauseaRatingBar;
-    private RatingBar headache;
-    private RatingBar dizzinessRB;
+
 
 
     //MY SHIT
@@ -42,13 +37,6 @@ public class Questionaire extends AppCompatActivity {
     //MY shit
 
     private String[] questionValues;
-
-    private String headPressureRating;
-    private String sensitivityToNoiseRating;
-    private String sensitivityToLightRating;
-    private String nauseaRating;
-    private String headacheRating;
-    private String dizzinessRating;
 
     private String passToEmail;
 
@@ -80,9 +68,6 @@ public class Questionaire extends AppCompatActivity {
         Log.i(TAG, "Email is: " +  SharedData.user.getUserName());
      
 
-       // listenerHeadPressure();
-       //  listenerDizziness();
-       //  listenerHeadache();
         goToExercise();
 
         //My shit
@@ -114,7 +99,7 @@ public class Questionaire extends AppCompatActivity {
 
                 Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
 
-            }
+        }
         });
     }
 
