@@ -40,16 +40,21 @@ public class SecondQuestionaire extends AppCompatActivity {
         dbHandler = DBHandler.getInstance(this);
         Intent intent = getIntent();
         showData = (TextView) findViewById(R.id.data);
-        showData.setText("You can now select an email client and you're results will be sent to your trainer.");
+        showData.setText(" Your data from today's session will be send to your care provider. ");
         Log.i(TAG, "Data to be sent is:  " + hrData);
 
         //new-Subhi
-        ConfirmUser = (EditText) findViewById(R.id.Confirm_Username);
+        //ConfirmUser = (EditText) findViewById(R.id.Confirm_Username);
 
         sendemail = (Button) findViewById(R.id.send_button);
         sendemail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+
+
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent);
 
                 String emailContent = "";
                 for(int i=0; i<SharedData.size; i++) {
@@ -63,7 +68,6 @@ public class SecondQuestionaire extends AppCompatActivity {
 
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, new String [] {SharedData.user.getCareProviderEmailAddress()});
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Today's exercise data for user: " + SharedData.user.getUserName());
-
                 emailIntent.putExtra(Intent.EXTRA_TEXT, emailContent);
                 try {
                     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
@@ -78,16 +82,16 @@ public class SecondQuestionaire extends AppCompatActivity {
             }
         });
 
-        done = (Button) findViewById(R.id.done_button);
-        done.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(v.getContext(), PostSurveyy.class);
-                startActivity(intent);
-            }
-        });
+        //done = (Button) findViewById(R.id.done_button);
+       // done.setOnClickListener(new View.OnClickListener()
+       // {
+           // @Override
+            //public void onClick(View v)
+            //{
+              //  Intent intent = new Intent(v.getContext(), PostSurveyy.class);
+                //startActivity(intent);
+           // }
+        //});
 
     }
 
