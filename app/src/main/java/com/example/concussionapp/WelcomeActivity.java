@@ -68,7 +68,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public void start_recovery(View view)
     {
 
-        Intent intent = new Intent(this, Excercise_Setup_Activity.class);
+        Intent intent = new Intent(this, RecoveryTrackingActivity.class);
         startActivity(intent);
     }
 
