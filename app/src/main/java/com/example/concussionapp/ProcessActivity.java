@@ -14,11 +14,6 @@ public class ProcessActivity extends AppCompatActivity {
 
     private static final String TAG = ProcessActivity.class.getSimpleName();
 
-    private String[] StepValue;
-
-    private CheckBox Step1;
-
-    private String Step1box;
 
     private String[] selection1;
 
@@ -27,10 +22,12 @@ public class ProcessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_process);
 
- //       listenerStep1();
+
+    //  listenerStep1();
     }
 
-    public void btn_step1(View view)
+
+    public void addListenerCheck(View view)
     {
         boolean checked = ((CheckBox) view).isChecked();
         switch (view.getId())
@@ -94,8 +91,9 @@ public class ProcessActivity extends AppCompatActivity {
 
     public void final_selection(View v)
     {
+        Intent next = new Intent(getApplicationContext(), Excercise_Setup_Activity.class);
+        startActivity(next);
 
-        Intent
     }
 
 
