@@ -27,6 +27,7 @@
         android:id="@+id/MaxEditText"
         android:layout_width="215dp"
         android:layout_height="38dp"
+        android:maxLength="3"
         android:layout_marginRight="71dp"
         android:layout_marginTop="102dp"
         android:background="@drawable/my_shape3"
@@ -42,6 +43,7 @@
     <EditText
         android:layout_width="215dp"
         android:layout_height="38dp"
+        android:maxLength="3"
         android:inputType="number"
         android:hint="   Min. Heart Rate (bpm)"
         android:textColorHint="@color/colorAccent"
@@ -59,6 +61,7 @@
         android:layout_width="215dp"
         android:layout_height="38dp"
         android:inputType="number"
+        android:maxLength="3"
         android:hint="   Duration (min)"
         android:textColorHint="@color/colorAccent"
         android:textColor="@color/colorAccent"
