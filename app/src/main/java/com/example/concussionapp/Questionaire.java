@@ -97,7 +97,7 @@ public class Questionaire extends AppCompatActivity {
     //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
                 questionValues[0] = "Headache rating: " + HeadacheRating + "\n";
 
-                Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
 
         }
         });
@@ -116,7 +116,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + DizzyRating);
  //               SharedData.data  += "Dizzy rating: " + DizzyRating + "\n";
                 questionValues[1] = "Dizzy rating: " + DizzyRating + "\n";
-                Toast.makeText(Questionaire.this, DizzyRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, DizzyRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
@@ -135,7 +135,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + PressureRating);
    //             SharedData.data  += "Head Pressure rating: " + PressureRating + "\n";
                 questionValues[2] = "Head Pressure rating: " + PressureRating + "\n";
-                Toast.makeText(Questionaire.this, PressureRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, PressureRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
@@ -154,7 +154,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + NeckRating);
   //              SharedData.data  += "Neck pain rating: " + NeckRating + "\n";
                 questionValues[3] = "Neck pain rating: " + NeckRating + "\n";
-                Toast.makeText(Questionaire.this, NeckRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, NeckRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
@@ -173,7 +173,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + LightRating);
                 SharedData.data  += "Light sensitivity rating: " + LightRating + "\n";
                 questionValues[4] = "Light sensitivity rating: " + LightRating + "\n";
-                Toast.makeText(Questionaire.this, LightRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, LightRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
@@ -192,7 +192,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + NoiseRating);
                 SharedData.data  += "Noise sensitivity rating: " + NoiseRating + "\n";
                 questionValues[5] = "Noise sensitivity rating: " + NoiseRating + "\n";
-                Toast.makeText(Questionaire.this, NoiseRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, NoiseRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
@@ -211,7 +211,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + NervousRating);
                 SharedData.data  += "Anxiety/Nervousness rating: " + NervousRating + "\n";
                 questionValues[6] = "Anxiety/Nervousness rating: " + NervousRating + "\n";
-                Toast.makeText(Questionaire.this, NervousRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, NervousRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
@@ -230,7 +230,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "Rating: " + RightRating);
           //      SharedData.data  += "Feeling right rating: " + RightRating + "\n";
                 questionValues[7] = "Feeling right rating: " + RightRating + "\n";
-                Toast.makeText(Questionaire.this, RightRating, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Questionaire.this, RightRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });

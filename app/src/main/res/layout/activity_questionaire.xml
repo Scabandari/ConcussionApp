@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorAccent"
-        android:text="Pressure in head"
+        android:text="Light Headed "
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="200dp"
         android:layout_marginRight="238dp"

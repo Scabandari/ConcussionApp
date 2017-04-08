@@ -40,7 +40,7 @@
         <activity
             android:name=".SecondQuestionaire"
             android:parentActivityName=".Questionaire" />
-        <activity android:name=".ProcessActivity"></activity>
+        <activity android:name=".RecoveryTrackingActivity"></activity>
     </application>
 
 </manifest>
