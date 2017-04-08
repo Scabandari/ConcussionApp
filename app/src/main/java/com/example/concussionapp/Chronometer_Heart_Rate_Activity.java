@@ -178,6 +178,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
 
         Button btnConnect = (Button) findViewById(Connect);
         if (btnConnect != null) {
+
             btnConnect.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     String BhMacID = "00:07:80:0E:B1:0C";
@@ -272,7 +273,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
     }
 
     protected void onStop() {
-        super.onStop();
+
         showToast = false;
         try {
             _bt.removeConnectedEventListener(_NConnListener);
@@ -285,11 +286,12 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
             e.printStackTrace();
         }
 //        _bt.Close();
+        super.onStop();
 
     }
 
     protected void onPause() {
-        super.onPause();
+
         showToast = false;
         if(countDownT != null) {
             try {
@@ -300,6 +302,7 @@ public class Chronometer_Heart_Rate_Activity extends Activity {
         }
         canStartTimer = true;
         fromPause = true;
+        super.onPause();
     }
 
   /*  protected void onResume() {

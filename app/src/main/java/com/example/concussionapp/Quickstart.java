@@ -27,17 +27,50 @@ import static com.example.concussionapp.R.id.Connect;
 
 public class Quickstart extends AppCompatActivity {
 
+    private BroadcastReceiver receiver;
+
     private static final String TAG = "Quickstart";
     BluetoothAdapter adapter = null;
     BTClient _bt;
     ZephyrProtocol _protocol;
     NewConnectedListener _NConnListener;
     private final int HEART_RATE = 0x100;
+    private boolean connected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quickstart);
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
+                if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
+                    connected = true;
+                    Log.i(TAG, "Sensor Connected");
+                    Log.i(TAG, "Sensor Connected");
+                    Log.i(TAG, "Sensor Connected");
+                    Log.i(TAG, "Sensor Connected");
+                } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
+                    connected = false;
+                    Log.i(TAG, "Sensor Dis-Connected");
+                    Log.i(TAG, "Sensor Dis-Connected");
+                    Log.i(TAG, "Sensor Dis-Connected");
+                    Log.i(TAG, "Sensor Dis-Connected");
+                }
+            }
+        };
+
+        connected = false;
+
+        IntentFilter filter3 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
+        IntentFilter filter4 = new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECTED);
+        this.registerReceiver(receiver, filter3);
+        this.registerReceiver(receiver, filter4);
+
 
             /*BIPINS CODE FOR onCreate STARTS HERE AND ENDS AT END OF onCreate()*/
          /*Sending a message to android that we are going to initiate a pairing request*/
@@ -57,6 +90,8 @@ public class Quickstart extends AppCompatActivity {
         if (btnConnect != null) {
             btnConnect.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    //if there's no connection so this, else do nothing
+                    if(!connected) {
                     String BhMacID = "00:07:80:0E:B1:0C";
                     //if the timer is already running
                     adapter = BluetoothAdapter.getDefaultAdapter();
@@ -99,6 +134,7 @@ public class Quickstart extends AppCompatActivity {
                         tv.setText(ErrorText);
                     }
                 }
+                }
             });
         }
         /*Obtaining the handle to act on the DISCONNECT button*/
@@ -108,33 +144,37 @@ public class Quickstart extends AppCompatActivity {
                 @Override
 				/*Functionality to act if the button DISCONNECT is touched*/
                 public void onClick(View v) {
-                    // TODO Auto-generated method stub
+                    if (connected) {
+                        // TODO Auto-generated method stub
 					/*Reset the global variables*/
-                    TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
-                    tv1.setText("000");
+                        TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
+                        tv1.setText("000");
 
-                    TextView tv = (TextView) findViewById(R.id.connectionStatus);
-                    String ErrorText = "Disconnected from HxM!";
-                    tv.setText(ErrorText);
+                        TextView tv = (TextView) findViewById(R.id.connectionStatus);
+                        String ErrorText = "Disconnected from HxM!";
+                        tv.setText(ErrorText);
 
 					/*This disconnects listener from acting on received messages*/
-                    try {
-                        _bt.removeConnectedEventListener(_NConnListener);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            _bt.removeConnectedEventListener(_NConnListener);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 					/*Close the communication with the device & throw an exception if failure*/
-                    try {
-                        _bt.Close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            _bt.Close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
+                    }
                 }
             });
         }
 
     }
+
+
 
     private class BTBondReceiver extends BroadcastReceiver {
         @Override
@@ -199,7 +239,7 @@ public class Quickstart extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        super.onStop();
+
         	/*This disconnects listener from acting on received messages*/
         try {
             _bt.removeConnectedEventListener(_NConnListener);
@@ -213,6 +253,8 @@ public class Quickstart extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        unregisterReceiver(receiver);
+        super.onStop();
     }
 
     public void Done(View view)
