@@ -1,12 +1,11 @@
 package com.example.concussionapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,20 +15,76 @@ public class RecoveryTrackingActivity extends AppCompatActivity
   //  private CheckBox step1, step2, step3, step4, step5, step6;
   //  private Button submit;
 
-    ArrayList<String> selection = new ArrayList<String>();
+    private final String TAG = "RecoveryTrackingAct";
+    ArrayList<String> selection;
+    private int max;
 
+    private final String[] checkBoxes = {"Step 1: 24 hour of rest",
+                                        "Step 2: Light aerobic exercises",
+                                        "Step 3: Sport specified exercises",
+                                        "Step 4: Non-contact training drills",
+                                        "Step 5: Full contact practice",
+                                        "Step 6: Return to play"};
+
+    private boolean oneChecked;
+    private boolean twoChecked;
+    private boolean threeChecked;
+    private boolean fourChecked;
+    private boolean fiveChecked;
+    private boolean sixChecked;
+
+    private boolean boxesEmpty;
+
+    private CheckBox one;
+    private CheckBox two;
+    private CheckBox three;
+    private CheckBox four;
+    private CheckBox five;
+    private CheckBox six;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recovery_tracking);
 
+        one = (CheckBox) findViewById( R.id.step1);
+        two = (CheckBox) findViewById( R.id.step2);
+        three = (CheckBox) findViewById( R.id.step3);
+        four = (CheckBox) findViewById( R.id.step4);
+        five = (CheckBox) findViewById( R.id.step5);
+        six = (CheckBox) findViewById( R.id.step6);
+
+        boxesEmpty = true;
+        //THIS SHOULD BE IN onStart() ????????????
+        oneChecked = false;
+        twoChecked = false;
+        threeChecked = false;
+        fourChecked = false;
+        fiveChecked = false;
+        sixChecked = false;
+        one.setChecked(false);
+        two.setChecked(false);
+        three.setChecked(false);
+        four.setChecked(false);
+        five.setChecked(false);
+        six.setChecked(false);
+
+
+
+        max = 0;
    //     addListenerCheck();
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        selection = new ArrayList<String>();
+    }
     public void onCheckboxClicked(View view)
     {
         boolean checked = ((CheckBox) view).isChecked();
@@ -38,11 +93,13 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             case R.id.step1:
 
                 if (checked) {
-                    selection.add("Step 1: 24 hour of rest");
+                    //selection.add("Step 1: 24 hour of rest");
+                    oneChecked = true;
                 }
                 else
                 {
-                    selection.remove("Step 1: 24 hour of rest");
+                  //  selection.remove("Step 1: 24 hour of rest");
+                    oneChecked = false;
                 }
 
                 break;
@@ -50,22 +107,26 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             case R.id.step2:
 
                 if (checked) {
-                    selection.add("Step 2: Light aerobic exercises");
+                   // selection.add("Step 2: Light aerobic exercises");
+                    twoChecked = true;
                 }
                 else
                 {
-                    selection.remove("Step 2: Light aerobic exercises");
+                    twoChecked = false;
+                    // selection.remove("Step 2: Light aerobic exercises");
                 }
                 break;
 
             case R.id.step3:
 
                 if (checked) {
-                    selection.add("Step 3: Sport specified exercises");
+                    //selection.add("Step 3: Sport specified exercises");
+                    threeChecked = true;
                 }
                 else
                 {
-                    selection.remove("Step 3: Sport specified exercises");
+                   threeChecked = false;
+                    // selection.remove("Step 3: Sport specified exercises");
                 }
 
                 break;
@@ -73,11 +134,13 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             case R.id.step4:
 
                 if (checked) {
-                    selection.add("Step 4: Non-contact training drills");
+                   // selection.add("Step 4: Non-contact training drills");
+                    fourChecked = true;
                 }
                 else
                 {
-                    selection.remove("Step 4: Non-contact training drills");
+                   fourChecked = false;
+                    //  selection.remove("Step 4: Non-contact training drills");
                 }
 
                 break;
@@ -85,11 +148,13 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             case R.id.step5:
 
                 if (checked) {
-                    selection.add("Step 5: Full contact practice");
+                    fiveChecked = true;
+              //      selection.add("Step 5: Full contact practice");
                 }
                 else
                 {
-                    selection.remove("Step 5: Full contact practice");
+                   // selection.remove("Step 5: Full contact practice");
+                    fiveChecked = false;
                 }
 
                 break;
@@ -97,11 +162,13 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             case R.id.step6:
 
                 if (checked) {
-                    selection.add("Step 6: Return to play");
+                    sixChecked = true;
+                   // selection.add("Step 6: Return to play");
                 }
                 else
                 {
-                    selection.remove("Step 6: Return to play");
+                    sixChecked = false;
+                    //selection.remove("Step 6: Return to play");
                 }
 
                 break;
@@ -112,70 +179,51 @@ public class RecoveryTrackingActivity extends AppCompatActivity
     public void final_selection(View view)
     {
 
+//        for(String s: selection) {
+//            SharedData.checkboxData += s +"\n";
+ //       }
+
+        if(sixChecked){
+            max = 5;
+            boxesEmpty = false;
+        }
+        else if(fiveChecked) {
+            max = 4;
+            boxesEmpty = false;
+        }
+        else if(fourChecked) {
+            max = 3;
+            boxesEmpty = false;
+        }
+        else if(threeChecked) {
+            max = 2;
+            boxesEmpty = false;
+        }
+        else if(twoChecked) {
+            max = 1;
+            boxesEmpty = false;
+        }
+        else if(oneChecked) {
+            max = 0;
+            boxesEmpty = false;
+        }
+        else {
+            boxesEmpty = true;
+        }
+
+        if(max == 0 && boxesEmpty){
+            Toast.makeText(getApplicationContext(), "Please make a selection", Toast.LENGTH_SHORT);
+            Log.i(TAG, "EMPTY. toast should show here");
+            return;
+        }
+        Log.i(TAG, checkBoxes[max]);
+        SharedData.checkboxData =  "\nWhere " + SharedData.user.getUserName() + " is at in their " +
+            "recovery:\n" + checkBoxes[max] + "\n";
         Intent intent = new Intent(getApplicationContext(), Excercise_Setup_Activity.class);
         startActivity(intent);
     }
 
-    /* Vals code
 
-    public void addListenerCheck()
-    {
-
-        step1 = (CheckBox)findViewById(R.id.Check_Step1);
-        step2 = (CheckBox)findViewById(R.id.Check_Step2);
-        step3 = (CheckBox)findViewById(R.id.Check_Step3);
-        step4 = (CheckBox)findViewById(R.id.Check_Step4);
-        step5 = (CheckBox)findViewById(R.id.Check_Step5);
-        step6 = (CheckBox)findViewById(R.id.Check_Step6);
-        submit = (Button) findViewById(R.id.done_button);
-        submit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                StringBuffer result = new StringBuffer();
-                result.append(" Step1 : ").append(step1.isChecked());
-                result.append(" Step2 : ").append(step2.isChecked());
-                result.append(" Step3 : ").append(step3.isChecked());
-                result.append(" Step4 : ").append(step4.isChecked());
-                result.append(" Step5 : ").append(step5.isChecked());
-                result.append(" Step6 : ").append(step6.isChecked());
-
-                if(step1.isChecked() == true)
-                {
-                    selection1 [0] = "Step 1: 24 hour of rest";
-                    Toast.makeText(RecoveryTrackingActivity.this, "Steps are: " + selection1[0], Toast.LENGTH_SHORT).show();
-                }
-                if (step2.isChecked() == true)
-                {
-                    selection1 [1] = "Step 2: Light aerobic exercises";
-                }
-                if(step3.isChecked() == true)
-                {
-                    selection1 [2] = "Step 3: Sport specified exercises";
-                }
-                if (step4.isChecked() == true)
-                {
-                    selection1 [3] = "Step 4: Non-contact training drills";
-                }
-                if(step5.isChecked() == true)
-                {
-                    selection1 [4] = "Step 5: Full contact practice";
-                }
-                if (step6.isChecked() == true)
-                {
-                    selection1 [5] = "Step 6: Return to play";
-                }
-
-
-
-                Intent intent = new Intent(getApplicationContext(), Excercise_Setup_Activity.class);
-                startActivity(intent);
-
-            }
-        });
-
-    }*/
 
 
 

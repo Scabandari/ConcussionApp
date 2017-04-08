@@ -106,9 +106,10 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                    intent.putExtra("exerciseTime", timeEntered);
 
                     data = "User: " + SharedData.user.getUserName() + "\n\n";
-                    data += "\nThe patient's Max heart rate setting:\n" + maxHR + "\n\n";
-                    data += "\nThe patient's Min heart rate setting:\n " + minHR + "\n\n";
-                    data += "\nThe patient's duration of exercise time:\n " + duration;
+                    data += SharedData.checkboxData;
+                    data += "\nThe patient's Max heart rate setting:\n" + maxHR + "\n";
+                    data += "\nThe patient's Min heart rate setting:\n " + minHR + "\n";
+                    data += "\nThe patient's duration of exercise time: " + duration + "\n";
          //           SharedData.data = data;
                     SharedData.dataArray[0] = data;
                     Log.i(TAG, data);
