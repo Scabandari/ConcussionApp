@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
     }
 
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
     @Override
     public void onStart()
     {
@@ -34,11 +40,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-   public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
+
 
 /*    @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
