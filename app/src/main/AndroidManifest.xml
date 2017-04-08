@@ -22,34 +22,25 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".HomeActivity"
-        android:parentActivityName=".MainActivity" />
-
-        <activity android:name=".WelcomeActivity"></activity>
-
+            android:name=".HomeActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".WelcomeActivity" />
         <activity
             android:name=".Excercise_Setup_Activity"
             android:parentActivityName=".WelcomeActivity" />
-
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".HomeActivity" />
-
         <activity
             android:name=".Chronometer_Heart_Rate_Activity"
             android:parentActivityName=".WelcomeActivity" />
-
-        <activity
-            android:name=".Questionaire"/>
-
+        <activity android:name=".Questionaire" />
         <activity android:name=".AboutActivity" />
-
         <activity android:name=".PostSurveyy" />
-
-        <activity android:name=".SecondQuestionaire"
-            android:parentActivityName=".Questionaire"/>
-
-
+        <activity
+            android:name=".SecondQuestionaire"
+            android:parentActivityName=".Questionaire" />
+        <activity android:name=".RecoveryTrackingActivity"></activity>
     </application>
 
 </manifest>
