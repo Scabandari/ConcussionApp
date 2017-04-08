@@ -20,7 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public void quickstart(View view)
     {
 
-        Intent intent = new Intent(this, Chronometer_Heart_Rate_Activity.class);
+        Intent intent = new Intent(this, Quickstart.class);
         startActivity(intent);
     }
 
