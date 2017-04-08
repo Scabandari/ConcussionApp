@@ -16,6 +16,7 @@
         android:layout_width="353dp"
         android:layout_height="100dp"
         android:hint="Username"
+        android:maxLength="30"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         android:backgroundTint="@color/colorPrimary"
@@ -30,6 +31,7 @@
     <EditText
         android:layout_width="353dp"
         android:layout_height="100dp"
+        android:maxLength="30"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         android:backgroundTint="@color/colorPrimary"
