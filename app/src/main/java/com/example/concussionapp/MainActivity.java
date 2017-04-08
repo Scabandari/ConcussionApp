@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,18 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        if (toolbar != null)
+        {
+            setSupportActionBar(toolbar);
+        }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
@@ -34,11 +47,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-   public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
+
 
 /*    @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
@@ -67,7 +76,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.Switch2:
 
                 AlertDialog.Builder helpAlert = new AlertDialog.Builder(this);
-                helpAlert.setMessage("Help menu")
+                helpAlert.setMessage("If you have an account you can Sign in or else create a new account using Sign up")
                         .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
