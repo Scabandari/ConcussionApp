@@ -84,12 +84,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                Log.i(TAG, "Max heart rate as int : " + maxHeartRate);
                Log.i(TAG, "Min heart rate as int : " + minHeartRate);
                Log.i(TAG, "Time user entered is : " + timeEntered);
-               // convert edit text to integer
- /*           String no = maxEditText.getText().toString();
-            int no2 = Integer.parseInt(no);
-            String n = minEditText.getText().toString();
-            int n2 = Integer.parseInt(n);
-*/
+
 
                if (minHeartRate >= maxHeartRate)
                {
@@ -97,12 +92,13 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                    Toast.makeText(getApplicationContext(), " Min must be lower than Max. ", Toast.LENGTH_LONG).show();
                    return;
                }
-           /*    else if (maxHR == null || minHR == null || duration == null)
+               if (maxHeartRate > 200)
                {
-//fct for empty field       Toast.makeText(getApplicationContext(), "Empty field" , Toast.LENGTH_LONG).show();
-                            return;
+
+                   Toast.makeText(getApplicationContext(), " Max must be lower than 200. ", Toast.LENGTH_LONG).show();
+                   return;
                }
-            */
+
                    //    Intent intent = new Intent (this,Chronometer_Heart_Rate_Activity.class);
                    Intent intent = new Intent(getApplicationContext(), Chronometer_Heart_Rate_Activity.class);
                    intent.putExtra("maxHeartRate", maxHeartRate);
@@ -114,15 +110,14 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
                     data += "\nThe patient's Max heart rate setting:\n" + maxHR ;
                     data += "\nThe patient's Min heart rate setting:\n " + minHR;
                     data += "\nThe patient's duration of exercise time: " + duration + "\n";
-         //           SharedData.data = data;
+
                     SharedData.dataArray[0] = data;
                     Log.i(TAG, data);
                     Log.i(TAG, data);
                     Log.i(TAG, data);
                     Log.i(TAG, data);
 
-           //         intent.putExtra("data", data);
-                   //  sendMessage();
+
                    maxEditText.setText("");
                    minEditText.setText("");
                    durationEditText.setText("");
