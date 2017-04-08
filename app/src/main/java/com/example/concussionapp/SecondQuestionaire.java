@@ -44,7 +44,7 @@ public class SecondQuestionaire extends AppCompatActivity {
         dbHandler = DBHandler.getInstance(this);
         Intent intent = getIntent();
         showData = (TextView) findViewById(R.id.data);
-        showData.setText(" Your data from today's session will be send to your care provider. ");
+        showData.setText(" Your data from today's session will be send to your care provider.\nYou can add a comment to the bottom of the email if necessary. ");
         Log.i(TAG, "Data to be sent is:  " + hrData);
 
         //new-Subhi
@@ -89,16 +89,7 @@ public class SecondQuestionaire extends AppCompatActivity {
             }
         });
 
-        //done = (Button) findViewById(R.id.done_button);
-       // done.setOnClickListener(new View.OnClickListener()
-       // {
-           // @Override
-            //public void onClick(View v)
-            //{
-              //  Intent intent = new Intent(v.getContext(), PostSurveyy.class);
-                //startActivity(intent);
-           // }
-        //});
+
 
     }
 

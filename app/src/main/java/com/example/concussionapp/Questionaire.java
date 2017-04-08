@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 public class Questionaire extends AppCompatActivity {
 
@@ -219,7 +218,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 LightRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + LightRating);
-                SharedData.data  += "Light sensitivity rating: " + LightRating + "\n";
+    //            SharedData.data  += "Light sensitivity rating: " + LightRating + "\n";
                 questionValues[4] = "Light sensitivity rating: " + LightRating + "\n";
                 //Toast.makeText(Questionaire.this, LightRating, Toast.LENGTH_SHORT).show();
                 //     }
@@ -238,7 +237,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 NoiseRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + NoiseRating);
-                SharedData.data  += "Noise sensitivity rating: " + NoiseRating + "\n";
+    //            SharedData.data  += "Noise sensitivity rating: " + NoiseRating + "\n";
                 questionValues[5] = "Noise sensitivity rating: " + NoiseRating + "\n";
                 //Toast.makeText(Questionaire.this, NoiseRating, Toast.LENGTH_SHORT).show();
                 //     }
@@ -257,7 +256,7 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 NervousRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + NervousRating);
-                SharedData.data  += "Anxiety/Nervousness rating: " + NervousRating + "\n";
+        //        SharedData.data  += "Anxiety/Nervousness rating: " + NervousRating + "\n";
                 questionValues[6] = "Anxiety/Nervousness rating: " + NervousRating + "\n";
                 //Toast.makeText(Questionaire.this, NervousRating, Toast.LENGTH_SHORT).show();
                 //     }
