@@ -9,6 +9,8 @@ public class SharedData {
     public static User user;
     public static String checkboxData;
     public static final int size = 4;
+    public static String MAC = "00:07:80:0E:B1:0C";
+    public static final String DEFAULT_MAC = "00:07:80:0E:B1:0C";
     //public static String data;
     public static String[] dataArray = new String[size];
     SharedData(User user) {
@@ -19,3 +21,11 @@ public class SharedData {
         }
     }
 }
+
+/*
+
+SharedData.MAC = SharedData.DEFAULT_MAC;
+
+
+
+ */
