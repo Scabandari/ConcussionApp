@@ -1,6 +1,5 @@
 package com.example.concussionapp;
 //test
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -39,6 +38,7 @@ import static com.example.concussionapp.R.id.Connect;
 import static java.lang.Integer.parseInt;
 //import android.view.View.OnClickListener;
 
+
 public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
 
     private final ToneGenerator tone = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,200);
@@ -50,6 +50,8 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
     BTClient _bt;
     ZephyrProtocol _protocol;
     NewConnectedListener _NConnListener;
+
+    private BroadcastReceiver receiver;
     private final int HEART_RATE = 0x100;
   //  private String maxHR;       //max and min heart rates taken from get extra
  //   private String minHR;
@@ -83,6 +85,7 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
     private long timeForToast;
     private long timeForSound;
 
+    private boolean connected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +97,36 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
+                if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
+                    connected = true;
+                    Log.i(TAG, "Sensor Connected");
+                    Log.i(TAG, "Sensor Connected");
+                    Log.i(TAG, "Sensor Connected");
+                    Log.i(TAG, "Sensor Connected");
+                } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
+                    connected = false;
+                    Log.i(TAG, "Sensor Dis-Connected");
+                    Log.i(TAG, "Sensor Dis-Connected");
+                    Log.i(TAG, "Sensor Dis-Connected");
+                    Log.i(TAG, "Sensor Dis-Connected");
+                }
+            }
+        };
+
+        connected = false;
+
+        IntentFilter filter3 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
+        IntentFilter filter4 = new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECTED);
+        this.registerReceiver(receiver, filter3);
+        this.registerReceiver(receiver, filter4);
+
 
   //      allDataReadyForEmail = "";
         //not sure if i need to initialize millisLeft
@@ -194,49 +227,53 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
 
             btnConnect.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    String BhMacID = "00:07:80:0E:B1:0C";
-                    //if the timer is already running
-                    if(!canStartTimer){
-                        showToast = true; //allow show toast msg
-                    }
-                    adapter = BluetoothAdapter.getDefaultAdapter();
 
-                    Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
+                    if (!connected) {
+                      //  String BhMacID = "00:07:80:0E:B1:0C";
+                        String BhMacID = SharedData.MAC;
+                        //if the timer is already running
+                        if (!canStartTimer) {
+                            showToast = true; //allow show toast msg
+                        }
+                        adapter = BluetoothAdapter.getDefaultAdapter();
 
-                    if (pairedDevices.size() > 0) {
-                        for (BluetoothDevice device : pairedDevices) {
-                            if (device.getName().startsWith("HXM")) {
-                                BluetoothDevice btDevice = device;
-                                BhMacID = btDevice.getAddress();
-                                break;
+                        Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
 
+                        if (pairedDevices.size() > 0) {
+                            for (BluetoothDevice device : pairedDevices) {
+                                if (device.getName().startsWith("HXM")) {
+                                    BluetoothDevice btDevice = device;
+                                    BhMacID = btDevice.getAddress();
+                                    break;
+
+                                }
                             }
+
                         }
 
-                    }
+                        //BhMacID = btDevice.getAddress();
+                        BluetoothDevice Device = adapter.getRemoteDevice(BhMacID);
+                        String DeviceName = Device.getName();
+                        _bt = new BTClient(adapter, BhMacID);
+                        _NConnListener = new NewConnectedListener(Newhandler, Newhandler);
+                        _bt.addConnectedEventListener(_NConnListener);
 
-                    //BhMacID = btDevice.getAddress();
-                    BluetoothDevice Device = adapter.getRemoteDevice(BhMacID);
-                    String DeviceName = Device.getName();
-                    _bt = new BTClient(adapter, BhMacID);
-                    _NConnListener = new NewConnectedListener(Newhandler, Newhandler);
-                    _bt.addConnectedEventListener(_NConnListener);
-
-                    TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
-                    tv1.setText("000" + "BPM");
+                        TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
+                        tv1.setText("000" + "BPM");
 
 
-                    if (_bt.IsConnected()) {
-                        _bt.start();
-                        TextView tv = (TextView) findViewById(R.id.connectionStatus);
-                        String ErrorText = "Connected to HxM " + DeviceName;
-                        tv.setText(ErrorText);
+                        if (_bt.IsConnected()) {
+                            _bt.start();
+                            TextView tv = (TextView) findViewById(R.id.connectionStatus);
+                            String ErrorText = "Connected to HxM " + DeviceName;
+                            tv.setText(ErrorText);
 
-                        //Reset all the values to 0s
-                    } else {
-                        TextView tv = (TextView) findViewById(R.id.connectionStatus);
-                        String ErrorText = "Unable to Connect !";
-                        tv.setText(ErrorText);
+                            //Reset all the values to 0s
+                        } else {
+                            TextView tv = (TextView) findViewById(R.id.connectionStatus);
+                            String ErrorText = "Unable to Connect !";
+                            tv.setText(ErrorText);
+                        }
                     }
                 }
             });
@@ -248,28 +285,37 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
                 @Override
 				/*Functionality to act if the button DISCONNECT is touched*/
                 public void onClick(View v) {
-                    // TODO Auto-generated method stub
+
+                    if (connected) {
 					/*Reset the global variables*/
-                    TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
-                    tv1.setText("000");
-					showToast = false;
-                    TextView tv = (TextView) findViewById(R.id.connectionStatus);
-                    String ErrorText = "Disconnected from HxM!";
-                    tv.setText(ErrorText);
+                        TextView tv1 = (EditText) findViewById(R.id.ActualHeartRate);
+                        tv1.setText("000");
+                        showToast = false;
+                        TextView tv = (TextView) findViewById(R.id.connectionStatus);
+                        String ErrorText = "Disconnected from HxM!";
+                        tv.setText(ErrorText);
 
 					/*This disconnects listener from acting on received messages*/
-                    try {
-                        _bt.removeConnectedEventListener(_NConnListener);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            _bt.removeConnectedEventListener(_NConnListener);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 					/*Close the communication with the device & throw an exception if failure*/
-                    try {
-                        _bt.Close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                        try {
+                            _bt.Close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
+                        if(!canStartTimer) {
+                            countDownT.cancel();
+                            canStartTimer = true;
+                            fromPause = true;
+                            showToast = false;
+                        }
+
+                    }
                 }
             });
         }
@@ -294,7 +340,7 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
                 //what happens when menu item is pressed
 
                 AlertDialog.Builder aboutAlert = new AlertDialog.Builder(this);
-                aboutAlert.setMessage("NoCussion is designed to guide concussed athletes throughout their recovery.  It mostly help athletes during the second step of the recovery, which is a Light Aerobic Exercise where the heart rate should not go above nor beyond a threshold value.  The threshold value should be measured with your care provider. Moreover, this application will evaluate the concussion symptoms, with respect to the SCAT3 test. All results, heartbeat and symptoms evaluation will be sent to the user's care provider at the end of the session.  The application will monitor the heartbeat with a heart sensor and will limit the user within her/his heart boundaries.  This application should not replace a doctor’s consultation but should be used hands-in-hand with your trainer/health professional.")
+                aboutAlert.setMessage(" NoCussion is a tool designed for any member of the medical team who is treating athletes recovering from a concussion.  The application gives information on concussion and tips for a better recovery process. NoCussion guide the athletes throughout their recovery. The user will have her/his heart beat monitor during their training and will be asked to rate their concussion symptom after a physical effort. All data will be sent to the athlete’s care provider by email.  NoCussion facilitates the communication between the athlete and the care provider during the recovery process.")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -333,17 +379,20 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
     protected void onStop() {
 
         showToast = false;
+    	/*This disconnects listener from acting on received messages*/
         try {
             _bt.removeConnectedEventListener(_NConnListener);
         } catch (Exception e) {
             e.printStackTrace();
         }
+					/*Close the communication with the device & throw an exception if failure*/
         try {
             _bt.Close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        _bt.Close();
+
+        unregisterReceiver(receiver);
         super.onStop();
 
     }
@@ -395,6 +444,7 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
 
     }
 */
+
     View.OnClickListener mStopListener= new View.OnClickListener() {
         public void onClick(View v) {
 
@@ -490,77 +540,81 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
     View.OnClickListener mStartListener = new View.OnClickListener() {
         public void onClick(View v) {
 
-            showToast = true;
-            //this if executed if start button pressed from a condition of being paused
-            //starts with amount of time = millisLeft
-            if(canStartTimer && fromPause) {
-                Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
-                Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
-                Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
-                countDownT= new CountDownTimer(millisLeft, 1000) {
-
-                    //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        millisLeft = millisUntilFinished;
-                        //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
-                        countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        String minuteAvg = "";
-                        for (Integer i : SamplesPerMinute) {
-                            minuteAvg += " " + String.valueOf(i);
-                        }
-                        countDownTime.setText("Done");
-                        for (int i = 0; i < 15; i++) { //just for testing
-                            Log.i(TAG, "Finished. Averages are" + minuteAvg);
-                        }
-
-                        SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
-                                minuteAvg +  "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
-                        Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-
-                        startActivity(newIntent);
-                    }
-                };
-                countDownT.start();
-
-                canStartTimer = false;
-            }
-            //this else if executes when the timer is first started, ie not from a paused condition
-            else if (canStartTimer) {
+            if (connected) {
                 showToast = true;
-                countDownT= new CountDownTimer(exerciseTime, 1000) {
-                    //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        millisLeft = millisUntilFinished;
-                        //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
-                        countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
-                    }
+                //this if executed if start button pressed from a condition of being paused
+                //starts with amount of time = millisLeft
+                if (canStartTimer && fromPause) {
+                    Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
+                    Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
+                    Log.i(TAG, "STARTED TIMER FROM ON PAUSE");
+                    countDownT = new CountDownTimer(millisLeft, 1000) {
 
-                    @Override
-                    public void onFinish() {
-                        String minuteAvg = "";
-                        for (Integer i : SamplesPerMinute) {
-                            minuteAvg += " " + String.valueOf(i);
-                        }
-                        countDownTime.setText("Done");
-                        for (int i = 0; i < 5; i++) { //just for testing
-                            Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                        //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            millisLeft = millisUntilFinished;
+                            //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                            countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
                         }
 
-                        SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
-                                minuteAvg + "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
-                        Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                        startActivity(newIntent);
-                    }
-                };
-                countDownT.start();
+                        @Override
+                        public void onFinish() {
+                            String minuteAvg = "";
+                            for (Integer i : SamplesPerMinute) {
+                                minuteAvg += " " + String.valueOf(i);
+                            }
+                            countDownTime.setText("Done");
+                            for (int i = 0; i < 15; i++) { //just for testing
+                                Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                            }
 
-                canStartTimer = false;
+                            SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                    minuteAvg + "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+                            Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
+
+                            startActivity(newIntent);
+                        }
+                    };
+                    countDownT.start();
+
+                    canStartTimer = false;
+                }
+                //this else if executes when the timer is first started, ie not from a paused condition
+                else if (canStartTimer) {
+                    showToast = true;
+                    countDownT = new CountDownTimer(exerciseTime, 1000) {
+                        //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            millisLeft = millisUntilFinished;
+                            //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                            countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            String minuteAvg = "";
+                            for (Integer i : SamplesPerMinute) {
+                                minuteAvg += " " + String.valueOf(i);
+                            }
+                            countDownTime.setText("Done");
+                            for (int i = 0; i < 5; i++) { //just for testing
+                                Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                            }
+
+                            SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                    minuteAvg + "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+                            Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
+                            startActivity(newIntent);
+                        }
+                    };
+                    countDownT.start();
+
+                    canStartTimer = false;
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "You must be connected to the sensor", Toast.LENGTH_LONG).show();
             }
         }
     };

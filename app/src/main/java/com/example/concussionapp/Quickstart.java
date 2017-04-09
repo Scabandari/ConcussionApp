@@ -92,8 +92,10 @@ public class Quickstart extends AppCompatActivity {
                 public void onClick(View v) {
                     //if there's no connection so this, else do nothing
                     if(!connected) {
-                    String BhMacID = "00:07:80:0E:B1:0C";
-                    //if the timer is already running
+                   // String BhMacID = "00:07:80:0E:B1:0C";
+                        String BhMacID = SharedData.MAC;
+
+                        //if the timer is already running
                     adapter = BluetoothAdapter.getDefaultAdapter();
 
                     Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
