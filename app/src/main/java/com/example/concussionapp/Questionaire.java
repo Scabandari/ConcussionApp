@@ -87,11 +87,9 @@ public class Questionaire extends AppCompatActivity {
         listenerHeadache();
         listenerDizzy();
         listenerPressure();
-   //     listenerNeck();
-     //   listenerLight();
+
         listenerNoise();
-     //   listenerNervous();
-       // listenerRight();
+
 
         difficultyConcentrating();
         feelingFog();
@@ -198,7 +196,7 @@ public class Questionaire extends AppCompatActivity {
                 concentratingString = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + HeadacheRating);
                 //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
-                questionValues[4] = "Difficulty Concentrating: " + DifficultyConcentrating + "\n";
+                questionValues[4] = "Difficulty Concentrating: " + concentratingString + "\n";
 
                 //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
 
@@ -263,45 +261,7 @@ public class Questionaire extends AppCompatActivity {
             }
         });
     }
-/*
-    public void listenerNeck() {
 
-        NeckRatingBar = (RatingBar) findViewById(R.id.NeckRate);
-
-        NeckRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                //  if(fromUser) {
-                NeckRating = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + NeckRating);
-  //              SharedData.data  += "Neck pain rating: " + NeckRating + "\n";
-                questionValues[3] = "Neck pain rating: " + NeckRating + "\n";
-                //Toast.makeText(Questionaire.this, NeckRating, Toast.LENGTH_SHORT).show();
-                //     }
-            }
-        });
-    }
-
-    public void listenerLight() {
-
-        LightRatingBar = (RatingBar) findViewById(R.id.LightRate);
-
-        LightRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                //  if(fromUser) {
-                LightRating = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + LightRating);
-    //            SharedData.data  += "Light sensitivity rating: " + LightRating + "\n";
-                questionValues[4] = "Light sensitivity rating: " + LightRating + "\n";
-                //Toast.makeText(Questionaire.this, LightRating, Toast.LENGTH_SHORT).show();
-                //     }
-            }
-        });
-    }
-*/
     //this one is for light & noise sensitivity
     public void listenerNoise() {
 
@@ -321,45 +281,7 @@ public class Questionaire extends AppCompatActivity {
             }
         });
     }
-/*
-    public void listenerNervous() {
 
-        NervousRatingBar = (RatingBar) findViewById(R.id.NervousRate);
-
-        NervousRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                //  if(fromUser) {
-                NervousRating = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + NervousRating);
-        //        SharedData.data  += "Anxiety/Nervousness rating: " + NervousRating + "\n";
-                questionValues[6] = "Anxiety/Nervousness rating: " + NervousRating + "\n";
-                //Toast.makeText(Questionaire.this, NervousRating, Toast.LENGTH_SHORT).show();
-                //     }
-            }
-        });
-    }
-
-    public void listenerRight() {
-
-        RightRatingBar = (RatingBar) findViewById(R.id.RightRate);
-
-        RightRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                //  if(fromUser) {
-                RightRating = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + RightRating);
-          //      SharedData.data  += "Feeling right rating: " + RightRating + "\n";
-                questionValues[7] = "Feeling right rating: " + RightRating + "\n";
-                //Toast.makeText(Questionaire.this, RightRating, Toast.LENGTH_SHORT).show();
-                //     }
-            }
-        });
-    }
-*/
     protected void goToExercise()
 
     {

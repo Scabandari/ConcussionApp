@@ -58,6 +58,50 @@ public class HomeActivity extends AppCompatActivity {
                 //get username and password
                 String username = loginusername.getText().toString();
                 String password = loginpassword.getText().toString();
+/*
+                username.setFilters(new InputFilter[] {
+                        new InputFilter() {
+                            public CharSequence filter(CharSequence src, int start,
+                                                       int end, Spanned dst, int dstart, int dend) {
+
+                                if(src.equals("")){ // for backspace
+                                    return src;
+                                }
+                                if(src.toString().matches("[a-zA-Z0-9 ]*")) //put your constraints here
+                                {
+                                    return src;
+                                }
+                                return "";
+                            }
+                        }
+                });
+//
+                //
+           /*     InputFilter[] filters = new InputFilter[1];
+                filters[0] = new InputFilter(){
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                        if (end > start) {
+
+                            char[] acceptedChars = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                                    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                                    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '&', ' '};
+
+                            for (int index = start; index < end; index++) {
+                                if (!new String(acceptedChars).contains(String.valueOf(source.charAt(index)))) {
+                                    return "";
+                                }
+                            }
+                        }
+                        return null;
+                    }
+
+                };
+                loginpassword.setFilters(filters);
+                loginusername.setFilters(filters);
+
+//*/
+//
 
                 //fetch the password from database for respective user
                 //Create an object of Class User to store password & email
