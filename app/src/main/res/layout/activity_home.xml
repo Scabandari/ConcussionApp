@@ -11,6 +11,14 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
+<android.support.design.widget.TextInputLayout
+    android:layout_width="353dp"
+    android:layout_height="100dp"
+    android:textColorHint="@color/colorAccent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="70dp"
+    android:layout_marginRight="3dp"
+    app:layout_constraintRight_toRightOf="parent">
 
     <EditText
         android:layout_width="353dp"
@@ -19,7 +27,6 @@
         android:maxLength="30"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/loginusername"
         android:layout_above="@+id/loginpassword"
         android:layout_alignStart="@+id/loginpassword"
@@ -28,13 +35,24 @@
         android:layout_marginTop="76dp"
         android:layout_marginRight="3dp" />
 
+
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="353dp"
+        android:layout_height="100dp"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="183dp"
+        android:layout_marginRight="3dp"
+        app:layout_constraintRight_toRightOf="parent">
+
     <EditText
         android:layout_width="353dp"
         android:layout_height="100dp"
         android:maxLength="30"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
         android:hint="Password"
         android:inputType="textPassword"
         android:id="@+id/loginpassword"
@@ -44,6 +62,8 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="185dp"
         android:layout_marginRight="3dp" />
+
+</android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="353dp"

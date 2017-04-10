@@ -56,7 +56,6 @@ public class Questionaire extends AppCompatActivity {
         if (toolbar != null)
         {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         questionValues = new String [arraySize];

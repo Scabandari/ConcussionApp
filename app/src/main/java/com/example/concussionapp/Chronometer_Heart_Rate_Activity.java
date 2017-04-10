@@ -364,6 +364,7 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
             case R.id.Switch3:
                 Intent logout = new Intent(Chronometer_Heart_Rate_Activity.this, MainActivity.class);
                 startActivity(logout);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

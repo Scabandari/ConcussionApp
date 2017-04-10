@@ -129,6 +129,7 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             case R.id.Switch3:
                 Intent logout = new Intent(RecoveryTrackingActivity.this, MainActivity.class);
                 startActivity(logout);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -270,9 +271,6 @@ public class RecoveryTrackingActivity extends AppCompatActivity
         Intent intent = new Intent(getApplicationContext(), Excercise_Setup_Activity.class);
         startActivity(intent);
     }
-
-
-
 
 
 }

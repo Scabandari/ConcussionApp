@@ -10,7 +10,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon_app"
-        android:label="@string/app_name"
+        android:label="NoCussion"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -24,27 +24,28 @@
         <activity
             android:name=".HomeActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".WelcomeActivity"
-            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".WelcomeActivity"
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Excercise_Setup_Activity"
-            android:parentActivityName=".WelcomeActivity" />
+            android:parentActivityName=".RecoveryTrackingActivity" />
         <activity
             android:name=".SignUpActivity"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".Chronometer_Heart_Rate_Activity"
             android:parentActivityName=".WelcomeActivity" />
-        <activity android:name=".Questionaire" />
+        <activity android:name=".Questionaire"/>
         <activity android:name=".AboutActivity" />
         <activity android:name=".PostSurveyy" />
         <activity
             android:name=".SecondQuestionaire"
             android:parentActivityName=".Questionaire" />
-        <activity android:name=".ProcessActivity"/>
-        <activity android:name=".RecoveryTrackingActivity"></activity>
-
-        <activity android:name=".Quickstart"></activity>
+        <activity android:name=".ProcessActivity" />
+        <activity android:name=".RecoveryTrackingActivity" />
+        <activity android:name=".Quickstart" />
+        <activity android:name=".MACActivity"></activity>
     </application>
 
 </manifest>
