@@ -166,6 +166,7 @@ public class Excercise_Setup_Activity extends AppCompatActivity {
             case R.id.Switch3:
                 Intent logout = new Intent(Excercise_Setup_Activity.this, MainActivity.class);
                 startActivity(logout);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

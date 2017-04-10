@@ -134,8 +134,8 @@
         android:background="@drawable/my_shape3"
         android:textColor="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="512dp"
-        android:layout_marginRight="166dp"
+        android:layout_marginTop="513dp"
+        android:layout_marginRight="136dp"
         app:layout_constraintRight_toRightOf="parent" />
 
     <RatingBar

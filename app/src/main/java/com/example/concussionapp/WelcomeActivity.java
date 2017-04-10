@@ -24,12 +24,11 @@ public class WelcomeActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu1, menu);
+        getMenuInflater().inflate(R.menu.menu2, menu);
         return true;
     }
 
@@ -50,6 +49,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         }).setTitle("About Us").create();
                 aboutAlert.show();
                 return true;
+
             case R.id.Switch2:
 
                 AlertDialog.Builder helpAlert = new AlertDialog.Builder(this);
@@ -62,9 +62,16 @@ public class WelcomeActivity extends AppCompatActivity {
                         }).setTitle("Help").create();
                 helpAlert.show();
                 return true;
+
             case R.id.Switch3:
                 Intent logout = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(logout);
+                return true;
+
+            case R.id.Switch4:
+                Intent changeMAC = new Intent(WelcomeActivity.this, MACActivity.class);
+                startActivity(changeMAC);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

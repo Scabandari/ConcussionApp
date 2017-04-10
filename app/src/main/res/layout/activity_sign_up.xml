@@ -9,40 +9,60 @@
     tools:context="com.example.concussionapp.SignUpActivity"
     android:background="@color/colorPrimaryDark">
 
-
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="353dp"
         android:layout_height="100dp"
         android:textColorHint="@color/colorAccent"
-        android:maxLength="30"
-        android:textColor="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Username"
-        android:id="@+id/SignUpusername"
-        android:layout_above="@+id/SignUpEmail"
-        android:layout_alignStart="@+id/SignUpEmail"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="56dp"
         android:layout_marginRight="3dp"
         app:layout_constraintRight_toRightOf="parent">
-        <requestFocus/></EditText>
 
-    <EditText
+        <EditText
+            android:id="@+id/SignUpusername"
+            android:layout_width="353dp"
+            android:layout_height="100dp"
+            android:layout_above="@+id/SignUpEmail"
+            android:layout_alignStart="@+id/SignUpEmail"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="56dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hint="Username"
+            android:maxLength="30"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></EditText>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="353dp"
         android:layout_height="100dp"
-        android:maxLength="30"
-        android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:id="@+id/SignUppassword"
-        android:layout_above="@+id/Confirmpassword"
-        android:layout_alignStart="@+id/Confirmpassword"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="249dp"
         android:layout_marginRight="3dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <EditText
+            android:layout_width="353dp"
+            android:layout_height="100dp"
+            android:maxLength="30"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:id="@+id/SignUppassword"
+            android:layout_above="@+id/Confirmpassword"
+            android:layout_alignStart="@+id/Confirmpassword"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="256dp"
+            android:layout_marginRight="3dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
         android:layout_width="353dp"
@@ -58,39 +78,60 @@
         android:layout_marginRight="3dp"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="353dp"
         android:layout_height="100dp"
-        android:maxLength="30"
-        android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Email"
-        android:id="@+id/SignUpEmail"
-        android:layout_above="@+id/SignUppassword"
-        android:layout_alignEnd="@+id/SignUppassword"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="156dp"
         android:layout_marginRight="3dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
 
-    <EditText
+        <EditText
+            android:layout_width="353dp"
+            android:layout_height="100dp"
+            android:maxLength="30"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint="Care Provider's Email"
+            android:id="@+id/SignUpEmail"
+            android:layout_above="@+id/SignUppassword"
+            android:layout_alignEnd="@+id/SignUppassword"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="156dp"
+            android:layout_marginRight="3dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="353dp"
         android:layout_height="100dp"
-        android:maxLength="30"
-        android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Re-type Password"
-        android:inputType="textPassword"
-        android:id="@+id/Confirmpassword"
-        android:layout_above="@+id/CreateAccount"
-        android:layout_alignEnd="@+id/CreateAccount"
-
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="356dp"
+        android:layout_marginTop="349dp"
         android:layout_marginRight="3dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <EditText
+            android:layout_width="353dp"
+            android:layout_height="100dp"
+            android:maxLength="30"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
+            android:hint="Re-type Password"
+            android:inputType="textPassword"
+            android:id="@+id/Confirmpassword"
+            android:layout_above="@+id/CreateAccount"
+            android:layout_alignEnd="@+id/CreateAccount"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="356dp"
+            android:layout_marginRight="3dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <include
         android:id="@+id/tool_bar"

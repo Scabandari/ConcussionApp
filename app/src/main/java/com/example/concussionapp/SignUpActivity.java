@@ -1,11 +1,15 @@
 package com.example.concussionapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,6 +106,49 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch (item.getItemId()){
+            case R.id.Switch1:
+                //what happens when menu item is pressed
+
+                AlertDialog.Builder aboutAlert = new AlertDialog.Builder(this);
+                aboutAlert.setMessage(" NoCussion is a tool designed for any member of the medical team who is treating athletes recovering from a concussion.  The application gives information on concussion and tips for a better recovery process. NoCussion guide the athletes throughout their recovery. The user will have her/his heart beat monitor during their training and will be asked to rate their concussion symptom after a physical effort. All data will be sent to the athlete’s care provider by email.  NoCussion facilitates the communication between the athlete and the care provider during the recovery process.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).setTitle("About Us").create();
+                aboutAlert.show();
+                return true;
+
+            case R.id.Switch2:
+
+                AlertDialog.Builder helpAlert = new AlertDialog.Builder(this);
+                helpAlert.setMessage("This page will let you create a new account. On this page you need to create a username and password and provide your care provider's email.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).setTitle("Help").create();
+                helpAlert.show();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
