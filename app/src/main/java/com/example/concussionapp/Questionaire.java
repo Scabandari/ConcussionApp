@@ -308,7 +308,7 @@ public class Questionaire extends AppCompatActivity {
                 Log.i(TAG, "All  data: " + passToEmail);
                 Log.i(TAG, "All  data: " + passToEmail);
                 Log.i(TAG, "All  data: " + passToEmail);
-                String hugeString = "";
+                String hugeString = "\n";
                 for(int i = 0; i < arraySize; i++) {
                     hugeString += questionValues[i];
                 }
