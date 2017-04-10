@@ -63,7 +63,6 @@ public class Questionaire extends AppCompatActivity {
         if (toolbar != null)
         {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         //initialize all values to 1
