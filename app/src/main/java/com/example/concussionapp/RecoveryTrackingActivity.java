@@ -266,8 +266,8 @@ public class RecoveryTrackingActivity extends AppCompatActivity
             return;
         }
         Log.i(TAG, checkBoxes[max]);
-        SharedData.checkboxData =  "\nWhere " + SharedData.user.getUserName() + " is at in their " +
-            "recovery:\n" + checkBoxes[max] + "\n";
+        SharedData.checkboxData =  "\nAs of today, I, " + SharedData.user.getUserName() + " have completed the following step:\n " +
+                checkBoxes[max] + "\n" + "Currently at " + checkBoxes [max+1];
         Intent intent = new Intent(getApplicationContext(), Excercise_Setup_Activity.class);
         startActivity(intent);
     }
