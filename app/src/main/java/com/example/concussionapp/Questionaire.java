@@ -66,12 +66,13 @@ public class Questionaire extends AppCompatActivity {
         }
 
         //initialize all values to 1
-        for(int i =0; i< questionValues.length; i++) {
-            questionValues[i] = "1";
-        }
+
         questionValues = new String [arraySize];
         Intent intent = new Intent();
         passToEmail = intent.getStringExtra("allData");
+        for(int i =0; i< questionValues.length; i++) {
+            questionValues[i] = "1";
+        }
 
         Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
         Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
