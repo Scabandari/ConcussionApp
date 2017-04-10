@@ -94,7 +94,7 @@ public class Quickstart extends AppCompatActivity {
                     if(!connected) {
                    // String BhMacID = "00:07:80:0E:B1:0C";
                         String BhMacID = SharedData.MAC;
-
+                        Log.i(TAG, "MAC ADDRESS: " + BhMacID);
                         //if the timer is already running
                     adapter = BluetoothAdapter.getDefaultAdapter();
 
