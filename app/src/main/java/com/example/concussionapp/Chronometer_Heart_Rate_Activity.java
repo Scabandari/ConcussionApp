@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -86,10 +87,45 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
     private long timeForSound;
 
     private boolean connected;
+
+    private int currentApiVersion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronometer__heart__rate_);
+
+        currentApiVersion = Build.VERSION.SDK_INT;
+
+        final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+
+        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
+        {
+            getWindow().getDecorView().setSystemUiVisibility(flags);
+
+            //Code handling the press of volume up and down, without it
+            //when pressed, navigation bar show up and doesnt hide
+
+            final View decorView = getWindow().getDecorView();
+            decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+            {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility)
+                {
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
+                    {
+                        decorView.setSystemUiVisibility(flags);
+                    }
+                }
+
+            });
+        }
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         if (toolbar != null)

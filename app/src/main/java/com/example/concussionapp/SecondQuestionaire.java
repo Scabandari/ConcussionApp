@@ -63,6 +63,7 @@ public class SecondQuestionaire extends AppCompatActivity {
                 String emailContent = "";
                 for(int i=0; i<SharedData.size; i++) {
                     emailContent += SharedData.dataArray[i];
+                    Log.i(TAG, "dataArray[" +i+ "] holds: " + SharedData.dataArray[i]);
                 }
 
                 emailContent += "\n\nThank you for using noCussion. Post any comments you may have " +
