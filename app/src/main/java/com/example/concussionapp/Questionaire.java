@@ -29,6 +29,10 @@ public class Questionaire extends AppCompatActivity {
     private RatingBar NervousRatingBar;
     private RatingBar RightRatingBar;
 
+    private RatingBar DifficultyConcentrating;
+    private RatingBar feelingInFog;
+    private RatingBar Nausea;
+
     private String HeadacheRating;
     private String DizzyRating;
     private String PressureRating;
@@ -37,13 +41,16 @@ public class Questionaire extends AppCompatActivity {
     private String NoiseRating;
     private String NervousRating;
     private String RightRating;
+    private String concentratingString;
+    private String fogFeeling;
+    private String rateNausea;
     //MY shit
 
     private String[] questionValues;
 
     private String passToEmail;
 
-    private final int arraySize = 8;
+    private final int arraySize = 7;
 
 
 
@@ -59,6 +66,10 @@ public class Questionaire extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        //initialize all values to 1
+        for(int i =0; i< questionValues.length; i++) {
+            questionValues[i] = "1";
+        }
         questionValues = new String [arraySize];
         Intent intent = new Intent();
         passToEmail = intent.getStringExtra("allData");
@@ -77,11 +88,15 @@ public class Questionaire extends AppCompatActivity {
         listenerHeadache();
         listenerDizzy();
         listenerPressure();
-        listenerNeck();
-        listenerLight();
+   //     listenerNeck();
+     //   listenerLight();
         listenerNoise();
-        listenerNervous();
-        listenerRight();
+     //   listenerNervous();
+       // listenerRight();
+
+        difficultyConcentrating();
+        feelingFog();
+        naseaL();
         //My shit
 
     }
@@ -130,6 +145,68 @@ public class Questionaire extends AppCompatActivity {
         }
     }
 
+
+    public void naseaL() {
+
+        Nausea = (RatingBar) findViewById(R.id.ratingBar7);
+
+        Nausea.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                rateNausea = String.valueOf(rating);
+                Log.i(TAG, "Nausea: " + HeadacheRating);
+                //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
+                questionValues[6] = "Nausea: " + rateNausea + "\n";
+
+                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    public void feelingFog() {
+
+        feelingInFog = (RatingBar) findViewById(R.id.ratingBar6);
+
+        feelingInFog.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                fogFeeling = String.valueOf(rating);
+                Log.i(TAG, "Rating: " + HeadacheRating);
+                //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
+                questionValues[5] = "Feeling in Fog: " + fogFeeling + "\n";
+
+                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+
+    public void difficultyConcentrating() {
+
+        DifficultyConcentrating = (RatingBar) findViewById(R.id.ratingBar5);
+
+        DifficultyConcentrating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                concentratingString = String.valueOf(rating);
+                Log.i(TAG, "Rating: " + HeadacheRating);
+                //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
+                questionValues[4] = "Difficulty Concentrating: " + DifficultyConcentrating + "\n";
+
+                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
     public void listenerHeadache() {
 
         HeadacheRatingBar = (RatingBar) findViewById(R.id.HeadacheRate);
@@ -152,7 +229,7 @@ public class Questionaire extends AppCompatActivity {
 
     public void listenerDizzy() {
 
-        DizzyRatingBar = (RatingBar) findViewById(R.id.DizzyRate);
+        DizzyRatingBar = (RatingBar) findViewById(R.id.ratingBar3);
 
         DizzyRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
@@ -162,7 +239,7 @@ public class Questionaire extends AppCompatActivity {
                 DizzyRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + DizzyRating);
  //               SharedData.data  += "Dizzy rating: " + DizzyRating + "\n";
-                questionValues[1] = "Dizzy rating: " + DizzyRating + "\n";
+                questionValues[2] = "Dizzy rating: " + DizzyRating + "\n";
                 //Toast.makeText(Questionaire.this, DizzyRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
@@ -171,7 +248,7 @@ public class Questionaire extends AppCompatActivity {
 
     public void listenerPressure() {
 
-        PressureRatingBar = (RatingBar) findViewById(R.id.PressureRate);
+        PressureRatingBar = (RatingBar) findViewById(R.id.ratingBar2);
 
         PressureRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
@@ -181,13 +258,13 @@ public class Questionaire extends AppCompatActivity {
                 PressureRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + PressureRating);
    //             SharedData.data  += "Head Pressure rating: " + PressureRating + "\n";
-                questionValues[2] = "Head Pressure rating: " + PressureRating + "\n";
+                questionValues[1] = "Head Pressure rating: " + PressureRating + "\n";
                 //Toast.makeText(Questionaire.this, PressureRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
     }
-
+/*
     public void listenerNeck() {
 
         NeckRatingBar = (RatingBar) findViewById(R.id.NeckRate);
@@ -225,10 +302,11 @@ public class Questionaire extends AppCompatActivity {
             }
         });
     }
-
+*/
+    //this one is for light & noise sensitivity
     public void listenerNoise() {
 
-        NoiseRatingBar = (RatingBar) findViewById(R.id.NoiseRate);
+        NoiseRatingBar = (RatingBar) findViewById(R.id.ratingBar4);
 
         NoiseRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             //       ratingBar4.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
@@ -238,13 +316,13 @@ public class Questionaire extends AppCompatActivity {
                 NoiseRating = String.valueOf(rating);
                 Log.i(TAG, "Rating: " + NoiseRating);
     //            SharedData.data  += "Noise sensitivity rating: " + NoiseRating + "\n";
-                questionValues[5] = "Noise sensitivity rating: " + NoiseRating + "\n";
+                questionValues[3] = "Light and noise sensitivity rating: " + NoiseRating + "\n";
                 //Toast.makeText(Questionaire.this, NoiseRating, Toast.LENGTH_SHORT).show();
                 //     }
             }
         });
     }
-
+/*
     public void listenerNervous() {
 
         NervousRatingBar = (RatingBar) findViewById(R.id.NervousRate);
@@ -282,7 +360,7 @@ public class Questionaire extends AppCompatActivity {
             }
         });
     }
-
+*/
     protected void goToExercise()
 
     {

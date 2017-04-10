@@ -65,7 +65,7 @@ public class SecondQuestionaire extends AppCompatActivity {
                     emailContent += SharedData.dataArray[i];
                 }
 
-                emailContent += "\n\nThank you for using ConcussionApp. Post any comments you may have " +
+                emailContent += "\n\nThank you for using noCussion. Post any comments you may have " +
                         "for your care provider below. \n\nComments:";
 
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
