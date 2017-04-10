@@ -1,5 +1,5 @@
 package com.example.concussionapp;
-//test
+//test12
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -134,6 +134,7 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        connected = false;
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -156,7 +157,7 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
             }
         };
 
-        connected = false;
+
 
         IntentFilter filter3 = new IntentFilter(BluetoothDevice.ACTION_ACL_CONNECTED);
         IntentFilter filter4 = new IntentFilter(BluetoothDevice.ACTION_ACL_DISCONNECTED);
@@ -497,79 +498,80 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
 
     View.OnClickListener mResetListener  = new View.OnClickListener() {
         public void onClick(View v) {
+            if (connected) {
+                SamplesPerMinute.clear();
+                showToast = true;
+                //this if executed if start button pressed from a condition of being paused
+                //starts with amount of time = millisLeft
+                if (canStartTimer && fromPause) {
 
-            SamplesPerMinute.clear();
-            showToast = true;
-            //this if executed if start button pressed from a condition of being paused
-            //starts with amount of time = millisLeft
-            if (canStartTimer && fromPause) {
-
-             countDownT = new CountDownTimer(exerciseTime, 1000) {
-                //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    millisLeft = millisUntilFinished;
-                    //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
-                    countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
-                }
-
-                @Override
-                public void onFinish() {
-                    String minuteAvg = "";
-                    for (Integer i : SamplesPerMinute) {
-                        minuteAvg += " " + String.valueOf(i);
-                    }
-                    countDownTime.setText("Done");
-             //       minuteAvg += "]";
-           //         SharedData.data += "Average heart rate for each minute of exercise time: \n" +
-                //            minuteAvg;
-                    SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
-                            minuteAvg +  "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
-                    for (int i = 0; i < 5; i++) { //just for testing
-                        Log.i(TAG, "Finished. Averages are" + minuteAvg);
-                    }
-                    Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                    startActivity(newIntent);
-                }
-            };
-            countDownT.start();
-
-            canStartTimer = false;
-            }
-            //if the timer is already running
-            else if (!canStartTimer) {
-                countDownT.cancel();
-
-                countDownT = new CountDownTimer(exerciseTime, 1000) {
-                    //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        millisLeft = millisUntilFinished;
-                        //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
-                        countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        String minuteAvg = "";
-                        for (Integer i : SamplesPerMinute) {
-                            minuteAvg += " " + String.valueOf(i);
-                        }
-                        countDownTime.setText("Done");
-                        for (int i = 0; i < 15; i++) { //just for testing
-                            Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                    countDownT = new CountDownTimer(exerciseTime, 1000) {
+                        //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            millisLeft = millisUntilFinished;
+                            //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                            countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
                         }
 
-                        SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
-                                minuteAvg +  "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+                        @Override
+                        public void onFinish() {
+                            String minuteAvg = "";
+                            for (Integer i : SamplesPerMinute) {
+                                minuteAvg += " " + String.valueOf(i);
+                            }
+                            countDownTime.setText("Done");
+                            //       minuteAvg += "]";
+                            //         SharedData.data += "Average heart rate for each minute of exercise time: \n" +
+                            //            minuteAvg;
+                            SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                    minuteAvg + "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+                            for (int i = 0; i < 5; i++) { //just for testing
+                                Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                            }
+                            Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
+                            startActivity(newIntent);
+                        }
+                    };
+                    countDownT.start();
 
-                        Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
-                        startActivity(newIntent);
-                    }
-                };
-                countDownT.start();
+                    canStartTimer = false;
+                }
+                //if the timer is already running
+                else if (!canStartTimer) {
+                    countDownT.cancel();
 
-                canStartTimer = false;
+                    countDownT = new CountDownTimer(exerciseTime, 1000) {
+                        //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            millisLeft = millisUntilFinished;
+                            //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
+                            countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            String minuteAvg = "";
+                            for (Integer i : SamplesPerMinute) {
+                                minuteAvg += " " + String.valueOf(i);
+                            }
+                            countDownTime.setText("Done");
+                            for (int i = 0; i < 15; i++) { //just for testing
+                                Log.i(TAG, "Finished. Averages are" + minuteAvg);
+                            }
+
+                            SharedData.dataArray[1] = "Average heart rate for each minute of exercise time: \n[" +
+                                    minuteAvg + "]\n\nHow they rated their symptoms on a scale from 1-5. 1 not at all, 5 yes a lot.\n\n";
+
+                            Intent newIntent = new Intent(getApplicationContext(), Questionaire.class);
+                            startActivity(newIntent);
+                        }
+                    };
+                    countDownT.start();
+
+                    canStartTimer = false;
+                }
             }
         }
     };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_questionaire"
@@ -8,263 +8,302 @@
     android:background="@color/colorPrimaryDark"
     tools:context="com.example.concussionapp.Questionaire">
 
+
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Noise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Noise sensitivity"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="356dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Light sensitivity"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="304dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Neck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Neck pain"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="252dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Pressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Light Headed "
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Dizzy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Dizziness"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="148dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Nervous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Nervous/Anxious"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="408dp"
-        android:layout_marginRight="235dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Don't feel right"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="460dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <TextView
-        android:id="@+id/Headache"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="Headache"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="96dp"
-        android:layout_marginRight="238dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="0dp"
+        android:layout_width="0dp" />
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="259dp"
-        android:layout_height="25dp"
-        android:height="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent"
-        android:text="How do you feel? Rate your symptoms"
-        android:textSize="15sp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="85dp"
-        app:layout_constraintRight_toRightOf="parent" />
+    <ScrollView
+        android:layout_width="345dp"
+        android:layout_height="600dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/tool_bar">
 
 
-    <Button
-        android:id="@+id/submitquiz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:background="@drawable/my_shape3"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="513dp"
-        android:layout_marginRight="136dp"
-        app:layout_constraintRight_toRightOf="parent" />
 
-    <RatingBar
-        android:id="@+id/HeadacheRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="96dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="552dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="36dp"
+            tools:layout_editor_absoluteY="72dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/tool_bar"
+            android:weightSum="1">
 
-    <RatingBar
-        android:id="@+id/DizzyRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="148dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
 
-    <RatingBar
-        android:id="@+id/PressureRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <RatingBar
-        android:id="@+id/NeckRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="252dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <RatingBar
-        android:id="@+id/LightRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="304dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <RatingBar
-        android:id="@+id/NoiseRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="356dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <RatingBar
-        android:id="@+id/NervousRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="408dp"
-        android:layout_marginRight="-39dp"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <RatingBar
-        android:id="@+id/RightRate"
-        android:layout_width="233dp"
-        android:layout_height="41dp"
-        android:progressTint="@color/colorPrimary"
-        android:secondaryProgressTint="@color/colorPrimary"
-        android:rating="5"
-        android:stepSize="1"
-        android:numStars="5"
-        android:scaleX="0.55"
-        android:scaleY="0.55"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="460dp"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent" />
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:height="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Are You Experiencing Any Symptoms?"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_weight="0.06" />
 
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:height="16dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Rate 1 for none at all and 5 for very much"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Headache"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/HeadacheRate"
+                android:layout_width="243dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:numStars="6"
+                android:progressTint="@color/colorPrimary"
+                android:rating="6"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Pressure in the Head"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RatingBar
+                android:id="@+id/ratingBar2"
+                android:layout_width="233dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="25dp"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="5"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Dizziness"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingBar3"
+                android:layout_width="233dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="0dp"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="5"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Light and noise sensitivity"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingBar4"
+                android:layout_width="233dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="0dp"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="5"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Difficulty concentrating and remembering"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingBar5"
+                android:layout_width="233dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="25dp"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="5"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Feeling like in a Fog"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingBar6"
+                android:layout_width="233dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="0dp"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="5"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Nausea"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/ratingBar7"
+                android:layout_width="233dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="25dp"
+                android:numStars="5"
+                android:progressTint="@color/colorPrimary"
+                android:rating="5"
+                android:scaleX="0.55"
+                android:scaleY="0.55"
+                android:secondaryProgressTint="@color/colorPrimary"
+                android:stepSize="0.1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/submitquiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="148dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/my_shape3"
+                android:text="Submit"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
+
+
