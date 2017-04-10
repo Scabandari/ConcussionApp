@@ -1,5 +1,5 @@
 package com.example.concussionapp;
-//test
+//test12
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
