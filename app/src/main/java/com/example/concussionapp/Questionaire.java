@@ -99,6 +99,9 @@ public class Questionaire extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {}
+
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu1, menu);

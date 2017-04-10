@@ -10,6 +10,8 @@
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:homeAsUpIndicator">@mipmap/ic_upnav</item>
+        
 
     </style>
     
