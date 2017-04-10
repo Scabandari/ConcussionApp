@@ -127,12 +127,6 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
         }
 
 
-
-
-
-
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         if (toolbar != null)
         {
