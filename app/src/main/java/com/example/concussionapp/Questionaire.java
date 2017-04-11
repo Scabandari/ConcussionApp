@@ -191,11 +191,14 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 rateNausea = String.valueOf(rating);
-                Log.i(TAG, "Nausea: " + HeadacheRating);
-                //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
-                questionValues[6] = "Nausea: " + rateNausea + "\n";
+                if(isValidInput(rateNausea)) {
+                    Log.i(TAG, "Nausea: " + HeadacheRating);
+                    questionValues[6] = "Nausea: " + rateNausea + "\n";
+                }
+                else {
+                    questionValues[6] = "Nausea: " + 0 + "\n";
+                }
 
-                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -211,11 +214,15 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 fogFeeling = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + HeadacheRating);
-                //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
-                questionValues[5] = "Feeling in Fog: " + fogFeeling + "\n";
+                if(isValidInput(fogFeeling)) {
 
-                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "Rating: " + HeadacheRating);
+                    questionValues[5] = "Feeling in Fog: " + fogFeeling + "\n";
+                } else {
+                    Log.i(TAG, "Rating: " + HeadacheRating);
+                    questionValues[5] = "Feeling in Fog: " + 0 + "\n";
+                }
+
 
             }
         });
@@ -232,11 +239,13 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 concentratingString = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + HeadacheRating);
-                //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
-                questionValues[4] = "Difficulty Concentrating: " + concentratingString + "\n";
-
-                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+                if(isValidInput(concentratingString)) {
+                    Log.i(TAG, "Rating: " + concentratingString);
+                    questionValues[4] = "Difficulty Concentrating: " + concentratingString + "\n";
+                } else {
+                    Log.i(TAG, "Rating: " + HeadacheRating);
+                    questionValues[4] = "Difficulty Concentrating: " + 0 + "\n";
+                }
 
             }
         });
@@ -252,11 +261,15 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 HeadacheRating = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + HeadacheRating);
-    //            SharedData.data += "Headache rating: " + HeadacheRating + "\n";
-                questionValues[0] = "Headache rating: " + HeadacheRating + "\n";
 
-                //Toast.makeText(Questionaire.this, HeadacheRating, Toast.LENGTH_SHORT).show();
+                if(isValidInput(HeadacheRating)) {
+                    Log.i(TAG, "Rating: " + HeadacheRating);
+                    questionValues[0] = "Headache rating: " + HeadacheRating + "\n";
+                } else {
+                    Log.i(TAG, "Rating: " + HeadacheRating);
+                    questionValues[0] = "Headache rating: " + 0 + "\n";
+                }
+
 
         }
         });
@@ -271,12 +284,19 @@ public class Questionaire extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 //  if(fromUser) {
+
                 DizzyRating = String.valueOf(rating);
-                Log.i(TAG, "Rating: " + DizzyRating);
- //               SharedData.data  += "Dizzy rating: " + DizzyRating + "\n";
-                questionValues[2] = "Dizzy rating: " + DizzyRating + "\n";
-                //Toast.makeText(Questionaire.this, DizzyRating, Toast.LENGTH_SHORT).show();
-                //     }
+                if(isValidInput(DizzyRating)) {
+                    Log.i(TAG, "Rating: " + DizzyRating);
+
+                    questionValues[2] = "Dizzy rating: " + DizzyRating + "\n";
+                } else {
+                    Log.i(TAG, "Rating: " + DizzyRating);
+
+                    questionValues[2] = "Dizzy rating: " + 0 + "\n";
+                }
+
+
             }
         });
     }
@@ -291,11 +311,15 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 //  if(fromUser) {
                 PressureRating = String.valueOf(rating);
+                if(isValidInput(PressureRating)) {
                 Log.i(TAG, "Rating: " + PressureRating);
-   //             SharedData.data  += "Head Pressure rating: " + PressureRating + "\n";
+
                 questionValues[1] = "Head Pressure rating: " + PressureRating + "\n";
-                //Toast.makeText(Questionaire.this, PressureRating, Toast.LENGTH_SHORT).show();
-                //     }
+                 } else {
+                    Log.i(TAG, "Rating: " + PressureRating);
+
+                    questionValues[1] = "Head Pressure rating: " + 0 + "\n";
+                }
             }
         });
     }
@@ -311,11 +335,14 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 //  if(fromUser) {
                 NoiseRating = String.valueOf(rating);
+
+                if(isValidInput(NoiseRating)) {
                 Log.i(TAG, "Rating: " + NoiseRating);
-    //            SharedData.data  += "Noise sensitivity rating: " + NoiseRating + "\n";
                 questionValues[3] = "Light and noise sensitivity rating: " + NoiseRating + "\n";
-                //Toast.makeText(Questionaire.this, NoiseRating, Toast.LENGTH_SHORT).show();
-                //     }
+                 } else {
+                    Log.i(TAG, "Rating: " + NoiseRating);
+                    questionValues[3] = "Light and noise sensitivity rating: " + 0 + "\n";
+                }
             }
         });
     }
@@ -352,5 +379,37 @@ public class Questionaire extends AppCompatActivity {
             }
         });
     }
+        private boolean isValidInput(String s) {
 
+            boolean flag = false;
+            switch(s) {
+                case "0":
+                    flag = true;
+                    break;
+
+                case "1":
+                    flag = true;
+                    break;
+
+                case "2":
+                    flag = true;
+                    break;
+
+                case "3":
+                    flag = true;
+                    break;
+                case "4":
+                    flag = true;
+                    break;
+
+                case "5":
+                    flag = true;
+                    break;
+
+                default:
+                    flag = false;
+            }
+                    return flag;
+        }
 }
+
