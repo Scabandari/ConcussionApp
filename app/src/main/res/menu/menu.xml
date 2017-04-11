@@ -6,6 +6,7 @@
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar" />
 
+
     <item
         android:id="@+id/Switch1"
         android:title="About us"
