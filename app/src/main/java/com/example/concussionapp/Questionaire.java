@@ -72,9 +72,16 @@ public class Questionaire extends AppCompatActivity {
         questionValues = new String [arraySize];
         Intent intent = new Intent();
         passToEmail = intent.getStringExtra("allData");
-        for(int i =0; i< questionValues.length; i++) {
-            questionValues[i] = "1";
-        }
+   //     for(int i =0; i< questionValues.length; i++) {
+    //        questionValues[i] = "1";
+     //   }
+        questionValues[6] = "Nausea: " + 2 + "\n";
+        questionValues[5] = "Feeling in Fog: " + 2 + "\n";
+        questionValues[4] = "Difficulty Concentrating: " + 2 + "\n";
+        questionValues[0] = "Headache rating: " + 2 + "\n";
+        questionValues[2] = "Dizzy rating: " + 2 + "\n";
+        questionValues[1] = "Head Pressure rating: " + 2 + "\n";
+        questionValues[3] = "Light and noise sensitivity rating: " + 2 + "\n";
 
         Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
         Log.i(TAG, "Received data from Exercise Session: " + passToEmail);
@@ -191,13 +198,13 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 rateNausea = String.valueOf(rating);
-                if(isValidInput(rateNausea)) {
+       //         if(isValidInput(rateNausea)) {
                     Log.i(TAG, "Nausea: " + HeadacheRating);
                     questionValues[6] = "Nausea: " + rateNausea + "\n";
-                }
-                else {
-                    questionValues[6] = "Nausea: " + 0 + "\n";
-                }
+      //          }
+       //         else {
+             //       questionValues[6] = "Nausea: " + 0 + "\n";
+      //          }
 
 
             }
@@ -214,14 +221,14 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 fogFeeling = String.valueOf(rating);
-                if(isValidInput(fogFeeling)) {
+           //     if(isValidInput(fogFeeling)) {
 
                     Log.i(TAG, "Rating: " + HeadacheRating);
                     questionValues[5] = "Feeling in Fog: " + fogFeeling + "\n";
-                } else {
+      //          } else {
                     Log.i(TAG, "Rating: " + HeadacheRating);
-                    questionValues[5] = "Feeling in Fog: " + 0 + "\n";
-                }
+         //           questionValues[5] = "Feeling in Fog: " + 0 + "\n";
+           //     }
 
 
             }
@@ -239,13 +246,13 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
                 concentratingString = String.valueOf(rating);
-                if(isValidInput(concentratingString)) {
+         //       if(isValidInput(concentratingString)) {
                     Log.i(TAG, "Rating: " + concentratingString);
                     questionValues[4] = "Difficulty Concentrating: " + concentratingString + "\n";
-                } else {
-                    Log.i(TAG, "Rating: " + HeadacheRating);
-                    questionValues[4] = "Difficulty Concentrating: " + 0 + "\n";
-                }
+        //        } else {
+         //           Log.i(TAG, "Rating: " + HeadacheRating);
+        //            questionValues[4] = "Difficulty Concentrating: " + 0 + "\n";
+        //        }
 
             }
         });
@@ -262,13 +269,13 @@ public class Questionaire extends AppCompatActivity {
 
                 HeadacheRating = String.valueOf(rating);
 
-                if(isValidInput(HeadacheRating)) {
-                    Log.i(TAG, "Rating: " + HeadacheRating);
+         //       if(isValidInput(HeadacheRating)) {
+          //          Log.i(TAG, "Rating: " + HeadacheRating);
                     questionValues[0] = "Headache rating: " + HeadacheRating + "\n";
-                } else {
-                    Log.i(TAG, "Rating: " + HeadacheRating);
-                    questionValues[0] = "Headache rating: " + 0 + "\n";
-                }
+         //       } else {
+         //           Log.i(TAG, "Rating: " + HeadacheRating);
+        //            questionValues[0] = "Headache rating: " + 0 + "\n";
+         //       }
 
 
         }
@@ -286,15 +293,15 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
 
                 DizzyRating = String.valueOf(rating);
-                if(isValidInput(DizzyRating)) {
+         //       if(isValidInput(DizzyRating)) {
                     Log.i(TAG, "Rating: " + DizzyRating);
 
                     questionValues[2] = "Dizzy rating: " + DizzyRating + "\n";
-                } else {
+        //        } else {
                     Log.i(TAG, "Rating: " + DizzyRating);
 
-                    questionValues[2] = "Dizzy rating: " + 0 + "\n";
-                }
+          //          questionValues[2] = "Dizzy rating: " + 0 + "\n";
+        //        }
 
 
             }
@@ -311,15 +318,15 @@ public class Questionaire extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 //  if(fromUser) {
                 PressureRating = String.valueOf(rating);
-                if(isValidInput(PressureRating)) {
+         //       if(isValidInput(PressureRating)) {
                 Log.i(TAG, "Rating: " + PressureRating);
 
                 questionValues[1] = "Head Pressure rating: " + PressureRating + "\n";
-                 } else {
+          //       } else {
                     Log.i(TAG, "Rating: " + PressureRating);
-
-                    questionValues[1] = "Head Pressure rating: " + 0 + "\n";
-                }
+//
+          //          questionValues[1] = "Head Pressure rating: " + 0 + "\n";
+             //  }
             }
         });
     }
@@ -336,13 +343,13 @@ public class Questionaire extends AppCompatActivity {
                 //  if(fromUser) {
                 NoiseRating = String.valueOf(rating);
 
-                if(isValidInput(NoiseRating)) {
+        //        if(isValidInput(NoiseRating)) {
                 Log.i(TAG, "Rating: " + NoiseRating);
                 questionValues[3] = "Light and noise sensitivity rating: " + NoiseRating + "\n";
-                 } else {
-                    Log.i(TAG, "Rating: " + NoiseRating);
-                    questionValues[3] = "Light and noise sensitivity rating: " + 0 + "\n";
-                }
+      //           } else {
+       //             Log.i(TAG, "Rating: " + NoiseRating);
+       //             questionValues[3] = "Light and noise sensitivity rating: " + 0 + "\n";
+        //        }
             }
         });
     }

@@ -187,17 +187,6 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
         Log.i(TAG, "Max heart rate entered:  " + maxHeart);
         Log.i(TAG, "Min heart rate entered:  " + minHeart);
         Log.i(TAG, "Exercise time entered by user:  " + exerciseTime);
- /*       if(maxHR != null) {
-            maxHeartRate = Integer.parseInt(maxHR);
-        } else {
-            maxHeartRate = 120;
-        }
-        if(minHR != null) {
-            minHeartRate = Integer.parseInt(minHR);
-        } else {
-            minHeartRate = 90;
-        }
-*/
 
         SamplesPerMinute = new ArrayList<>();
         delayForMinutes = 60000;
@@ -449,39 +438,6 @@ public class Chronometer_Heart_Rate_Activity extends AppCompatActivity {
         fromPause = true;
         super.onPause();
     }
-
-  /*  protected void onResume() {
-        super.onResume();
-        countDownT= new CountDownTimer(millisLeft, 1000) {
-            //ref from here: http://androidbite.blogspot.ca/2012/11/android-count-down-timer-example.html
-            @Override
-            public void onTick(long millisUntilFinished) {
-                millisLeft = millisUntilFinished;
-                //ref: http://stackoverflow.com/questions/17620641/countdowntimer-in-minutes-and-seconds
-                countDownTime.setText("" + String.format("%2d:%02d", (millisUntilFinished / 60000) % 60, (millisUntilFinished / 1000) % 60));
-            }
-
-            @Override
-            public void onFinish() {
-                String minuteAvg = "";
-                for (Integer i : SamplesPerMinute) {
-                    minuteAvg += " " + String.valueOf(i);
-                }
-                countDownTime.setText("Done");
-                for (int i = 0; i < 15; i++) { //just for testing
-                    Log.i(TAG, "Finished. Averages are" + minuteAvg);
-                }
-                Intent newIntent = new Intent(getApplicationContext(), PostSurveyy.class);
-                newIntent.putExtra("heartData", minuteAvg);
-                startActivity(newIntent);
-            }
-        };
-        countDownT.start();
-
-        canStartTimer = false;
-
-    }
-*/
 
     View.OnClickListener mStopListener= new View.OnClickListener() {
         public void onClick(View v) {
