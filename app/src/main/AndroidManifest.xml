@@ -60,9 +60,6 @@
             android:parentActivityName=".Questionaire"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <activity android:name=".ProcessActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity android:name=".RecoveryTrackingActivity"
             android:parentActivityName=".WelcomeActivity"
             android:screenOrientation="portrait"

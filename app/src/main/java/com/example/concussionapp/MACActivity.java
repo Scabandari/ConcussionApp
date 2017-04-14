@@ -22,6 +22,7 @@ public class MACActivity extends AppCompatActivity {
     private String newMac;
 
     TextView macID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,4 +62,7 @@ public class MACActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
 }
+
+
